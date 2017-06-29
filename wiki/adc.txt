@@ -1,0 +1,86 @@
+ADC testes
+
+single conversion mode
+continuous conversion mode
+continous conversion mode - double channel
+continuous circular conversion mode
+continous conversion mode - double channel
+continuous circular double buffer conversion mode - double channel 
+
+
+
+
+----ADC Configuration----
+
+ADC 1 canal 6 (IN6) - pino PA6 / arduino D12
+ADC 2 canal 7 (IN7) - pino PA7 / arduino D11
+
+ADC 1 
+mode - Dual Regular Simultaneous Mode Only
+ADC 2 é escravo do ADC 1, modo selecionado automaticamente, mas configurações tem der ser mudadas manualmente
+
+Configurações:
+
+frequencia de amostragem depende de
+	- fclk frequencia da placa (84 MHz)
+	- fpre prescaler (4, 6 ou 8) / Clock Prescaler
+	- fcycle numero de ciclos de clock para uma amostragem (3, 15, 28, 84, 112, 144 ou 480) / Rank -> Sampling Time
+	- usar script do Matlab para ver as combinações possíveisMA
+	
+resolução: 12 bits
+
+Continuous Conversion Mode: enabled - permite amostragem continua sem interferencia do processador
+
+DMA Continuous Request: enabled - permite DMA fazer multiplos pedidos de transferencia de dados
+
+Tab NVIC Settings
+ADC1, ADC2 and ADC3 interrupts - enabled
+
+----DMA Configuration----
+
+Tab DMA2
+DMA Request - ADC 1
+Stream - DMA2 Stream 0 (adc1) / Stream 2 (adc2)
+Mode - circular
+Data Width - Full word
+Priority - Medium
+
+Possibilidade: usar FIFO com maximo de burst
+
+
+
+
+
+
+
+------- Codigo ---------
+#include "adc.h"
+#include "dma.h"
+
+#define BUFFER_SIZE 8
+uint32_t buffer_voltage[BUFFER_SIZE];
+uint32_t buffer_current[BUFFER_SIZE];
+
+int main ()
+MX_DMA_Init();
+MX_ADC1_Init();
+MX_ADC2_Init();
+
+HAL_ADC_Start(&hadc2);
+
+if (HAL_ADC_Start_DMA(&hadc1, buffer_voltage, BUFFER_SIZE) != HAL_OK)
+{
+  print("xExit\n\r");
+  Delay_ms(1000);
+  return 0;
+}
+
+if (HAL_ADC_Start_DMA(&hadc2, buffer_current, BUFFER_SIZE) != HAL_OK)
+{
+  print("xExit\n\r");
+  Delay_ms(1000);
+  return 0;
+}
+	
+// valores serão salvos nos buffers de forma continua, circular e sincronizada	
+

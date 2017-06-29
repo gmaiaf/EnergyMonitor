@@ -1,0 +1,96 @@
+ADC + DMA + Timer
+
+-----------------------------------------
+------------Pin Configuration------------
+-----------------------------------------
+ADC1 -> IN6 - pino PA6 - arduino D12
+ADC2 -> IN7 - pino PA7 - arduino D11
+
+TIM8 -> Clock Source - Internal Clock
+
+-----------------------------------------
+--------------Configuration--------------
+-----------------------------------------
+ADC 1
+	- Mode: Dual regular simultaneous mode only - configura ADC 1 como mestre e ADC 2 como escravo com o mesmo trigger
+	- Dual Access Mode: DMA access mode 2 - transferencias por DMA
+	- Continuous Conversion Mode: Disabled - deve ser desativado para permitir trigger externo
+	- DMA Continuous Request: Enabled - permite que DMA envie multiplos pedidos de transferencia
+	- End of Conversion Selection: EOC flag at the end of all conversions - não deixa flag de fim de transferencia ser setada
+	- External Trigger Conversion Source: Timer 8 Trigger Out event
+	- External Trigger Conversion Edge: Trigger detection on the rising edge
+	
+	- Clock Prescaler e Sampling Time: não influenciam a frequencia de amostragem
+	
+	- Resolution: 12 bits - ou desejado
+	
+	- NVIC Settings: ADC1, ADC2 and ADC3 interrupts: Enabled
+	
+	- DMA Settings: DMA Request - ADC 1 / Stream - DMA 2 Stream 0 / Mode - Circular / Use Fifo, full, word data width, single burst size
+	
+	- Não alterar outros parametros
+	
+ADC 2
+	- Mode / Dual Access Mode: selecionados automaticamente devido a configuração do ADC 1
+	- External Trigger Conversion Source / External Trigger Conversion Edge : não disponivel devido a configuração do ADC 1
+	- Continuous Conversion Mode / DMA Continuous Request / End of Conversion Selection : usar mesma configuração do ADC 1
+	- NVIC Settings: ADC1, ADC2 and ADC3 interrupts: Enabled
+
+	- Clock Prescaler e Sampling Time: não influenciam a frequencia de amostragem
+	
+	- Resolution: 12 bits - ou desejado
+	
+	- NVIC Settings: ADC1, ADC2 and ADC3 interrupts: Enabled
+	
+	- DMA Settings: DMA Request - ADC 2 / Stream - DMA 2 Stream 2 / Mode - Circular / Use Fifo, full, word data width, single burst size
+	
+	- Não alterar outros parametros
+
+Timer 8
+	- Clock original: 84 MHZ (M4F446RE)
+	- Prescaler + 1: primeira divisão do clock (recomendado deixar em 1 e usar apenas a outras )
+	- Counter Mode: Up
+	- Counter Period: segunda divisão do clock
+	- Trigger Event Selection: Update Event
+	- Se for usar interrupcao, ativar todas
+	
+	
+-----------------------------------------
+----------------Workbench----------------
+-----------------------------------------
+// variaveis
+uint32_t buffer_voltage[BUFFER_SIZE];
+uint32_t buffer_current[BUFFER_SIZE];
+uint32_t flag_buffercheio = 0;
+uint32_t flag_buffermetade = 0;
+
+// iniciar perifericos
+HAL_TIM_Base_Start_IT(&htim8); // Timer 8. _IT permite usar as interrupcoes do timer (debug)
+HAL_ADC_Start(&hadc2); // não sei explicar porque, mas é necessário iniciar o ADC escravo antes, sem DMA
+HAL_ADC_Start_DMA(&hadc1, buffer_voltage, BUFFER_SIZE)
+HAL_ADC_Start_DMA(&hadc2, buffer_current, BUFFER_SIZE) // inicar ADCs 1 e 2 com DMA
+
+// loop principal
+while(1)
+{
+	if (flag_buffercheio == 1) {}
+	if (flag_buffermetade == 1) {}
+}
+
+// Callbacks das interrupcoes do DMA - transferencia completa e transferencia pela metade
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+	if (hadc->Instance == ADC1) {}
+	else if (hadc->Instance == ADC2) {}
+}
+void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
+{
+	if (hadc->Instance == ADC1) {}
+	else if (hadc->Instance == ADC2) {}
+}
+
+// Callback do timer (pode ser usado para debug)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
+}
