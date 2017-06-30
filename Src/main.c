@@ -44,7 +44,7 @@
 #include "defines.h"
 #include "arm_math.h"
 #include "adc_util.h"
-// .h do Bruno
+#include "equipamentos.h"
 // .h do Andre
 /* USER CODE END Includes */
 
@@ -55,8 +55,8 @@
 /* Variavel de estado da FSM */
 enum FSM {START, AQUISICAO, RMS_CORRENTE, CALCULOS, DELTA, ID, ENVIAR}
 estado = START;
-/* Tabela de medicoes e indexador*/
-uint32_t * memoria[MEM_SIZE]; // mudar para .h do Bruno
+/* Historico de medicoes e indexador*/
+Medicao memoria[MEM_SIZE]; // mudar para .h do Bruno
 uint32_t memoria_index = 0;
 /* Buffers usados ao longo do processamento */
 uint32_t buffer_tensao_DMA[2*BUFFER_SIZE];
@@ -71,6 +71,7 @@ float32_t buffer_corrente_diz[BUFFER_SIZE/DIZIMACAO];
 /* Flags de controle */
 uint8_t flag_buffercheio = 0;
 uint8_t flag_buffermetade = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -96,6 +97,7 @@ int main(void)
 	float32_t corrente_RMS = 0;
 	float32_t corrente_RMS_anterior = 0;
 	int i = 0;
+	Parametros param_aux;
 	// tres structs de medicao do .h do Bruno auxiliares
   /* USER CODE END 1 */
 
@@ -116,6 +118,9 @@ int main(void)
   MX_TIM8_Init();
 
   /* USER CODE BEGIN 2 */
+
+  /* Inicializar memoria com zeros */
+  // zerar todos os parametros de memoria[MEM_SIZE]
 
   /* Inicializar Timer 8 */
   HAL_TIM_Base_Start(&htim8);
@@ -150,6 +155,10 @@ int main(void)
 		   * Proximo estado: RMS_CORRENTE
 		   * Transicao: transferencia do buffer do ADC na metade ou completa
 		   */
+
+		  /* Manter estado em AQUISICAO*/
+		  estado = AQUISICAO;
+
 		  if (flag_buffercheio == 1){
 			  /* Timestamp da medicao */
 			  // Obter timestamp da medicao
@@ -242,10 +251,14 @@ int main(void)
 		   * Proximo estado: CALCULOS
 		   * Transicao: Valor RMS da corrente esta fora da faixa da ultima medicao
 		   */
-		  /* Calcular RMS da corrente sobre a ultima medicao */
+
+		  /* Calcular RMS da corrente sobre a aquisicao */
 		  // Aplicar calculo de RMS sobre {buffer_corrente_leitura_FIR}. Saida em {corrente_RMS}
-		  /* Ler ultimo valor de RMS */
-		  // Usar {memoria_index%MEM_SIZE}. Saida em {corrente_RMS_anterior}*/
+		  corrente_RMS = 0; // corrente_RMS =
+
+		  /* Ler ultimo valor de RMS do historico*/
+		  corrente_RMS_anterior = memoria[memoria_index%MEM_SIZE].med.i_rms;
+
 		  /* Verificar se novo valor de RMS esta dentro ou fora de uma faixa */
 		  if ((corrente_RMS < RMS_LOWERBOUND*corrente_RMS_anterior) || (corrente_RMS > RMS_UPPERBOUND*corrente_RMS_anterior)) {
 			  estado = CALCULOS;

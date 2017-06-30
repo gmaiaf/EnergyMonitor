@@ -225,7 +225,7 @@ void print( const char* send, ...)
 			case 'c':
 				USART2_Transmit_Char(va_arg(argp, int));
 				continue;
-			case '\\':
+			/*case '\\':
 				// tratar simbolos ascii (\n\r etc)
 				switch (*send) {
 					case 'a':
@@ -246,7 +246,7 @@ void print( const char* send, ...)
 						break;
 				}
 				send++;
-				break;
+				break;*/
 			default:
 				continue;
 		}
