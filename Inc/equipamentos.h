@@ -1,6 +1,8 @@
 #ifndef EQUIPAMENTOS_H_INCLUDED
 #define EQUIPAMENTOS_H_INCLUDED
 
+//#define ARM_MATH_CM4
+//#define __FPU_PRESENT   1
 #include "arm_math.h"
 #include "defines.h"
 #include <math.h>
@@ -9,12 +11,14 @@
  * \brief Estrutura com parametros eletricos
  */
 typedef struct {
+	float32_t pot_ap;
 	float32_t pot_at;
 	float32_t pot_re;
 	float32_t harmonicos_RMS[10];
 	float32_t thd;
 	float32_t pf;
 	float32_t i_rms;
+	float32_t v_rms;
 } Parametros;
 
 /*

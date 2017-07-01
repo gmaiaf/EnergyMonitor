@@ -8,8 +8,8 @@
 #ifndef ADC_UTIL_H_
 #define ADC_UTIL_H_
 
-#define ARM_MATH_CM4
-#define __FPU_PRESENT   1
+//#define ARM_MATH_CM4
+//#define __FPU_PRESENT   1
 
 #include "main.h"
 #include "adc.h"

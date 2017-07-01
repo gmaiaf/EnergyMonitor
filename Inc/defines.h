@@ -9,15 +9,16 @@
 #define DEFINES_H_
 
 /* Defines do ARM */
-#define ARM_MATH_CM4
+//#define ARM_MATH_CM4
 //#define __FPU_PRESENT   1 // ja definido no driver da st
 
 /* Parametros da memoria com historico de medicoes */
-#define MEM_SIZE 2
+#define MEM_SIZE 4
 
 /* Parametros dos buffers para aquisicao e calculos */
 #define BUFFER_SIZE 256
 #define DIZIMACAO 8
+#define BUFFER_DIZ BUFFER_SIZE/DIZIMACAO
 #define F_SAMP 21875
 #define F_SAMP_DIZ F_SAMP/DIZIMACAO
 #define N_MAX 230
@@ -34,6 +35,9 @@
 #define RMS_TOLERANCIA 5
 #define RMS_UPPERBOUND (100+RMS_TOLERANCIA)/100
 #define RMS_LOWERBOUND (100-RMS_TOLERANCIA)/100
+#define GV 1
+#define GI 1
+#define MAX_HARMONICA 10
 
 /* Parametros das estruturas de dados e da memoria de medicoes */
 #define EQUIP_ARRAY_MAX 16

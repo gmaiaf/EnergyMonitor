@@ -45,7 +45,7 @@
 #include "arm_math.h"
 #include "adc_util.h"
 #include "equipamentos.h"
-// .h do Andre
+#include "calculos_eletricos.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -56,7 +56,7 @@
 enum FSM {START, AQUISICAO, RMS_CORRENTE, CALCULOS, DELTA, ID, ENVIAR}
 estado = START;
 /* Historico de medicoes e indexador*/
-Medicao memoria[MEM_SIZE]; // mudar para .h do Bruno
+Medicao memoria[MEM_SIZE];
 uint32_t memoria_index = 0;
 /* Buffers usados ao longo do processamento */
 uint32_t buffer_tensao_DMA[2*BUFFER_SIZE];
@@ -66,8 +66,8 @@ uint32_t buffer_corrente_leitura[BUFFER_SIZE];
 float32_t buffer_corrente_float[BUFFER_SIZE];
 float32_t buffer_tensao_float[BUFFER_SIZE];
 float32_t buffer_corrente_FIR[BUFFER_SIZE];
-float32_t buffer_tensao_diz[BUFFER_SIZE/DIZIMACAO];
-float32_t buffer_corrente_diz[BUFFER_SIZE/DIZIMACAO];
+float32_t buffer_tensao_diz[BUFFER_DIZ];
+float32_t buffer_corrente_diz[BUFFER_DIZ];
 /* Flags de controle */
 uint8_t flag_buffercheio = 0;
 uint8_t flag_buffermetade = 0;
@@ -253,8 +253,7 @@ int main(void)
 		   */
 
 		  /* Calcular RMS da corrente sobre a aquisicao */
-		  // Aplicar calculo de RMS sobre {buffer_corrente_leitura_FIR}. Saida em {corrente_RMS}
-		  corrente_RMS = 0; // corrente_RMS =
+		  corrente_RMS = retornaRMS(GI, buffer_corrente_diz, BUFFER_DIZ);
 
 		  /* Ler ultimo valor de RMS do historico*/
 		  corrente_RMS_anterior = memoria[memoria_index%MEM_SIZE].med.i_rms;
@@ -275,7 +274,13 @@ int main(void)
 		   * Transicao: Calculos completos
 		   */
 		  /* Calcular parametros eletricos obtidos*/
-		  // Aplicar todas as funcoes de calculos eletricos do .h do Andre e salvar na struct do .h do Bruno
+		  param_aux.i_rms = corrente_RMS;
+		  param_aux.v_rms = retornaRMS(GI, buffer_tensao_diz, BUFFER_DIZ);
+		  param_aux.pot_at = retornaPOTATIVA(GV, GI, buffer_tensao_diz, buffer_corrente_diz, BUFFER_DIZ);
+		  param_aux.pot_ap = retornaPOTAPARENTE(GV, GI, param_aux.v_rms, param_aux.i_rms, BUFFER_DIZ);
+		  param_aux.pot_re = retornaPOTREATIVA(param_aux.pot_ap, param_aux.pot_at);
+		  param_aux.pf = retornaFP(param_aux.pot_ap, param_aux.pot_at);
+		  retornaRMSHARMONICOS(param_aux.harmonicos_RMS, buffer_corrente_diz, BUFFER_DIZ, MAX_HARMONICA, GI, 1);
 		  estado = DELTA;
 		  break;
 	  case DELTA:
@@ -463,3 +468,4 @@ void assert_failed(uint8_t* file, uint32_t line)
 */ 
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
