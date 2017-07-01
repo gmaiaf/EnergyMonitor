@@ -72,6 +72,7 @@ float32_t buffer_corrente_diz[BUFFER_DIZ];
 /* Flags de controle */
 uint8_t flag_buffercheio = 0;
 uint8_t flag_buffermetade = 0;
+uint8_t flag_aquisicao = 0;
 /* Filtro FIR + dizimacao */
 arm_fir_decimate_instance_f32 S;
 /* USER CODE END PV */
@@ -98,7 +99,7 @@ int main(void)
   /* Variaveis locais */
 	float32_t corrente_RMS = 0;
 	float32_t corrente_RMS_anterior = 0;
-	int i = 0;
+	uint32_t i = 0;
 	Parametros param_aux;
   /* USER CODE END 1 */
 
@@ -168,41 +169,10 @@ int main(void)
 			  /* Transferir dados do buffer da DMA para buffer de leitura e esperar transferencia*/
 			  HAL_DMA_Start(&hdma_memtomem_dma2_stream3, (uint32_t) (buffer_corrente_DMA+BUFFER_SIZE), (uint32_t) buffer_corrente_leitura,BUFFER_SIZE);
 			  HAL_DMA_Start(&hdma_memtomem_dma2_stream1, (uint32_t) (buffer_tensao_DMA+BUFFER_SIZE), (uint32_t) buffer_tensao_leitura,BUFFER_SIZE);
-			  HAL_DMA_PollForTransfer(&hdma_memtomem_dma2_stream3, HAL_DMA_FULL_TRANSFER, HAL_MAX_DELAY);
-
-			  /* Converter valor do ADC 0-4095 para float32_t */
-			  ADCConvertBuffer(buffer_corrente_leitura, buffer_corrente_float, BUFFER_SIZE, CORRENTE_A, CORRENTE_B);
-
-			  /* Filtro FIR */
-			  arm_fir_decimate_f32(&S, buffer_corrente_float, buffer_corrente_diz, BUFFER_SIZE);
-			  // Aplicar filtro FIR ao {buffer_corrente_float}. Saida em {buffer_corrente_FIR}
-			  /* Dizimacao da corrente */
-			  // Aplicar funcao de dizimacao ao {buffer_corrente_FIR}. Saida em {buffer_corrente_diz}
-
-			  HAL_DMA_PollForTransfer(&hdma_memtomem_dma2_stream1, HAL_DMA_FULL_TRANSFER, HAL_MAX_DELAY);
-			  /* Converter valor do ADC 0-4095 para float32_t */
-			  ADCConvertBuffer(buffer_tensao_leitura, buffer_tensao_float, BUFFER_SIZE, TENSAO_A, TENSAO_B);
-
-			  /* Dizimacao da tensao */
-			  // Aplicar funcao de dizimacao ao {buffer_tensao_float}. Saida em {buffer_tensao_diz}
-			  estado = RMS_CORRENTE;
-
-			  // enviar valor pela UART - DEBUG - UART ESTA LENTA
-			  for(i=0; i<BUFFER_SIZE/2; i++)
-			  {
-				  /*print("%d%c%d%d%", (uint32_t)(buffer_corrente_float[i])%10, '.', ((uint32_t)(buffer_corrente_float[i]*10)%10), ((uint32_t)(buffer_corrente_float[i]*100)%10));
-				  USART2_Transmit_Char(',');
-				  print("%d%c%d%d%", (uint32_t)(buffer_tensao_float[i])%10, '.', ((uint32_t)(buffer_tensao_float[i]*10)%10), ((uint32_t)(buffer_tensao_float[i]*100)%10));
-				  USART2_Transmit_String("\n\r");*/
-
-				  /*USART2_Transmit_UInt(buffer_tensao_leitura[i]);
-				  USART2_Transmit_Char(',');
-				  USART2_Transmit_UInt(buffer_corrente_leitura[i]);
-				  USART2_Transmit_String("\n\r");*/
-			  }
-
-
+			  /* Setar flag */
+			  flag_aquisicao = 1;
 		  }
+
 		  if (flag_buffermetade == 1){
 			  /* Timestamp da medicao */
 			  // Obter timestamp da medicao
@@ -210,22 +180,28 @@ int main(void)
 			  /* Transferir dados do buffer da DMA para buffer de leitura e esperar transferencia*/
 			  HAL_DMA_Start(&hdma_memtomem_dma2_stream3, (uint32_t) buffer_corrente_DMA, (uint32_t) buffer_corrente_leitura, BUFFER_SIZE);
 			  HAL_DMA_Start(&hdma_memtomem_dma2_stream1, (uint32_t) buffer_tensao_DMA, (uint32_t) buffer_tensao_leitura, BUFFER_SIZE);
+			  /* Setar flag */
+			  flag_aquisicao = 1;
+		  }
+
+		  if (flag_aquisicao == 1)
+		  {
+			  /* Reiniciar flag */
+			  flag_aquisicao = 0;
 
 			  HAL_DMA_PollForTransfer(&hdma_memtomem_dma2_stream3, HAL_DMA_FULL_TRANSFER, HAL_MAX_DELAY);
 
 			  /* Converter valor do ADC 0-4095 para float32_t */
 			  ADCConvertBuffer(buffer_corrente_leitura, buffer_corrente_float, BUFFER_SIZE, CORRENTE_A, CORRENTE_B);
-			  /* Filtro FIR */
-			  // Aplicar filtro FIR ao {buffer_corrente_leitura}. Saida em {buffer_corrente_leitura_FIR}
-			  /* Dizimacao da corrente */
-			  // Aplicar funcao de dizimacao ao {buffer_corrente_leitura_FIR}. Saida em {buffer_corrente_diz}
+			  /* Filtro FIR  e Dizimacao da corrente*/
+			  arm_fir_decimate_f32(&S, buffer_corrente_float, buffer_corrente_diz, BUFFER_SIZE);
 
 			  HAL_DMA_PollForTransfer(&hdma_memtomem_dma2_stream1, HAL_DMA_FULL_TRANSFER, HAL_MAX_DELAY);
+
 			  /* Converter valor do ADC 0-4095 para float32_t */
 			  ADCConvertBuffer(buffer_tensao_leitura, buffer_tensao_float, BUFFER_SIZE, TENSAO_A, TENSAO_B);
-
-			  /* Dizimacao da tensao */
-			  // Aplicar funcao de dizimacao ao {buffer_tensao_leitura}. Saida em {buffer_tensao_diz}
+			  /* Filtro FIR e Dizimacao da tensao */
+			  arm_fir_decimate_f32(&S, buffer_tensao_float, buffer_tensao_diz, BUFFER_SIZE);
 
 			  estado = RMS_CORRENTE;
 
@@ -242,8 +218,9 @@ int main(void)
 				  USART2_Transmit_UInt(buffer_corrente_leitura[i]);
 				  USART2_Transmit_String("\n\r");*/
 			  }
-
 		  }
+
+
 		  break;
 	  case RMS_CORRENTE:
 		  /*
