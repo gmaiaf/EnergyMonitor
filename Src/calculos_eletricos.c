@@ -6,9 +6,10 @@
  */
 
 //#define ARM_MATH_CM4
-//#define __FPU_PRESENT   1
+//#define __FPU_PRESENT   1U
 #include "stdio.h"
 #include "stdlib.h"
+#include "math.h"
 #include "arm_math.h"
 #include "defines.h"
 #define PI_VALUE 3.14159265358
@@ -51,7 +52,7 @@ float32_t retornaRMS (float32_t g, float32_t *array, uint32_t size){
         arraysum = arraysum + array[i]*array[i];
     }
     arraysum = arraysum / size;
-    //arm_sqrt_f32(arraysum, &arrayrms);
+    arm_sqrt_f32(arraysum, &arrayrms);
     arrayrms = g * arrayrms;
 
     return arrayrms;
@@ -97,8 +98,7 @@ float32_t retornaPOTAPARENTE(float32_t gv, float32_t gi, float32_t vrms, float32
   */
 float32_t retornaPOTREATIVA(float32_t potaparente,float32_t potativa){
 	float32_t potreativa;
-	//arm_sqrt_f32((potaparente*potaparente-potativa*potativa),&potreativa);
-	//float32_t potreativa = sqrtf(powf(potaparente,2)-powf(potativa,2));
+	arm_sqrt_f32((potaparente*potaparente-potativa*potativa),&potreativa);
     return potreativa;
 }
 
@@ -120,7 +120,7 @@ float32_t retornaFP(float32_t potaparente, float32_t potativa){
 void retornaMEDIACICLOS(float32_t *array_in, float32_t *array_out, uint32_t size, uint32_t n){
 
 	float32_t aux[n][size/n];
-	float32_t aux2[size/n];
+	//float32_t aux2[size/n];
 	uint32_t i,j,k=0;
 
 	for(i=0;i<n;i++){
@@ -153,8 +153,8 @@ void retornaRMSHARMONICOS(float32_t *i_rms_harmonicos, float32_t *array_corrente
 	float32_t I_re[h];
 	float32_t I_im[h];
 	float32_t aux2[size/n];
-	float32_t i_rms_aux;
-	float32_t sin_aux, cos_aux, theta;
+	float32_t theta;
+	float32_t harmonico;
 
    retornaMEDIACICLOS(array_corrente,aux2,size,n);
 
@@ -175,13 +175,12 @@ void retornaRMSHARMONICOS(float32_t *i_rms_harmonicos, float32_t *array_corrente
 
 		for (i=0;i<size;i++){
 			theta = (float32_t)2*PI_VALUE*k*i/size;
-			//arm_sin_cos_f32(theta, &sin_aux, &cos_aux);
-			I_re[k] =  I_re[k] + aux2[i]*cos_aux;
-			I_im[k]  =  I_im[k] + aux2[i]*sin_aux;
+			I_re[k] =  I_re[k] + aux2[i]*arm_cos_f32(theta);
+			I_im[k]  =  I_im[k] + aux2[i]*arm_sin_f32(theta);
 		}
-		//arm_sqrt_f32(((I_re[k]*I_re[k])+(I_im[k]*I_im[k]))*g*SQRT2/size,&i_rms_aux);
-		i_rms_harmonicos[k] = i_rms_aux;
-		//i_rms_harmonicos[k] = sqrt(pow(I_re[k],2)+pow(I_im[k],2))*g*sqrt(2)/size;
+		harmonico = ((I_re[k]*I_re[k])+(I_im[k]*I_im[k]))*g*SQRT2/size;
+		arm_sqrt_f32(harmonico, &harmonico);
+		i_rms_harmonicos[k] = harmonico;
 	}
 
 }

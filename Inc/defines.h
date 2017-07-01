@@ -10,15 +10,18 @@
 
 /* Defines do ARM */
 //#define ARM_MATH_CM4
-//#define __FPU_PRESENT   1 // ja definido no driver da st
+//#define __FPU_PRESENT   1U // ja definido no driver da st
 
 /* Parametros da memoria com historico de medicoes */
 #define MEM_SIZE 4
 
 /* Parametros dos buffers para aquisicao e calculos */
 #define BUFFER_SIZE 256
+
 #define DIZIMACAO 8
+#define FILTER_TAP_NUM 45
 #define BUFFER_DIZ BUFFER_SIZE/DIZIMACAO
+
 #define F_SAMP 21875
 #define F_SAMP_DIZ F_SAMP/DIZIMACAO
 #define N_MAX 230

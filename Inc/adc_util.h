@@ -9,7 +9,7 @@
 #define ADC_UTIL_H_
 
 //#define ARM_MATH_CM4
-//#define __FPU_PRESENT   1
+//#define __FPU_PRESENT   1U
 
 #include "main.h"
 #include "adc.h"

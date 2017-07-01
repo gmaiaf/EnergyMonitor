@@ -43,6 +43,7 @@
 /* Include bibliotecas do projeto */
 #include "defines.h"
 #include "arm_math.h"
+#include "dizimacao.h"
 #include "adc_util.h"
 #include "equipamentos.h"
 #include "calculos_eletricos.h"
@@ -71,7 +72,8 @@ float32_t buffer_corrente_diz[BUFFER_DIZ];
 /* Flags de controle */
 uint8_t flag_buffercheio = 0;
 uint8_t flag_buffermetade = 0;
-
+/* Filtro FIR + dizimacao */
+arm_fir_decimate_instance_f32 S;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -98,7 +100,6 @@ int main(void)
 	float32_t corrente_RMS_anterior = 0;
 	int i = 0;
 	Parametros param_aux;
-	// tres structs de medicao do .h do Bruno auxiliares
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -121,7 +122,8 @@ int main(void)
 
   /* Inicializar memoria com zeros */
   // zerar todos os parametros de memoria[MEM_SIZE]
-
+  /* Inicializar filtro FIR */
+  initializeFIR(&S);
   /* Inicializar Timer 8 */
   HAL_TIM_Base_Start(&htim8);
   /* Inicializar ADCs */
@@ -172,6 +174,7 @@ int main(void)
 			  ADCConvertBuffer(buffer_corrente_leitura, buffer_corrente_float, BUFFER_SIZE, CORRENTE_A, CORRENTE_B);
 
 			  /* Filtro FIR */
+			  arm_fir_decimate_f32(&S, buffer_corrente_float, buffer_corrente_diz, BUFFER_SIZE);
 			  // Aplicar filtro FIR ao {buffer_corrente_float}. Saida em {buffer_corrente_FIR}
 			  /* Dizimacao da corrente */
 			  // Aplicar funcao de dizimacao ao {buffer_corrente_FIR}. Saida em {buffer_corrente_diz}
