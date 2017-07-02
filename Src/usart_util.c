@@ -102,9 +102,12 @@ void USART2_Transmit_UInt (uint32_t send)
 
 	do // obter digitos do menos significativo para o mais significativo
 	{
-		value[i++] = (char)(send % 10) + '0'; //converter resto da divisao por 10
+		value[i] = (char)(send % 10) + '0'; //converter resto da divisao por 10
 		send /= 10; // dividir por 10
+		i++;
 	} while(send); // parar quando divisao por 10 resultar em 0
+
+
 
 	while(i) //enviar dados do mais significativo para o menos significativo
 	{

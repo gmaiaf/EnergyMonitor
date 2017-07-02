@@ -47,6 +47,7 @@
 #include "adc_util.h"
 #include "equipamentos.h"
 #include "calculos_eletricos.h"
+#include "usart_util.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -54,7 +55,7 @@
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 /* Variavel de estado da FSM */
-enum FSM {START, AQUISICAO, RMS_CORRENTE, CALCULOS, DELTA, ID, ENVIAR}
+enum FSM {START, AQUISICAO, PROCESSAMENTO, RMS_CORRENTE, CALCULOS, DELTA, ID, ENVIAR}
 estado = START;
 /* Historico de medicoes e indexador*/
 Medicao memoria[MEM_SIZE];
@@ -100,7 +101,10 @@ int main(void)
 	float32_t corrente_RMS = 0;
 	float32_t corrente_RMS_anterior = 0;
 	uint32_t i = 0;
+	uint32_t timestamp = 0;
 	Parametros param_aux;
+	int32_t float_inteiro;
+	uint32_t float_fracao;
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -151,12 +155,13 @@ int main(void)
 		   */
 		  estado = AQUISICAO;
 		  break;
+
 	  case AQUISICAO:
 		  /*
 		   * Estado: AQUISICAO
 		   * Descricao: Espera pela aquisicao de dados pelo ADC
-		   * Proximo estado: RMS_CORRENTE
-		   * Transicao: transferencia do buffer do ADC na metade ou completa
+		   * Proximo estado: PROCESSAMENTO
+		   * Transicao: transferencia do buffer do ADC iniciada
 		   */
 
 		  /* Manter estado em AQUISICAO*/
@@ -164,64 +169,94 @@ int main(void)
 
 		  if (flag_buffercheio == 1){
 			  /* Timestamp da medicao */
-			  // Obter timestamp da medicao
+			  timestamp = HAL_GetTick();
 
 			  /* Transferir dados do buffer da DMA para buffer de leitura e esperar transferencia*/
 			  HAL_DMA_Start(&hdma_memtomem_dma2_stream3, (uint32_t) (buffer_corrente_DMA+BUFFER_SIZE), (uint32_t) buffer_corrente_leitura,BUFFER_SIZE);
 			  HAL_DMA_Start(&hdma_memtomem_dma2_stream1, (uint32_t) (buffer_tensao_DMA+BUFFER_SIZE), (uint32_t) buffer_tensao_leitura,BUFFER_SIZE);
 			  /* Setar flag */
-			  flag_aquisicao = 1;
+			  estado = PROCESSAMENTO;
 		  }
 
 		  if (flag_buffermetade == 1){
 			  /* Timestamp da medicao */
-			  // Obter timestamp da medicao
+			  timestamp = HAL_GetTick();
 
 			  /* Transferir dados do buffer da DMA para buffer de leitura e esperar transferencia*/
 			  HAL_DMA_Start(&hdma_memtomem_dma2_stream3, (uint32_t) buffer_corrente_DMA, (uint32_t) buffer_corrente_leitura, BUFFER_SIZE);
 			  HAL_DMA_Start(&hdma_memtomem_dma2_stream1, (uint32_t) buffer_tensao_DMA, (uint32_t) buffer_tensao_leitura, BUFFER_SIZE);
 			  /* Setar flag */
-			  flag_aquisicao = 1;
+			  estado = PROCESSAMENTO;
 		  }
-
-		  if (flag_aquisicao == 1)
-		  {
-			  /* Reiniciar flag */
-			  flag_aquisicao = 0;
-
-			  HAL_DMA_PollForTransfer(&hdma_memtomem_dma2_stream3, HAL_DMA_FULL_TRANSFER, HAL_MAX_DELAY);
-
-			  /* Converter valor do ADC 0-4095 para float32_t */
-			  ADCConvertBuffer(buffer_corrente_leitura, buffer_corrente_float, BUFFER_SIZE, CORRENTE_A, CORRENTE_B);
-			  /* Filtro FIR  e Dizimacao da corrente*/
-			  arm_fir_decimate_f32(&S, buffer_corrente_float, buffer_corrente_diz, BUFFER_SIZE);
-
-			  HAL_DMA_PollForTransfer(&hdma_memtomem_dma2_stream1, HAL_DMA_FULL_TRANSFER, HAL_MAX_DELAY);
-
-			  /* Converter valor do ADC 0-4095 para float32_t */
-			  ADCConvertBuffer(buffer_tensao_leitura, buffer_tensao_float, BUFFER_SIZE, TENSAO_A, TENSAO_B);
-			  /* Filtro FIR e Dizimacao da tensao */
-			  arm_fir_decimate_f32(&S, buffer_tensao_float, buffer_tensao_diz, BUFFER_SIZE);
-
-			  estado = RMS_CORRENTE;
-
-			  // enviar valor pela UART - DEBUG - UART ESTA LENTA
-			  for(i=0; i<BUFFER_SIZE/2; i++)
-			  {
-				  /*print("%d%c%d%d%", (uint32_t)(buffer_corrente_float[i])%10, '.', ((uint32_t)(buffer_corrente_float[i]*10)%10), ((uint32_t)(buffer_corrente_float[i]*100)%10));
-				  USART2_Transmit_Char(',');
-				  print("%d%c%d%d%", (uint32_t)(buffer_tensao_float[i])%10, '.', ((uint32_t)(buffer_tensao_float[i]*10)%10), ((uint32_t)(buffer_tensao_float[i]*100)%10));
-				  USART2_Transmit_String("\n\r");*/
-
-				  /*USART2_Transmit_UInt(buffer_tensao_leitura[i]);
-				  USART2_Transmit_Char(',');
-				  USART2_Transmit_UInt(buffer_corrente_leitura[i]);
-				  USART2_Transmit_String("\n\r");*/
-			  }
-		  }
-
-
 		  break;
+
+	  case PROCESSAMENTO:
+		  /*
+		   * Estado: PROCESSAMENTO
+		   * Descricao: Transforma leitura do ADC em valores do mundo real e dizima sinal
+		   * Proximo estado: RMS_CORRENTE
+		   * Transicao: Conversão completa
+		   */
+
+		  HAL_DMA_PollForTransfer(&hdma_memtomem_dma2_stream3, HAL_DMA_FULL_TRANSFER, HAL_MAX_DELAY);
+		  /* Converter valor do ADC 0-4095 para float32_t */
+		  ADCConvertBuffer(buffer_corrente_leitura, buffer_corrente_float, BUFFER_SIZE, CORRENTE_A, CORRENTE_B);
+		  /* Filtro FIR  e Dizimacao da corrente*/
+		  arm_fir_decimate_f32(&S, buffer_corrente_float, buffer_corrente_diz, BUFFER_SIZE);
+
+		  HAL_DMA_PollForTransfer(&hdma_memtomem_dma2_stream1, HAL_DMA_FULL_TRANSFER, HAL_MAX_DELAY);
+
+		  /* Converter valor do ADC 0-4095 para float32_t */
+		  ADCConvertBuffer(buffer_tensao_leitura, buffer_tensao_float, BUFFER_SIZE, TENSAO_A, TENSAO_B);
+		  /* Filtro FIR e Dizimacao da tensao */
+		  arm_fir_decimate_f32(&S, buffer_tensao_float, buffer_tensao_diz, BUFFER_SIZE);
+
+		  estado = RMS_CORRENTE;
+
+		  // enviar valor pela UART - DEBUG - UART ESTA LENTA
+		  for(i=0; i<BUFFER_SIZE; i++)
+		  {
+			  // print valor leitura adc
+			  /*USART2_Transmit_UInt(buffer_tensao_leitura[i]);
+			  USART2_Transmit_Char(',');
+			  USART2_Transmit_UInt(buffer_corrente_leitura[i]);
+			  USART2_Transmit_String("\n\r");*/
+
+			  // print valor real antes de dizimacao (mA e V)
+			  /*float_inteiro = (int32_t) (1000*buffer_corrente_float[i]);
+			  USART2_Transmit_Int(float_inteiro);
+			  //float_fracao = abs((int32_t)(buffer_corrente_float[i]*1000)%1000);
+			  //USART2_Transmit_Char('.');
+			  //USART2_Transmit_Int(float_fracao);
+			  USART2_Transmit_Char(',');
+			  float_inteiro = (int32_t) (buffer_tensao_float[i]);
+			  USART2_Transmit_Int(float_inteiro);
+			  float_fracao = abs((int32_t)(buffer_tensao_float[i]*1000)%1000);
+			  USART2_Transmit_Char('.');
+			  USART2_Transmit_UInt(float_fracao);
+			  USART2_Transmit_String("\n\r");*/
+		  }
+
+		  for(i=0; i<BUFFER_DIZ; i++)
+		  {
+
+			  // print valor real depois da dizimacao (mA e V)
+			  float_inteiro = (int32_t) (1000*buffer_corrente_diz[i]);
+			  USART2_Transmit_Int(float_inteiro);
+			  //float_fracao = abs((int32_t)(buffer_corrente_diz[i]*1000)%1000);
+			  //USART2_Transmit_Char('.');
+			  //USART2_Transmit_Int(float_fracao);
+			  USART2_Transmit_Char(',');
+			  float_inteiro = (int32_t) (buffer_tensao_diz[i]);
+			  USART2_Transmit_Int(float_inteiro);
+			  float_fracao = abs((int32_t)(buffer_tensao_diz[i]*1000)%1000);
+			  USART2_Transmit_Char('.');
+			  USART2_Transmit_UInt(float_fracao);
+			  USART2_Transmit_String("\n\r");
+		  }
+		  HAL_Delay(1000);
+		  break;
+
 	  case RMS_CORRENTE:
 		  /*
 		   * Estado: RMS_CORRENTE
@@ -246,6 +281,7 @@ int main(void)
 			  estado = AQUISICAO;
 		  }
 		  break;
+
 	  case CALCULOS:
 		  /*
 		   * Estado: CALCULOS
@@ -263,6 +299,7 @@ int main(void)
 		  retornaRMSHARMONICOS(param_aux.harmonicos_RMS, buffer_corrente_diz, BUFFER_DIZ, MAX_HARMONICA, GI, 1);
 		  estado = DELTA;
 		  break;
+
 	  case DELTA:
 		  /*
 		   * Estado: DELTA
@@ -275,6 +312,7 @@ int main(void)
 		  // Aplicar funcao de delta nas duas structs
 		  estado = ID;
 		  break;
+
 	  case ID:
 		  /*
 		   * Estado: ID
@@ -290,6 +328,7 @@ int main(void)
 		  // Adicionar struct de medicoes (antes do delta) a memoria de medicoes em {memoria_index%MEM_SIZE}
 		  estado = ENVIAR;
 		  break;
+
 	  case ENVIAR:
 		  /*
 		   * Estado: ENVIAR
@@ -301,6 +340,7 @@ int main(void)
 		  // chamar funcao de envio usando {memoria_index%MEM_SIZE}
 		  estado = AQUISICAO;
 		  break;
+
 	  default:
 		  /*
 		   * Estado: DEFAULT
@@ -448,4 +488,3 @@ void assert_failed(uint8_t* file, uint32_t line)
 */ 
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-

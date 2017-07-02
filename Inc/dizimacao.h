@@ -78,7 +78,7 @@ extern arm_fir_decimate_instance_f32 S = {DIZIMACAO, FILTER_TAP_NUM, pCoeffs, pS
 void initializeFIR(arm_fir_decimate_instance_f32* S)
 {
 	uint32_t i = 0;
-	for (i = 0; i<FILTER_TAP_NUM+BUFFER_SIZE-1; i++) {pState[i] = 0;}
+	for (i = 0; i<(FILTER_TAP_NUM+BUFFER_SIZE-1); i++) {pState[i] = 0;}
 
 }
 

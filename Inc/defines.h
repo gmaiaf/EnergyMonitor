@@ -16,23 +16,23 @@
 #define MEM_SIZE 4
 
 /* Parametros dos buffers para aquisicao e calculos */
-#define BUFFER_SIZE 256
+#define BUFFER_SIZE 2048
 
 #define DIZIMACAO 8
 #define FILTER_TAP_NUM 45
 #define BUFFER_DIZ BUFFER_SIZE/DIZIMACAO
 
-#define F_SAMP 21875
+#define F_SAMP 12000
 #define F_SAMP_DIZ F_SAMP/DIZIMACAO
 #define N_MAX 230
 
 /* Parametros da transformacao linear dos dados do ADC */
 // transformar em tensao de 0 a 127V e corrente de acordo com condicionamento
 // observar que a tensao tem 180 de fase em relacao a corrente (amplificador inversor)
-#define TENSAO_A 3.3/4095
-#define TENSAO_B 0
-#define CORRENTE_A 3.3/4095
-#define CORRENTE_B 0
+#define TENSAO_A -0.0992
+#define TENSAO_B 200.8922
+#define CORRENTE_A 3.3/4095*10
+#define CORRENTE_B -2048*CORRENTE_A
 
 /* Parametros matematicos para calculos */
 #define RMS_TOLERANCIA 5
