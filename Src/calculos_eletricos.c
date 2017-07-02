@@ -42,16 +42,16 @@ return array;
   * @param
   * @retval
   */
-float32_t retornaRMS (float32_t g, float32_t *array, uint32_t size){
+float32_t retornaRMS (float32_t g, float32_t *array, uint32_t size, uint32_t start){
 
 	uint32_t i;
 	float32_t arrayrms ;
 	float32_t arraysum =0;
 
-    for(i=0;i<size;i++){
+    for(i=start;i<size;i++){
         arraysum = arraysum + array[i]*array[i];
     }
-    arraysum = arraysum / size;
+    arraysum = arraysum / (size-start);
     arm_sqrt_f32(arraysum, &arrayrms);
     arrayrms = g * arrayrms;
 
@@ -63,15 +63,15 @@ float32_t retornaRMS (float32_t g, float32_t *array, uint32_t size){
    * @param
    * @retval
    */
-float32_t retornaPOTATIVA(float32_t gv, float32_t gi, float32_t *array_tensao, float32_t *array_corrente, uint32_t size){
+float32_t retornaPOTATIVA(float32_t gv, float32_t gi, float32_t *array_tensao, float32_t *array_corrente, uint32_t size, uint32_t start){
 
 	float32_t potativa,potativasum =0;
     uint32_t i;
 
-    for(i=0;i<size;i++){
+    for(i=start;i<size;i++){
         potativasum = potativasum + (*(array_corrente+i) * (*(array_tensao+i)));
     }
-    potativa = gv*gi*potativasum/size;
+    potativa = gv*gi*potativasum/(size-start);
 
     return potativa;
 
@@ -82,7 +82,7 @@ float32_t retornaPOTATIVA(float32_t gv, float32_t gi, float32_t *array_tensao, f
   * @param
   * @retval
   */
-float32_t retornaPOTAPARENTE(float32_t gv, float32_t gi, float32_t vrms, float32_t irms, uint32_t size){
+float32_t retornaPOTAPARENTE(float32_t gv, float32_t gi, float32_t vrms, float32_t irms){
 
 	float32_t potaparente;
 

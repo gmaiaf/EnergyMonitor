@@ -95,7 +95,6 @@ void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *);
 
 int main(void)
 {
-
   /* USER CODE BEGIN 1 */
   /* Variaveis locais */
 	float32_t corrente_RMS = 0;
@@ -126,7 +125,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* Inicializar memoria com zeros */
-  // zerar todos os parametros de memoria[MEM_SIZE]
+  for (i=0; i<MEM_SIZE; i++)
+  {
+	  InitMedicao(&(memoria[i]));
+  }
   /* Inicializar filtro FIR */
   initializeFIR(&S);
   /* Inicializar Timer 8 */
@@ -213,7 +215,7 @@ int main(void)
 
 		  estado = RMS_CORRENTE;
 
-		  // enviar valor pela UART - DEBUG - UART ESTA LENTA
+		  // enviar valor pela UART - DEBUG
 		  for(i=0; i<BUFFER_SIZE; i++)
 		  {
 			  // print valor leitura adc
@@ -240,7 +242,7 @@ int main(void)
 		  for(i=0; i<BUFFER_DIZ; i++)
 		  {
 
-			  // print valor real depois da dizimacao (mA e V)
+			  /*// print valor real depois da dizimacao (mA e V)
 			  float_inteiro = (int32_t) (1000*buffer_corrente_diz[i]);
 			  USART2_Transmit_Int(float_inteiro);
 			  //float_fracao = abs((int32_t)(buffer_corrente_diz[i]*1000)%1000);
@@ -252,9 +254,9 @@ int main(void)
 			  float_fracao = abs((int32_t)(buffer_tensao_diz[i]*1000)%1000);
 			  USART2_Transmit_Char('.');
 			  USART2_Transmit_UInt(float_fracao);
-			  USART2_Transmit_String("\n\r");
+			  USART2_Transmit_String("\n\r");*/
 		  }
-		  HAL_Delay(1000);
+		  HAL_Delay(2000);
 		  break;
 
 	  case RMS_CORRENTE:
@@ -268,17 +270,27 @@ int main(void)
 		   */
 
 		  /* Calcular RMS da corrente sobre a aquisicao */
-		  corrente_RMS = retornaRMS(GI, buffer_corrente_diz, BUFFER_DIZ);
+		  corrente_RMS = retornaRMS(GI, buffer_corrente_diz, BUFFER_DIZ, N_START);
+
+		  // print valor RMS lido
+		  //float_inteiro = (int32_t) (1000*corrente_RMS);
+		  //print("RMS Lido: %d\n\r", float_inteiro);
 
 		  /* Ler ultimo valor de RMS do historico*/
 		  corrente_RMS_anterior = memoria[memoria_index%MEM_SIZE].med.i_rms;
 
+		  // print valor RMS lido
+		  //float_inteiro = (int32_t) (1000*corrente_RMS_anterior);
+		  //print("RMS Anterior: %d\n\r", float_inteiro);
+
 		  /* Verificar se novo valor de RMS esta dentro ou fora de uma faixa */
-		  if ((corrente_RMS < RMS_LOWERBOUND*corrente_RMS_anterior) || (corrente_RMS > RMS_UPPERBOUND*corrente_RMS_anterior)) {
+		  if ((corrente_RMS < (RMS_LOWERBOUND*corrente_RMS_anterior)) || (corrente_RMS > (RMS_UPPERBOUND*corrente_RMS_anterior))) {
 			  estado = CALCULOS;
+			  print("Proximo estado: CALCULOS\n\r");
 		  }
 		  else {
 			  estado = AQUISICAO;
+			  //print("Proximo estado: AQUISICAO\n\r");
 		  }
 		  break;
 
@@ -291,11 +303,23 @@ int main(void)
 		   */
 		  /* Calcular parametros eletricos obtidos*/
 		  param_aux.i_rms = corrente_RMS;
-		  param_aux.v_rms = retornaRMS(GI, buffer_tensao_diz, BUFFER_DIZ);
-		  param_aux.pot_at = retornaPOTATIVA(GV, GI, buffer_tensao_diz, buffer_corrente_diz, BUFFER_DIZ);
-		  param_aux.pot_ap = retornaPOTAPARENTE(GV, GI, param_aux.v_rms, param_aux.i_rms, BUFFER_DIZ);
+		  float_inteiro = (int32_t) (1000*param_aux.i_rms);
+		  print("I RMS: %d\n\r", float_inteiro);
+		  param_aux.v_rms = retornaRMS(GI, buffer_tensao_diz, BUFFER_DIZ, N_START);
+		  float_inteiro = (int32_t) (param_aux.v_rms);
+		  print("V RMS: %d\n\r", float_inteiro);
+		  param_aux.pot_at = retornaPOTATIVA(GV, GI, buffer_tensao_diz, buffer_corrente_diz, BUFFER_DIZ, N_START);
+		  float_inteiro = (int32_t) (param_aux.pot_at);
+		  print("Potencia Ativa: %d\n\r", float_inteiro);
+		  param_aux.pot_ap = retornaPOTAPARENTE(GV, GI, param_aux.v_rms, param_aux.i_rms);
+		  float_inteiro = (int32_t) (param_aux.pot_ap);
+		  print("Potencia Aparente: %d\n\r", float_inteiro);
 		  param_aux.pot_re = retornaPOTREATIVA(param_aux.pot_ap, param_aux.pot_at);
+		  float_inteiro = (int32_t) (param_aux.pot_re);
+		  print("Potencia Reativa: %d\n\r", float_inteiro);
 		  param_aux.pf = retornaFP(param_aux.pot_ap, param_aux.pot_at);
+		  float_inteiro = (int32_t) (1000*param_aux.pf);
+		  print("Fator de Potencia: %d\n\r", float_inteiro);
 		  retornaRMSHARMONICOS(param_aux.harmonicos_RMS, buffer_corrente_diz, BUFFER_DIZ, MAX_HARMONICA, GI, 1);
 		  estado = DELTA;
 		  break;
@@ -325,6 +349,8 @@ int main(void)
 		  // Verificar qual equipamento foi adicionado ou removido e atualizar vetor auxiliar de equipamentos
 		  /* Entrar como novo dado na memoria */
 		  memoria_index = (memoria_index+1)%MEM_SIZE;
+		  memoria[memoria_index%MEM_SIZE].med.i_rms = corrente_RMS;
+
 		  // Adicionar struct de medicoes (antes do delta) a memoria de medicoes em {memoria_index%MEM_SIZE}
 		  estado = ENVIAR;
 		  break;

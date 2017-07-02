@@ -115,5 +115,16 @@ float ComparacaoDeEquipamentos(Equipamento *equip1, Parametros *medida){
     return dif;
 }
 
+void InitMedicao(Medicao *medicao)
+{
+	medicao->med.pot_ap = 0;
+	medicao->med.pot_at = 0;
+    medicao->med.pot_re = 0;
+    medicao->med.thd = 0;
+    medicao->med.pf = 0;
+    medicao->med.i_rms = 0;
+    medicao->med.v_rms = 0;
+    for(int i=0; i<10; i++) {medicao->med.harmonicos_RMS[i] = 0;}
+}
 
 #endif // EQUIPAMENTOS_H_INCLUDED
