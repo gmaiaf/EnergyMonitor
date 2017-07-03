@@ -39,7 +39,7 @@
 #define CORRENTE_B (float32_t) -2048*CORRENTE_A
 
 /* Parametros matematicos para calculos */
-#define RMS_TOLERANCIA (float32_t) 10
+#define RMS_TOLERANCIA (float32_t) 5
 #define RMS_UPPERBOUND (float32_t) (100+RMS_TOLERANCIA)/100
 #define RMS_LOWERBOUND (float32_t) (100-RMS_TOLERANCIA)/100
 #define GV 1

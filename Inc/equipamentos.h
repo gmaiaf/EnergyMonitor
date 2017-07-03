@@ -5,6 +5,7 @@
 //#define __FPU_PRESENT   1
 #include "arm_math.h"
 #include "defines.h"
+#include "calculos_eletricos.h"
 #include <math.h>
 
 /*
@@ -86,6 +87,49 @@ void CadastroDeEquipamento(Equipamento *equip, uint16_t ID, char nome[40], float
     }
 }
 
+
+void DeltaParam(Parametros *medida_nova, Parametros *medida_velha, Parametros *delta, char* new)
+{
+	/* Variavel auxiliar */
+	float32_t aux;
+
+	/* Delta de RMS de corrente */
+	aux = (medida_nova->i_rms)*(medida_nova->i_rms)-(medida_velha->i_rms)*(medida_velha->i_rms);
+	if (aux < 0) {
+		aux = (-1)*aux;
+		*new = 0;
+	}
+	else
+	{
+		*new = 1;
+	}
+	arm_sqrt_f32(aux,&aux);
+	delta->i_rms = aux;
+	/* Delta de RMS de tensao */
+	aux = (medida_nova->v_rms)*(medida_nova->v_rms)-(medida_velha->v_rms)*(medida_velha->v_rms);
+	if (aux < 0) {aux = (-1)*aux;}
+	arm_sqrt_f32(aux,&aux);
+	delta->v_rms = aux;
+
+	/* Delta de potencia */
+	delta->pot_ap = medida_nova->pot_ap - medida_velha->pot_ap;
+	if (delta->pot_ap < 0) {delta->pot_ap = (-1)*delta->pot_ap;}
+	delta->pot_at = medida_nova->pot_at - medida_velha->pot_at;
+	if (delta->pot_at < 0) {delta->pot_at = (-1)*delta->pot_at;}
+	delta->pot_re = medida_nova->pot_re - medida_velha->pot_re;
+	if (delta->pot_re < 0) {delta->pot_re = (-1)*delta->pot_re;}
+
+	/* Fator de potencia do delta de potencia */
+	delta->pf = delta->pot_at/delta->pot_ap;
+
+	/* Delta dos harmonicos */
+	for(int i=0; i<MAX_HARMONICA; i++)
+	{
+		delta->harmonicos_RMS[i] = medida_nova->harmonicos_RMS[i] - medida_velha->harmonicos_RMS[i];
+	}
+	delta->thd = retornaTHD(delta->harmonicos_RMS);
+}
+
 float ComparacaoDeEquipamentos(Equipamento *equip1, Parametros *medida){
     float dif_rel[4];
     dif_rel[0] = (equip1->med.pot_at - medida->pot_at)/equip1->med.pot_at;
@@ -125,6 +169,8 @@ void InitMedicao(Medicao *medicao)
     medicao->med.i_rms = 0;
     medicao->med.v_rms = 0;
     for(int i=0; i<10; i++) {medicao->med.harmonicos_RMS[i] = 0;}
+    medicao->timestamp = 0;
+    for(int i=0; i<EQUIP_ARRAY_MAX; i++) {medicao->equipamentos[i] = 0;}
 }
 
 #endif // EQUIPAMENTOS_H_INCLUDED

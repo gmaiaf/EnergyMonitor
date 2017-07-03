@@ -73,7 +73,7 @@ static float32_t pCoeffs[FILTER_TAP_NUM] = {
 
 float32_t pState[FILTER_TAP_NUM+BUFFER_SIZE-1];
 
-extern arm_fir_decimate_instance_f32 S = {DIZIMACAO, FILTER_TAP_NUM, pCoeffs, pState};
+arm_fir_decimate_instance_f32 S = {DIZIMACAO, FILTER_TAP_NUM, pCoeffs, pState};
 
 void initializeFIR(arm_fir_decimate_instance_f32* S)
 {

@@ -12,8 +12,8 @@
 #include "math.h"
 #include "arm_math.h"
 #include "defines.h"
-#define PI_VALUE 3.14159265358
-#define SQRT2 1.414213562373095
+#define PI_VALUE (float32_t) 3.14159265358
+#define SQRT2 (float32_t) 1.414213562373095
 
 /**
   * @brief  Cria um sinal seno
@@ -117,24 +117,24 @@ float32_t retornaFP(float32_t potaparente, float32_t potativa){
   * @param
   * @retval
   */
-void retornaMEDIACICLOS(float32_t *array_in, float32_t *array_out, uint32_t size, uint32_t n){
+void retornaMEDIACICLOS(float32_t *array_in, float32_t *array_out, uint32_t size, uint32_t n, uint32_t start){
 
-	float32_t aux[n][size/n];
+	float32_t aux[N_PERIODOS][PPP];
 	//float32_t aux2[size/n];
 	uint32_t i,j,k=0;
 
 	for(i=0;i<n;i++){
-		for(j=0;j<size/n;j++){
-			aux[i][j] = array_in[k];
+		for(j=0;j<(size-start)/n;j++){
+			aux[i][j] = array_in[k+start];
 			k++;
 		}
 	}
 
-	for(i=0;i<size/n;i++){
+	for(i=0;i<(size-start)/n;i++){
 		array_out[i]=0;
 	}
 
-	for(j=0;j<size/n;j++){
+	for(j=0;j<(size-start)/n;j++){
 		for(i=0;i<n;i++){
 			array_out[j] = array_out[j] + aux[i][j] ;
 		}
@@ -147,18 +147,19 @@ void retornaMEDIACICLOS(float32_t *array_in, float32_t *array_out, uint32_t size
   * @param
   * @retval
   */
-void retornaRMSHARMONICOS(float32_t *i_rms_harmonicos, float32_t *array_corrente, uint32_t size, uint32_t h, float32_t g, uint32_t n ){
+void retornaRMSHARMONICOS(float32_t *i_rms_harmonicos, float32_t *array_corrente, uint32_t size, uint32_t h, float32_t g, uint32_t n, uint32_t start){
 
 	uint32_t k,i;
-	float32_t I_re[h];
-	float32_t I_im[h];
-	float32_t aux2[size/n];
+	float32_t I_re[MAX_HARMONICA];
+	float32_t I_im[MAX_HARMONICA];
+	float32_t aux2[(BUFFER_DIZ-N_START)/N_PERIODOS];
 	float32_t theta;
 	float32_t harmonico;
 
-   retornaMEDIACICLOS(array_corrente,aux2,size,n);
 
-   size = size/n;
+   retornaMEDIACICLOS(array_corrente,aux2,size,n,start);
+
+   size = (size-start)/n;
 
    for(i=0;i<size;i++){
    	   //printf("\naux2[%d]: %f\n", i, aux2[i]);
@@ -181,11 +182,30 @@ void retornaRMSHARMONICOS(float32_t *i_rms_harmonicos, float32_t *array_corrente
 		harmonico = ((I_re[k]*I_re[k])+(I_im[k]*I_im[k]))*g*SQRT2/size;
 		arm_sqrt_f32(harmonico, &harmonico);
 		i_rms_harmonicos[k] = harmonico;
+		//print("Harmonica %d: %d\n\r",k,harmonico);
 	}
 
 }
 
+/**
+  * @brief
+  * @param
+  * @retval
+  */
+float32_t retornaTHD(float32_t *array_in)
+{
+	uint32_t i = 0;
+	float32_t soma = 0;
+	float32_t thd;
 
+	for(i=2; i<MAX_HARMONICA; i++)
+	{
+		soma = soma + array_in[i]*array_in[i];
+	}
+	arm_sqrt_f32(soma, &soma);
+	thd = soma / array_in[1];
 
+	return thd;
+}
 
 

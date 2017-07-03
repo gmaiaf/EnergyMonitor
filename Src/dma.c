@@ -71,8 +71,8 @@ void MX_DMA_Init(void)
   hdma_memtomem_dma2_stream1.Init.Priority = DMA_PRIORITY_MEDIUM;
   hdma_memtomem_dma2_stream1.Init.FIFOMode = DMA_FIFOMODE_ENABLE;
   hdma_memtomem_dma2_stream1.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
-  hdma_memtomem_dma2_stream1.Init.MemBurst = DMA_MBURST_INC4;
-  hdma_memtomem_dma2_stream1.Init.PeriphBurst = DMA_PBURST_INC4;
+  hdma_memtomem_dma2_stream1.Init.MemBurst = DMA_MBURST_SINGLE;
+  hdma_memtomem_dma2_stream1.Init.PeriphBurst = DMA_PBURST_SINGLE;
   if (HAL_DMA_Init(&hdma_memtomem_dma2_stream1) != HAL_OK)
   {
     Error_Handler();
@@ -92,8 +92,8 @@ void MX_DMA_Init(void)
   hdma_memtomem_dma2_stream3.Init.Priority = DMA_PRIORITY_MEDIUM;
   hdma_memtomem_dma2_stream3.Init.FIFOMode = DMA_FIFOMODE_ENABLE;
   hdma_memtomem_dma2_stream3.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
-  hdma_memtomem_dma2_stream3.Init.MemBurst = DMA_MBURST_INC4;
-  hdma_memtomem_dma2_stream3.Init.PeriphBurst = DMA_PBURST_INC4;
+  hdma_memtomem_dma2_stream3.Init.MemBurst = DMA_MBURST_SINGLE;
+  hdma_memtomem_dma2_stream3.Init.PeriphBurst = DMA_PBURST_SINGLE;
   if (HAL_DMA_Init(&hdma_memtomem_dma2_stream3) != HAL_OK)
   {
     Error_Handler();

@@ -71,6 +71,8 @@ float32_t buffer_corrente_FIR[BUFFER_SIZE];
 float32_t buffer_tensao_diz[BUFFER_DIZ];
 float32_t buffer_corrente_diz[BUFFER_DIZ];
 /* Flags de controle */
+uint32_t count = 0;
+uint32_t tic, toc;
 uint8_t flag_buffercheio = 0;
 uint8_t flag_buffermetade = 0;
 uint8_t flag_aquisicao = 0;
@@ -95,15 +97,17 @@ void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *);
 
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
   /* Variaveis locais */
 	float32_t corrente_RMS = 0;
 	float32_t corrente_RMS_anterior = 0;
 	uint32_t i = 0;
 	uint32_t timestamp = 0;
-	Parametros param_aux;
+	Parametros param_aux, param_delta;
 	int32_t float_inteiro;
 	uint32_t float_fracao;
+	char new_equip;
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -256,7 +260,7 @@ int main(void)
 			  USART2_Transmit_UInt(float_fracao);
 			  USART2_Transmit_String("\n\r");*/
 		  }
-		  HAL_Delay(2000);
+		  //HAL_Delay(100);
 		  break;
 
 	  case RMS_CORRENTE:
@@ -286,6 +290,9 @@ int main(void)
 		  /* Verificar se novo valor de RMS esta dentro ou fora de uma faixa */
 		  if ((corrente_RMS < (RMS_LOWERBOUND*corrente_RMS_anterior)) || (corrente_RMS > (RMS_UPPERBOUND*corrente_RMS_anterior))) {
 			  estado = CALCULOS;
+			  // print valor RMS lido
+			  //float_inteiro = (int32_t) (1000*corrente_RMS);
+			  //print("RMS Lido: %d\n\r", float_inteiro);
 			  print("Proximo estado: CALCULOS\n\r");
 		  }
 		  else {
@@ -304,23 +311,32 @@ int main(void)
 		  /* Calcular parametros eletricos obtidos*/
 		  param_aux.i_rms = corrente_RMS;
 		  float_inteiro = (int32_t) (1000*param_aux.i_rms);
-		  print("I RMS: %d\n\r", float_inteiro);
+		  //print("I RMS: %d\n\r", float_inteiro);
 		  param_aux.v_rms = retornaRMS(GI, buffer_tensao_diz, BUFFER_DIZ, N_START);
 		  float_inteiro = (int32_t) (param_aux.v_rms);
-		  print("V RMS: %d\n\r", float_inteiro);
+		  //print("V RMS: %d\n\r", float_inteiro);
 		  param_aux.pot_at = retornaPOTATIVA(GV, GI, buffer_tensao_diz, buffer_corrente_diz, BUFFER_DIZ, N_START);
 		  float_inteiro = (int32_t) (param_aux.pot_at);
-		  print("Potencia Ativa: %d\n\r", float_inteiro);
+		  //print("Potencia Ativa: %d\n\r", float_inteiro);
 		  param_aux.pot_ap = retornaPOTAPARENTE(GV, GI, param_aux.v_rms, param_aux.i_rms);
 		  float_inteiro = (int32_t) (param_aux.pot_ap);
-		  print("Potencia Aparente: %d\n\r", float_inteiro);
+		  //print("Potencia Aparente: %d\n\r", float_inteiro);
 		  param_aux.pot_re = retornaPOTREATIVA(param_aux.pot_ap, param_aux.pot_at);
 		  float_inteiro = (int32_t) (param_aux.pot_re);
-		  print("Potencia Reativa: %d\n\r", float_inteiro);
+		  //print("Potencia Reativa: %d\n\r", float_inteiro);
 		  param_aux.pf = retornaFP(param_aux.pot_ap, param_aux.pot_at);
 		  float_inteiro = (int32_t) (1000*param_aux.pf);
-		  print("Fator de Potencia: %d\n\r", float_inteiro);
-		  retornaRMSHARMONICOS(param_aux.harmonicos_RMS, buffer_corrente_diz, BUFFER_DIZ, MAX_HARMONICA, GI, 1);
+		  //print("Fator de Potencia: %d\n\r", float_inteiro);
+		  param_aux.harmonicos_RMS[0]=1;
+		  retornaRMSHARMONICOS(param_aux.harmonicos_RMS, buffer_corrente_diz, BUFFER_DIZ, MAX_HARMONICA, GI, N_PERIODOS, N_START);
+		  for(i=0; i<MAX_HARMONICA; i++)
+		  {
+			  //print("Harmonica %d: %d\n\r",i,(int32_t)(1000*param_aux.harmonicos_RMS[i]));
+		  }
+		  param_aux.thd = retornaTHD(param_aux.harmonicos_RMS);
+		  float_inteiro = (int32_t) (1000*param_aux.thd);
+		  //print("THD: %d\n\r", float_inteiro);
+
 		  estado = DELTA;
 		  break;
 
@@ -332,8 +348,27 @@ int main(void)
 		   * Transicao: Delta obtido
 		   */
 		  /* Obter delta entre medicao atual e medicao anterior */
-		  // Ler struct do .h do Bruno usando {memoria_index%MEM_SIZE}
-		  // Aplicar funcao de delta nas duas structs
+		  DeltaParam(&param_aux, &(memoria[memoria_index%MEM_SIZE]), &param_delta, &new_equip);
+
+		  /*float_inteiro = (int32_t) (1000*param_delta.i_rms);
+		  print("I RMS: %d\n\r", float_inteiro);
+		  float_inteiro = (int32_t) (param_delta.v_rms);
+		  print("V RMS: %d\n\r", float_inteiro);
+		  float_inteiro = (int32_t) (param_delta.pot_at);
+		  print("Potencia Ativa: %d\n\r", float_inteiro);
+		  float_inteiro = (int32_t) (param_delta.pot_ap);
+		  print("Potencia Aparente: %d\n\r", float_inteiro);
+		  float_inteiro = (int32_t) (param_delta.pot_re);
+		  print("Potencia Reativa: %d\n\r", float_inteiro);
+		  float_inteiro = (int32_t) (1000*param_delta.pf);
+		  print("Fator de Potencia: %d\n\r", float_inteiro);
+		  for(i=0; i<MAX_HARMONICA; i++)
+		  {
+			  print("Harmonica %d: %d\n\r",i,(int32_t)(1000*param_delta.harmonicos_RMS[i]));
+		  }
+		  float_inteiro = (int32_t) (1000*param_delta.thd);
+		  print("THD: %d\n\r", float_inteiro);*/
+
 		  estado = ID;
 		  break;
 
@@ -349,7 +384,20 @@ int main(void)
 		  // Verificar qual equipamento foi adicionado ou removido e atualizar vetor auxiliar de equipamentos
 		  /* Entrar como novo dado na memoria */
 		  memoria_index = (memoria_index+1)%MEM_SIZE;
-		  memoria[memoria_index%MEM_SIZE].med.i_rms = corrente_RMS;
+		  memoria[memoria_index%MEM_SIZE].med.i_rms = param_aux.i_rms;
+		  memoria[memoria_index%MEM_SIZE].med.v_rms = param_aux.v_rms;
+		  memoria[memoria_index%MEM_SIZE].med.pot_ap = param_aux.pot_ap;
+		  memoria[memoria_index%MEM_SIZE].med.pot_at = param_aux.pot_at;
+		  memoria[memoria_index%MEM_SIZE].med.pot_re = param_aux.pot_re;
+		  memoria[memoria_index%MEM_SIZE].med.thd = param_aux.thd;
+		  memoria[memoria_index%MEM_SIZE].med.pf = param_aux.pf;
+		  for(i=0; i<MAX_HARMONICA; i++) {
+			  memoria[memoria_index%MEM_SIZE].med.harmonicos_RMS[i] = param_aux.harmonicos_RMS[i];
+		  }
+		  for(i=0; i<EQUIP_ARRAY_MAX; i++) {
+			  memoria[memoria_index%MEM_SIZE].equipamentos[i] = 0;
+		  }
+		  memoria[memoria_index%MEM_SIZE].timestamp = timestamp;
 
 		  // Adicionar struct de medicoes (antes do delta) a memoria de medicoes em {memoria_index%MEM_SIZE}
 		  estado = ENVIAR;
@@ -363,6 +411,29 @@ int main(void)
 		   * Transicao: Envio completo
 		   */
 		  /* Enviar nova medicao pela UART*/
+		  print("Timestamp: %d\n\r", memoria[memoria_index%MEM_SIZE].timestamp);
+		  float_inteiro = (int32_t) (1000*memoria[memoria_index%MEM_SIZE].med.i_rms);
+		  print("I RMS: %d\n\r", float_inteiro);
+		  float_inteiro = (int32_t) (memoria[memoria_index%MEM_SIZE].med.v_rms);
+		  print("V RMS: %d\n\r", float_inteiro);
+		  float_inteiro = (int32_t) (memoria[memoria_index%MEM_SIZE].med.pot_at);
+		  print("Potencia Ativa: %d\n\r", float_inteiro);
+		  float_inteiro = (int32_t) (memoria[memoria_index%MEM_SIZE].med.pot_ap);
+		  print("Potencia Aparente: %d\n\r", float_inteiro);
+		  float_inteiro = (int32_t) (memoria[memoria_index%MEM_SIZE].med.pot_re);
+		  print("Potencia Reativa: %d\n\r", float_inteiro);
+		  float_inteiro = (int32_t) (1000*memoria[memoria_index%MEM_SIZE].med.pf);
+		  print("Fator de Potencia: %d\n\r", float_inteiro);
+		  for(i=0; i<MAX_HARMONICA; i++)
+		  {
+			  print("Harmonica %d: %d\n\r",i,(int32_t)(1000*memoria[memoria_index%MEM_SIZE].med.harmonicos_RMS[i]));
+		  }
+		  float_inteiro = (int32_t) (1000*memoria[memoria_index%MEM_SIZE].med.thd);
+		  print("THD: %d\n\r", float_inteiro);
+		  for(i=0; i<EQUIP_ARRAY_MAX; i++) {
+			  print("Equipamento %d: %d\n\r", i, memoria[memoria_index%MEM_SIZE].equipamentos[i]);
+		  }
+
 		  // chamar funcao de envio usando {memoria_index%MEM_SIZE}
 		  estado = AQUISICAO;
 		  break;
@@ -451,6 +522,14 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 	if (hadc->Instance == ADC1) {
 		flag_buffercheio = 1;
 		flag_buffermetade = 0;
+		/*count++;
+		if (count==10) {tic = HAL_GetTick();}
+		if (count==20) {
+			toc = HAL_GetTick();
+			print("Tempo: %d\n\r", toc-tic);
+			count = 0;
+		}*/
+
 	}
 }
 

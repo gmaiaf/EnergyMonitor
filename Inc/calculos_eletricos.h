@@ -14,9 +14,9 @@ float32_t retornaPOTATIVA(float32_t gv, float32_t gi, float32_t *array_tensao, f
 float32_t retornaPOTAPARENTE(float32_t gv, float32_t gi, float32_t vrms, float32_t irms);
 float32_t retornaPOTREATIVA(float32_t potaparente,float32_t potativa);
 float32_t retornaFP(float32_t potaparente, float32_t potativa);
-void retornaRMSHARMONICOS(float32_t *i_rms_harmonicos, float32_t *array_corrente, uint32_t size, uint32_t h, float32_t g, uint32_t n );
-void retornaMEDIACICLOS(float32_t *array_in, float32_t *array_out, uint32_t size, uint32_t n);
-
+void retornaRMSHARMONICOS(float32_t *i_rms_harmonicos, float32_t *array_corrente, uint32_t size, uint32_t h, float32_t g, uint32_t n, uint32_t start);
+void retornaMEDIACICLOS(float32_t *array_in, float32_t *array_out, uint32_t size, uint32_t n, uint32_t start);
+float32_t retornaTHD(float32_t *array_in);
 
 
 #endif /* CALCULOS_ELETRICOS_H_ */
