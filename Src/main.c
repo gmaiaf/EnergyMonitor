@@ -60,6 +60,8 @@ estado = START;
 /* Historico de medicoes e indexador*/
 Medicao memoria[MEM_SIZE];
 uint32_t memoria_index = 0;
+/* Base de dados de equipamentos */
+Equipamento BaseDados[EQUIP_ARRAY_MAX];
 /* Buffers usados ao longo do processamento */
 uint32_t buffer_tensao_DMA[2*BUFFER_SIZE];
 uint32_t buffer_corrente_DMA[2*BUFFER_SIZE];
@@ -106,8 +108,8 @@ int main(void)
 	uint32_t timestamp = 0;
 	Parametros param_aux, param_delta;
 	int32_t float_inteiro;
-	uint32_t float_fracao;
 	char new_equip;
+	int add_new_equip;
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -133,6 +135,19 @@ int main(void)
   {
 	  InitMedicao(&(memoria[i]));
   }
+  /* Inicializar Base de Dados */
+  InitBaseDeDados(BaseDados);
+
+  print("%d\n\r",BaseDados[1].ID);
+  print("%d\n\r",BaseDados[2].ID);
+  print("%d\n\r",BaseDados[3].ID);
+  print("%d\n\r",BaseDados[4].ID);
+  print("%d\n\r",BaseDados[5].ID);
+  print("%d\n\r",BaseDados[6].ID);
+  print("%d\n\r",BaseDados[7].ID);
+  print("%d\n\r",BaseDados[8].ID);
+
+
   /* Inicializar filtro FIR */
   initializeFIR(&S);
   /* Inicializar Timer 8 */
@@ -380,10 +395,28 @@ int main(void)
 		   * Transicao: Identificacao completa
 		   */
 		  /* Identificar o delta de medicoes com base de dados de equipamentos */
-		  // Aplicar funcao de classificacao com struct delta
-		  // Verificar qual equipamento foi adicionado ou removido e atualizar vetor auxiliar de equipamentos
+		  add_new_equip = IdentificarEquipamento(BaseDados, &param_delta);
+
 		  /* Entrar como novo dado na memoria */
 		  memoria_index = (memoria_index+1)%MEM_SIZE;
+		  for(i=0; i<EQUIP_ARRAY_MAX; i++) {
+			  memoria[memoria_index%MEM_SIZE].equipamentos[i] = memoria[(memoria_index-1)%MEM_SIZE].equipamentos[i];
+		  }
+
+		  /* Atualizar vetor de equipamentos com nova entrada */
+		  if(add_new_equip != -1)
+		  {
+			  if (new_equip == 1)
+			  {
+				  memoria[memoria_index%MEM_SIZE].equipamentos[add_new_equip]++;
+			  }
+			  else
+			  {
+				  memoria[memoria_index%MEM_SIZE].equipamentos[add_new_equip]--;
+			  }
+		  }
+
+		  /* Entrar como o restante de dados na memoria */
 		  memoria[memoria_index%MEM_SIZE].med.i_rms = param_aux.i_rms;
 		  memoria[memoria_index%MEM_SIZE].med.v_rms = param_aux.v_rms;
 		  memoria[memoria_index%MEM_SIZE].med.pot_ap = param_aux.pot_ap;
@@ -393,9 +426,6 @@ int main(void)
 		  memoria[memoria_index%MEM_SIZE].med.pf = param_aux.pf;
 		  for(i=0; i<MAX_HARMONICA; i++) {
 			  memoria[memoria_index%MEM_SIZE].med.harmonicos_RMS[i] = param_aux.harmonicos_RMS[i];
-		  }
-		  for(i=0; i<EQUIP_ARRAY_MAX; i++) {
-			  memoria[memoria_index%MEM_SIZE].equipamentos[i] = 0;
 		  }
 		  memoria[memoria_index%MEM_SIZE].timestamp = timestamp;
 
