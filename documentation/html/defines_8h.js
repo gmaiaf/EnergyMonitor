@@ -1,0 +1,25 @@
+var defines_8h =
+[
+    [ "BUFFER_DIZ", "defines_8h.html#a2b573f009cb2ef893aa1c52f267a9f92", null ],
+    [ "BUFFER_SIZE", "defines_8h.html#a6b20d41d6252e9871430c242cb1a56e7", null ],
+    [ "CORRENTE_A", "defines_8h.html#ab22a317ed769ee0d9c03928d4fd3af55", null ],
+    [ "CORRENTE_B", "defines_8h.html#a6305ded57c7de4ac84cd52a7111594cd", null ],
+    [ "DIZIMACAO", "defines_8h.html#a0d09a32f715412054b834b816a442a9d", null ],
+    [ "EQUIP_ARRAY_MAX", "defines_8h.html#ae4b347db921cb574228cda0f65b38c1e", null ],
+    [ "F_SAMP", "defines_8h.html#aaab78bc2b2f2fe59d9280d10c641ead3", null ],
+    [ "F_SAMP_DIZ", "defines_8h.html#a0bcbf3408f7e22c34bd0c37f0c18000e", null ],
+    [ "FILTER_TAP_NUM", "defines_8h.html#a3cee321a8d655472781910f72d621012", null ],
+    [ "GI", "defines_8h.html#a39327b674fddede7be7afcf65fc8d4d0", null ],
+    [ "GV", "defines_8h.html#ad5afb0df8a8a9e97197b4a9de8ce95cf", null ],
+    [ "MAX_HARMONICA", "defines_8h.html#a21e24b95b94f5365ae4b50fc716a838d", null ],
+    [ "MEM_SIZE", "defines_8h.html#a2dcf8c45f945dd0c4301a94700f2112c", null ],
+    [ "MS2H", "defines_8h.html#a7dba2955aa9ebabf06da89c5a25cad00", null ],
+    [ "N_PERIODOS", "defines_8h.html#a11db7ed8c9e12a0fa7d17ad62d2af801", null ],
+    [ "N_START", "defines_8h.html#a6a55213275c5b5823671f9fb4908cac2", null ],
+    [ "PPP", "defines_8h.html#a8aa42c7da1665258471a17d446d1ea98", null ],
+    [ "RMS_LOWERBOUND", "defines_8h.html#a148da5145eeb4645af74a11d6000f9ea", null ],
+    [ "RMS_TOLERANCIA", "defines_8h.html#a8dab50cd90070e26b76c438bcde529a5", null ],
+    [ "RMS_UPPERBOUND", "defines_8h.html#aa8a0463d37272a0a45ab428fb46e2229", null ],
+    [ "TENSAO_A", "defines_8h.html#a7f802d5c0cfcc41c9bb44f8816899f36", null ],
+    [ "TENSAO_B", "defines_8h.html#aa83e4bfa054a9b3ce574b3edf1060971", null ]
+];
