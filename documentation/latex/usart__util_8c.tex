@@ -1,0 +1,174 @@
+\hypertarget{usart__util_8c}{}\subsection{Src/usart\+\_\+util.c File Reference}
+\label{usart__util_8c}\index{Src/usart\+\_\+util.\+c@{Src/usart\+\_\+util.\+c}}
+
+
+Biblioteca com funções úteis para utilizar com a U\+S\+A\+R\+T2.  
+
+
+{\ttfamily \#include \char`\"{}usart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usart\+\_\+util.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{usart__util_8c_a0274957201f18c1650f488ee0c7560c3}{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Char} (char send)
+\begin{DoxyCompactList}\small\item\em Transmite caractere A\+S\+C\+II pela U\+S\+A\+RT 2. \end{DoxyCompactList}\item 
+void \hyperlink{usart__util_8c_a11cb9675f707b225e732aeab2d79fc31}{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+String} (char $\ast$send)
+\begin{DoxyCompactList}\small\item\em Transmite string pela U\+S\+A\+RT 2. \end{DoxyCompactList}\item 
+void \hyperlink{usart__util_8c_a5e9eab100473e989786136f7019bb374}{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+U\+Int} (uint32\+\_\+t send)
+\begin{DoxyCompactList}\small\item\em Transmite inteiro unsigned pela U\+S\+A\+RT 2. \end{DoxyCompactList}\item 
+void \hyperlink{usart__util_8c_a6ee14f1a2e6109cb5b372633605ab355}{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Int} (int send)
+\begin{DoxyCompactList}\small\item\em Transmite inteiro signed pela U\+S\+A\+RT 2. \end{DoxyCompactList}\item 
+void \hyperlink{usart__util_8c_af6fdd05e28c9b0b52e7bb520f992584c}{print} (const char $\ast$send,...)
+\begin{DoxyCompactList}\small\item\em Função semelhante à printf usando U\+S\+A\+RT 2. Funciona apenas para d e c. \end{DoxyCompactList}\item 
+char \hyperlink{usart__util_8c_adbe31bbd038239f01d66931da01fbec1}{U\+S\+A\+R\+T2\+\_\+\+Receive\+\_\+\+Command} (int timeout)
+\begin{DoxyCompactList}\small\item\em Recebe caracter de comando pela U\+S\+A\+R\+T2. \end{DoxyCompactList}\item 
+void \hyperlink{usart__util_8c_abb04c414ef1dda4068df7d89d73122b9}{U\+S\+A\+R2\+\_\+\+Receive\+\_\+\+Interrupt\+\_\+\+Enable} (void)
+\begin{DoxyCompactList}\small\item\em Habilita interrupção. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Biblioteca com funções úteis para utilizar com a U\+S\+A\+R\+T2. 
+
+\begin{DoxyAuthor}{Author}
+Gustavo 
+\end{DoxyAuthor}
+
+
+\subsubsection{Function Documentation}
+\mbox{\Hypertarget{usart__util_8c_af6fdd05e28c9b0b52e7bb520f992584c}\label{usart__util_8c_af6fdd05e28c9b0b52e7bb520f992584c}} 
+\index{usart\+\_\+util.\+c@{usart\+\_\+util.\+c}!print@{print}}
+\index{print@{print}!usart\+\_\+util.\+c@{usart\+\_\+util.\+c}}
+\paragraph{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void print (\begin{DoxyParamCaption}\item[{const char $\ast$}]{send,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Função semelhante à printf usando U\+S\+A\+RT 2. Funciona apenas para d e c. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em send} & string formatada a ser transferida pela U\+S\+A\+RT 2 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{usart__util_8c_abb04c414ef1dda4068df7d89d73122b9}\label{usart__util_8c_abb04c414ef1dda4068df7d89d73122b9}} 
+\index{usart\+\_\+util.\+c@{usart\+\_\+util.\+c}!U\+S\+A\+R2\+\_\+\+Receive\+\_\+\+Interrupt\+\_\+\+Enable@{U\+S\+A\+R2\+\_\+\+Receive\+\_\+\+Interrupt\+\_\+\+Enable}}
+\index{U\+S\+A\+R2\+\_\+\+Receive\+\_\+\+Interrupt\+\_\+\+Enable@{U\+S\+A\+R2\+\_\+\+Receive\+\_\+\+Interrupt\+\_\+\+Enable}!usart\+\_\+util.\+c@{usart\+\_\+util.\+c}}
+\paragraph{\texorpdfstring{U\+S\+A\+R2\+\_\+\+Receive\+\_\+\+Interrupt\+\_\+\+Enable()}{USAR2\_Receive\_Interrupt\_Enable()}}
+{\footnotesize\ttfamily void U\+S\+A\+R2\+\_\+\+Receive\+\_\+\+Interrupt\+\_\+\+Enable (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Habilita interrupção. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{usart__util_8c_adbe31bbd038239f01d66931da01fbec1}\label{usart__util_8c_adbe31bbd038239f01d66931da01fbec1}} 
+\index{usart\+\_\+util.\+c@{usart\+\_\+util.\+c}!U\+S\+A\+R\+T2\+\_\+\+Receive\+\_\+\+Command@{U\+S\+A\+R\+T2\+\_\+\+Receive\+\_\+\+Command}}
+\index{U\+S\+A\+R\+T2\+\_\+\+Receive\+\_\+\+Command@{U\+S\+A\+R\+T2\+\_\+\+Receive\+\_\+\+Command}!usart\+\_\+util.\+c@{usart\+\_\+util.\+c}}
+\paragraph{\texorpdfstring{U\+S\+A\+R\+T2\+\_\+\+Receive\+\_\+\+Command()}{USART2\_Receive\_Command()}}
+{\footnotesize\ttfamily char U\+S\+A\+R\+T2\+\_\+\+Receive\+\_\+\+Command (\begin{DoxyParamCaption}\item[{int}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Recebe caracter de comando pela U\+S\+A\+R\+T2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout} & Timeout em ms. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{usart__util_8c_a0274957201f18c1650f488ee0c7560c3}\label{usart__util_8c_a0274957201f18c1650f488ee0c7560c3}} 
+\index{usart\+\_\+util.\+c@{usart\+\_\+util.\+c}!U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Char@{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Char}}
+\index{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Char@{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Char}!usart\+\_\+util.\+c@{usart\+\_\+util.\+c}}
+\paragraph{\texorpdfstring{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Char()}{USART2\_Transmit\_Char()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Char (\begin{DoxyParamCaption}\item[{char}]{send }\end{DoxyParamCaption})}
+
+
+
+Transmite caractere A\+S\+C\+II pela U\+S\+A\+RT 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em send} & caracter a ser transferido pela U\+S\+A\+RT 2 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{usart__util_8c_a6ee14f1a2e6109cb5b372633605ab355}\label{usart__util_8c_a6ee14f1a2e6109cb5b372633605ab355}} 
+\index{usart\+\_\+util.\+c@{usart\+\_\+util.\+c}!U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Int@{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Int}}
+\index{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Int@{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Int}!usart\+\_\+util.\+c@{usart\+\_\+util.\+c}}
+\paragraph{\texorpdfstring{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Int()}{USART2\_Transmit\_Int()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Int (\begin{DoxyParamCaption}\item[{int}]{send }\end{DoxyParamCaption})}
+
+
+
+Transmite inteiro signed pela U\+S\+A\+RT 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em send} & inteiro a ser transferido pela U\+S\+A\+RT 2 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{usart__util_8c_a11cb9675f707b225e732aeab2d79fc31}\label{usart__util_8c_a11cb9675f707b225e732aeab2d79fc31}} 
+\index{usart\+\_\+util.\+c@{usart\+\_\+util.\+c}!U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+String@{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+String}}
+\index{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+String@{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+String}!usart\+\_\+util.\+c@{usart\+\_\+util.\+c}}
+\paragraph{\texorpdfstring{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+String()}{USART2\_Transmit\_String()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+String (\begin{DoxyParamCaption}\item[{char $\ast$}]{send }\end{DoxyParamCaption})}
+
+
+
+Transmite string pela U\+S\+A\+RT 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em send} & string a ser transferida pela U\+S\+A\+RT 2 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{usart__util_8c_a5e9eab100473e989786136f7019bb374}\label{usart__util_8c_a5e9eab100473e989786136f7019bb374}} 
+\index{usart\+\_\+util.\+c@{usart\+\_\+util.\+c}!U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+U\+Int@{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+U\+Int}}
+\index{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+U\+Int@{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+U\+Int}!usart\+\_\+util.\+c@{usart\+\_\+util.\+c}}
+\paragraph{\texorpdfstring{U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+U\+Int()}{USART2\_Transmit\_UInt()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+U\+Int (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{send }\end{DoxyParamCaption})}
+
+
+
+Transmite inteiro unsigned pela U\+S\+A\+RT 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em send} & inteiro a ser transferido pela U\+S\+A\+RT 2 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}

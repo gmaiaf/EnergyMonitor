@@ -1,0 +1,99 @@
+\hypertarget{dma_8h}{}\subsection{Inc/dma.h File Reference}
+\label{dma_8h}\index{Inc/dma.\+h@{Inc/dma.\+h}}
+
+
+Header das funções de configuração das D\+M\+As.  
+
+
+{\ttfamily \#include \char`\"{}stm32f4xx\+\_\+hal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{dma_8h_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\item 
+void \hyperlink{dma_8h_a323249dac769f9855c10b4ec9446b707}{M\+X\+\_\+\+D\+M\+A\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Inicialização dos canais do D\+MA 2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+D\+M\+A\+\_\+\+Handle\+Type\+Def \hyperlink{dma_8h_a6e22ae8e5a23a770ec9f8a2fbe3125c1}{hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1}
+\begin{DoxyCompactList}\small\item\em Handler para estrutura do stream 1 do D\+MA 2 para transferência Mem\+To\+Mem. \end{DoxyCompactList}\item 
+D\+M\+A\+\_\+\+Handle\+Type\+Def \hyperlink{dma_8h_a15d1d5b7b83b077f6774557b5d46ecf3}{hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3}
+\begin{DoxyCompactList}\small\item\em Handler para estrutura do stream 3 do D\+MA 2 para transferência Mem\+To\+Mem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Header das funções de configuração das D\+M\+As. 
+
+\begin{DoxyAuthor}{Author}
+ST 
+\end{DoxyAuthor}
+
+
+\subsubsection{Function Documentation}
+\mbox{\Hypertarget{dma_8h_a1730ffe1e560465665eb47d9264826f9}\label{dma_8h_a1730ffe1e560465665eb47d9264826f9}} 
+\index{dma.\+h@{dma.\+h}!Error\+\_\+\+Handler@{Error\+\_\+\+Handler}}
+\index{Error\+\_\+\+Handler@{Error\+\_\+\+Handler}!dma.\+h@{dma.\+h}}
+\paragraph{\texorpdfstring{Error\+\_\+\+Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{dma_8h_a323249dac769f9855c10b4ec9446b707}\label{dma_8h_a323249dac769f9855c10b4ec9446b707}} 
+\index{dma.\+h@{dma.\+h}!M\+X\+\_\+\+D\+M\+A\+\_\+\+Init@{M\+X\+\_\+\+D\+M\+A\+\_\+\+Init}}
+\index{M\+X\+\_\+\+D\+M\+A\+\_\+\+Init@{M\+X\+\_\+\+D\+M\+A\+\_\+\+Init}!dma.\+h@{dma.\+h}}
+\paragraph{\texorpdfstring{M\+X\+\_\+\+D\+M\+A\+\_\+\+Init()}{MX\_DMA\_Init()}}
+{\footnotesize\ttfamily void M\+X\+\_\+\+D\+M\+A\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Inicialização dos canais do D\+MA 2. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & Inicialização dos canais do D\+MA 2.\\
+\hline
+\end{DoxyRetVals}
+Enable D\+MA controller clock Configure D\+MA for memory to memory transfers hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1 hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+\subsubsection{Variable Documentation}
+\mbox{\Hypertarget{dma_8h_a6e22ae8e5a23a770ec9f8a2fbe3125c1}\label{dma_8h_a6e22ae8e5a23a770ec9f8a2fbe3125c1}} 
+\index{dma.\+h@{dma.\+h}!hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1@{hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1}}
+\index{hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1@{hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1}!dma.\+h@{dma.\+h}}
+\paragraph{\texorpdfstring{hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1}{hdma\_memtomem\_dma2\_stream1}}
+{\footnotesize\ttfamily D\+M\+A\+\_\+\+Handle\+Type\+Def hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1}
+
+
+
+Handler para estrutura do stream 1 do D\+MA 2 para transferência Mem\+To\+Mem. 
+
+\mbox{\Hypertarget{dma_8h_a15d1d5b7b83b077f6774557b5d46ecf3}\label{dma_8h_a15d1d5b7b83b077f6774557b5d46ecf3}} 
+\index{dma.\+h@{dma.\+h}!hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3@{hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3}}
+\index{hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3@{hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3}!dma.\+h@{dma.\+h}}
+\paragraph{\texorpdfstring{hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3}{hdma\_memtomem\_dma2\_stream3}}
+{\footnotesize\ttfamily D\+M\+A\+\_\+\+Handle\+Type\+Def hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3}
+
+
+
+Handler para estrutura do stream 3 do D\+MA 2 para transferência Mem\+To\+Mem. 
+

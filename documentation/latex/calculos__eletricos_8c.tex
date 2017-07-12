@@ -1,0 +1,300 @@
+\hypertarget{calculos__eletricos_8c}{}\subsection{Src/calculos\+\_\+eletricos.c File Reference}
+\label{calculos__eletricos_8c}\index{Src/calculos\+\_\+eletricos.\+c@{Src/calculos\+\_\+eletricos.\+c}}
+
+
+Implementação das funções que realizam os cálculos dos parâmetros elétricos.  
+
+
+{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdlib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}math.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}arm\+\_\+math.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{calculos__eletricos_8c_a6b7092bccd226a790f3fd4cd6c29419e}{P\+I\+\_\+\+V\+A\+L\+UE}~(float32\+\_\+t) 3.\+14159265358
+\item 
+\#define \hyperlink{calculos__eletricos_8c_a514396dd60fa0621c83072091fb2a0cd}{S\+Q\+R\+T2}~(float32\+\_\+t) 1.\+414213562373095
+\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{calculos__eletricos_8c_a6a381852c3941e946e6412005b71e41a}{retorna\+S\+IN} (float32\+\_\+t $\ast$array, uint32\+\_\+t f, float32\+\_\+t fs, uint32\+\_\+t n, float32\+\_\+t phase)
+\begin{DoxyCompactList}\small\item\em D\+E\+P\+R\+E\+C\+A\+T\+ED Cria um vetor com sinal senoidal para testes. \end{DoxyCompactList}\item 
+float32\+\_\+t \hyperlink{calculos__eletricos_8c_af86de00c37043e1060423cf7e6544014}{retorna\+R\+MS} (float32\+\_\+t g, float32\+\_\+t $\ast$array, uint32\+\_\+t size, uint32\+\_\+t start)
+\begin{DoxyCompactList}\small\item\em Retorna o valor R\+MS de um vetor. \end{DoxyCompactList}\item 
+float32\+\_\+t \hyperlink{calculos__eletricos_8c_acb6600911fb50dc55877a8b22877e45e}{retorna\+P\+O\+T\+A\+T\+I\+VA} (float32\+\_\+t gv, float32\+\_\+t gi, float32\+\_\+t $\ast$array\+\_\+tensao, float32\+\_\+t $\ast$array\+\_\+corrente, uint32\+\_\+t size, uint32\+\_\+t start)
+\begin{DoxyCompactList}\small\item\em Retorna a potência ativa resultante entre um vetor de tensão e um vetor de corrente. \end{DoxyCompactList}\item 
+float32\+\_\+t \hyperlink{calculos__eletricos_8c_a0bf51052fe0f9d7dabe83a2a153dd231}{retorna\+P\+O\+T\+A\+P\+A\+R\+E\+N\+TE} (float32\+\_\+t gv, float32\+\_\+t gi, float32\+\_\+t vrms, float32\+\_\+t irms)
+\begin{DoxyCompactList}\small\item\em Retorna a potência aparente resultante a partir dos valores R\+MS de tensão e corrente já calculados. \end{DoxyCompactList}\item 
+float32\+\_\+t \hyperlink{calculos__eletricos_8c_aa70e07a2de2df3b66fe931c6ea63c8ec}{retorna\+P\+O\+T\+R\+E\+A\+T\+I\+VA} (float32\+\_\+t potaparente, float32\+\_\+t potativa)
+\begin{DoxyCompactList}\small\item\em Retorna a potência reativa resultante a partir dos valores de potência ativa e aparente já calculados. \end{DoxyCompactList}\item 
+float32\+\_\+t \hyperlink{calculos__eletricos_8c_aa2b936d5a100104d5f7cde999bcafa2d}{retorna\+FP} (float32\+\_\+t potaparente, float32\+\_\+t potativa)
+\begin{DoxyCompactList}\small\item\em Retorna o fator de potência a partir dos valores de potência ativa e aparente já calculados. \end{DoxyCompactList}\item 
+void \hyperlink{calculos__eletricos_8c_a83ccb42aa5fb56defad25563e89ad13d}{retorna\+M\+E\+D\+I\+A\+C\+I\+C\+L\+OS} (float32\+\_\+t $\ast$array\+\_\+in, float32\+\_\+t $\ast$array\+\_\+out, uint32\+\_\+t size, uint32\+\_\+t n, uint32\+\_\+t start)
+\begin{DoxyCompactList}\small\item\em Tira a média de n ciclos para cálculo de harmônicas. \end{DoxyCompactList}\item 
+void \hyperlink{calculos__eletricos_8c_aee86d5b771604ba9b24012b234dbe03d}{retorna\+R\+M\+S\+H\+A\+R\+M\+O\+N\+I\+C\+OS} (float32\+\_\+t $\ast$i\+\_\+rms\+\_\+harmonicos, float32\+\_\+t $\ast$array\+\_\+corrente, uint32\+\_\+t size, uint32\+\_\+t h, float32\+\_\+t g, uint32\+\_\+t n, uint32\+\_\+t start)
+\begin{DoxyCompactList}\small\item\em Retorna a potência das harmônicas de um vetor com dados de corrente. \end{DoxyCompactList}\item 
+float32\+\_\+t \hyperlink{calculos__eletricos_8c_ac53d5e0f5eb82dc389ef7425a6bf9df2}{retorna\+T\+HD} (float32\+\_\+t $\ast$array\+\_\+in)
+\begin{DoxyCompactList}\small\item\em Retorna o T\+HD a partir de um vetor de harmônicas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Implementação das funções que realizam os cálculos dos parâmetros elétricos. 
+
+\begin{DoxyAuthor}{Author}
+André e Gustavo 
+\end{DoxyAuthor}
+
+
+\subsubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{calculos__eletricos_8c_a6b7092bccd226a790f3fd4cd6c29419e}\label{calculos__eletricos_8c_a6b7092bccd226a790f3fd4cd6c29419e}} 
+\index{calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}!P\+I\+\_\+\+V\+A\+L\+UE@{P\+I\+\_\+\+V\+A\+L\+UE}}
+\index{P\+I\+\_\+\+V\+A\+L\+UE@{P\+I\+\_\+\+V\+A\+L\+UE}!calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}}
+\paragraph{\texorpdfstring{P\+I\+\_\+\+V\+A\+L\+UE}{PI\_VALUE}}
+{\footnotesize\ttfamily \#define P\+I\+\_\+\+V\+A\+L\+UE~(float32\+\_\+t) 3.\+14159265358}
+
+\mbox{\Hypertarget{calculos__eletricos_8c_a514396dd60fa0621c83072091fb2a0cd}\label{calculos__eletricos_8c_a514396dd60fa0621c83072091fb2a0cd}} 
+\index{calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}!S\+Q\+R\+T2@{S\+Q\+R\+T2}}
+\index{S\+Q\+R\+T2@{S\+Q\+R\+T2}!calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}}
+\paragraph{\texorpdfstring{S\+Q\+R\+T2}{SQRT2}}
+{\footnotesize\ttfamily \#define S\+Q\+R\+T2~(float32\+\_\+t) 1.\+414213562373095}
+
+
+
+\subsubsection{Function Documentation}
+\mbox{\Hypertarget{calculos__eletricos_8c_aa2b936d5a100104d5f7cde999bcafa2d}\label{calculos__eletricos_8c_aa2b936d5a100104d5f7cde999bcafa2d}} 
+\index{calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}!retorna\+FP@{retorna\+FP}}
+\index{retorna\+FP@{retorna\+FP}!calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}}
+\paragraph{\texorpdfstring{retorna\+F\+P()}{retornaFP()}}
+{\footnotesize\ttfamily float32\+\_\+t retorna\+FP (\begin{DoxyParamCaption}\item[{float32\+\_\+t}]{potaparente,  }\item[{float32\+\_\+t}]{potativa }\end{DoxyParamCaption})}
+
+
+
+Retorna o fator de potência a partir dos valores de potência ativa e aparente já calculados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em potaparente} & potência aparente. \\
+\hline
+{\em potativa} & potência ativa. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em fp} & fator de reativa calculada. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{calculos__eletricos_8c_a83ccb42aa5fb56defad25563e89ad13d}\label{calculos__eletricos_8c_a83ccb42aa5fb56defad25563e89ad13d}} 
+\index{calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}!retorna\+M\+E\+D\+I\+A\+C\+I\+C\+L\+OS@{retorna\+M\+E\+D\+I\+A\+C\+I\+C\+L\+OS}}
+\index{retorna\+M\+E\+D\+I\+A\+C\+I\+C\+L\+OS@{retorna\+M\+E\+D\+I\+A\+C\+I\+C\+L\+OS}!calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}}
+\paragraph{\texorpdfstring{retorna\+M\+E\+D\+I\+A\+C\+I\+C\+L\+O\+S()}{retornaMEDIACICLOS()}}
+{\footnotesize\ttfamily void retorna\+M\+E\+D\+I\+A\+C\+I\+C\+L\+OS (\begin{DoxyParamCaption}\item[{float32\+\_\+t $\ast$}]{array\+\_\+in,  }\item[{float32\+\_\+t $\ast$}]{array\+\_\+out,  }\item[{uint32\+\_\+t}]{size,  }\item[{uint32\+\_\+t}]{n,  }\item[{uint32\+\_\+t}]{start }\end{DoxyParamCaption})}
+
+
+
+Tira a média de n ciclos para cálculo de harmônicas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+\_\+in} & ponteiro com dados de entrada. Tamanho size. \\
+\hline
+{\em array\+\_\+out} & ponteiro com dados de saída. Tamanho (size-\/start)/n. \\
+\hline
+{\em size} & número de elementos no vetor de dados. \\
+\hline
+{\em n} & número de ciclos de 60 Hz no vetor de entrada. \\
+\hline
+{\em start} & posição inicial do vetor de dados. Usado para que cálculo ocorra sobre um número inteiro de períodos de 60 Hz. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{calculos__eletricos_8c_a0bf51052fe0f9d7dabe83a2a153dd231}\label{calculos__eletricos_8c_a0bf51052fe0f9d7dabe83a2a153dd231}} 
+\index{calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}!retorna\+P\+O\+T\+A\+P\+A\+R\+E\+N\+TE@{retorna\+P\+O\+T\+A\+P\+A\+R\+E\+N\+TE}}
+\index{retorna\+P\+O\+T\+A\+P\+A\+R\+E\+N\+TE@{retorna\+P\+O\+T\+A\+P\+A\+R\+E\+N\+TE}!calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}}
+\paragraph{\texorpdfstring{retorna\+P\+O\+T\+A\+P\+A\+R\+E\+N\+T\+E()}{retornaPOTAPARENTE()}}
+{\footnotesize\ttfamily float32\+\_\+t retorna\+P\+O\+T\+A\+P\+A\+R\+E\+N\+TE (\begin{DoxyParamCaption}\item[{float32\+\_\+t}]{gv,  }\item[{float32\+\_\+t}]{gi,  }\item[{float32\+\_\+t}]{vrms,  }\item[{float32\+\_\+t}]{irms }\end{DoxyParamCaption})}
+
+
+
+Retorna a potência aparente resultante a partir dos valores R\+MS de tensão e corrente já calculados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gi} & ganho para ajuste do valor de corrente (não utilizado). \\
+\hline
+{\em gv} & ganho para ajuste do valor de tensão (não utilizado). \\
+\hline
+{\em vrms} & tensão R\+MS. \\
+\hline
+{\em irms} & corrente R\+MS. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em potaparente} & potência aparente calculada. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{calculos__eletricos_8c_acb6600911fb50dc55877a8b22877e45e}\label{calculos__eletricos_8c_acb6600911fb50dc55877a8b22877e45e}} 
+\index{calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}!retorna\+P\+O\+T\+A\+T\+I\+VA@{retorna\+P\+O\+T\+A\+T\+I\+VA}}
+\index{retorna\+P\+O\+T\+A\+T\+I\+VA@{retorna\+P\+O\+T\+A\+T\+I\+VA}!calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}}
+\paragraph{\texorpdfstring{retorna\+P\+O\+T\+A\+T\+I\+V\+A()}{retornaPOTATIVA()}}
+{\footnotesize\ttfamily float32\+\_\+t retorna\+P\+O\+T\+A\+T\+I\+VA (\begin{DoxyParamCaption}\item[{float32\+\_\+t}]{gv,  }\item[{float32\+\_\+t}]{gi,  }\item[{float32\+\_\+t $\ast$}]{array\+\_\+tensao,  }\item[{float32\+\_\+t $\ast$}]{array\+\_\+corrente,  }\item[{uint32\+\_\+t}]{size,  }\item[{uint32\+\_\+t}]{start }\end{DoxyParamCaption})}
+
+
+
+Retorna a potência ativa resultante entre um vetor de tensão e um vetor de corrente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gi} & ganho para ajuste do valor de corrente (não utilizado). \\
+\hline
+{\em gv} & ganho para ajuste do valor de tensão (não utilizado). \\
+\hline
+{\em array\+\_\+tensao} & ponteiro para o vetor de dados de tensão. \\
+\hline
+{\em array\+\_\+corrente} & ponteiro para o vetor de dados de corrente. \\
+\hline
+{\em size} & número de elementos no vetor de dados. \\
+\hline
+{\em start} & posição inicial do vetor de dados. Usado para que cálculo ocorra sobre um número inteiro de períodos de 60 Hz. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em potativa} & potência ativa calculada. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{calculos__eletricos_8c_aa70e07a2de2df3b66fe931c6ea63c8ec}\label{calculos__eletricos_8c_aa70e07a2de2df3b66fe931c6ea63c8ec}} 
+\index{calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}!retorna\+P\+O\+T\+R\+E\+A\+T\+I\+VA@{retorna\+P\+O\+T\+R\+E\+A\+T\+I\+VA}}
+\index{retorna\+P\+O\+T\+R\+E\+A\+T\+I\+VA@{retorna\+P\+O\+T\+R\+E\+A\+T\+I\+VA}!calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}}
+\paragraph{\texorpdfstring{retorna\+P\+O\+T\+R\+E\+A\+T\+I\+V\+A()}{retornaPOTREATIVA()}}
+{\footnotesize\ttfamily float32\+\_\+t retorna\+P\+O\+T\+R\+E\+A\+T\+I\+VA (\begin{DoxyParamCaption}\item[{float32\+\_\+t}]{potaparente,  }\item[{float32\+\_\+t}]{potativa }\end{DoxyParamCaption})}
+
+
+
+Retorna a potência reativa resultante a partir dos valores de potência ativa e aparente já calculados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em potaparente} & potência aparente. \\
+\hline
+{\em potativa} & potência ativa. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em potreativa} & potência reativa calculada. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{calculos__eletricos_8c_af86de00c37043e1060423cf7e6544014}\label{calculos__eletricos_8c_af86de00c37043e1060423cf7e6544014}} 
+\index{calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}!retorna\+R\+MS@{retorna\+R\+MS}}
+\index{retorna\+R\+MS@{retorna\+R\+MS}!calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}}
+\paragraph{\texorpdfstring{retorna\+R\+M\+S()}{retornaRMS()}}
+{\footnotesize\ttfamily float32\+\_\+t retorna\+R\+MS (\begin{DoxyParamCaption}\item[{float32\+\_\+t}]{g,  }\item[{float32\+\_\+t $\ast$}]{array,  }\item[{uint32\+\_\+t}]{size,  }\item[{uint32\+\_\+t}]{start }\end{DoxyParamCaption})}
+
+
+
+Retorna o valor R\+MS de um vetor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & ganho para ajuste do valor (não utilizado). \\
+\hline
+{\em array} & ponteiro para o vetor de dados. \\
+\hline
+{\em size} & número de elementos no vetor de dados. \\
+\hline
+{\em start} & posição inicial do vetor de dados. Usado para que cálculo ocorra sobre um número inteiro de períodos de 60 Hz. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em arrayrms} & valor R\+MS do vetor. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{calculos__eletricos_8c_aee86d5b771604ba9b24012b234dbe03d}\label{calculos__eletricos_8c_aee86d5b771604ba9b24012b234dbe03d}} 
+\index{calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}!retorna\+R\+M\+S\+H\+A\+R\+M\+O\+N\+I\+C\+OS@{retorna\+R\+M\+S\+H\+A\+R\+M\+O\+N\+I\+C\+OS}}
+\index{retorna\+R\+M\+S\+H\+A\+R\+M\+O\+N\+I\+C\+OS@{retorna\+R\+M\+S\+H\+A\+R\+M\+O\+N\+I\+C\+OS}!calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}}
+\paragraph{\texorpdfstring{retorna\+R\+M\+S\+H\+A\+R\+M\+O\+N\+I\+C\+O\+S()}{retornaRMSHARMONICOS()}}
+{\footnotesize\ttfamily void retorna\+R\+M\+S\+H\+A\+R\+M\+O\+N\+I\+C\+OS (\begin{DoxyParamCaption}\item[{float32\+\_\+t $\ast$}]{i\+\_\+rms\+\_\+harmonicos,  }\item[{float32\+\_\+t $\ast$}]{array\+\_\+corrente,  }\item[{uint32\+\_\+t}]{size,  }\item[{uint32\+\_\+t}]{h,  }\item[{float32\+\_\+t}]{g,  }\item[{uint32\+\_\+t}]{n,  }\item[{uint32\+\_\+t}]{start }\end{DoxyParamCaption})}
+
+
+
+Retorna a potência das harmônicas de um vetor com dados de corrente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i\+\_\+rms\+\_\+harmonicos} & ponteiro para vetor de saída com potência das harmônicas. \\
+\hline
+{\em array\+\_\+corrente} & ponteiro de entrada com valores dos dados de corrente. \\
+\hline
+{\em g} & ganho para ajuste do valor (não utilizado). \\
+\hline
+{\em size} & número de elementos no vetor de dados. \\
+\hline
+{\em h} & número de elementos no vetor de harmônicas. \\
+\hline
+{\em n} & número de ciclos de 60 Hz no vetor de entrada. \\
+\hline
+{\em start} & posição inicial do vetor de dados. Usado para que cálculo ocorra sobre um número inteiro de períodos de 60 Hz. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{calculos__eletricos_8c_a6a381852c3941e946e6412005b71e41a}\label{calculos__eletricos_8c_a6a381852c3941e946e6412005b71e41a}} 
+\index{calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}!retorna\+S\+IN@{retorna\+S\+IN}}
+\index{retorna\+S\+IN@{retorna\+S\+IN}!calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}}
+\paragraph{\texorpdfstring{retorna\+S\+I\+N()}{retornaSIN()}}
+{\footnotesize\ttfamily void$\ast$ retorna\+S\+IN (\begin{DoxyParamCaption}\item[{float32\+\_\+t $\ast$}]{array,  }\item[{uint32\+\_\+t}]{f,  }\item[{float32\+\_\+t}]{fs,  }\item[{uint32\+\_\+t}]{n,  }\item[{float32\+\_\+t}]{phase }\end{DoxyParamCaption})}
+
+
+
+D\+E\+P\+R\+E\+C\+A\+T\+ED Cria um vetor com sinal senoidal para testes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & vetor seno \\
+\hline
+{\em f} & frequencia \\
+\hline
+{\em fs} & frequencia de amostragem \\
+\hline
+{\em n} & numero de pontos por periodo \\
+\hline
+{\em phase} & fase do seno \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{calculos__eletricos_8c_ac53d5e0f5eb82dc389ef7425a6bf9df2}\label{calculos__eletricos_8c_ac53d5e0f5eb82dc389ef7425a6bf9df2}} 
+\index{calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}!retorna\+T\+HD@{retorna\+T\+HD}}
+\index{retorna\+T\+HD@{retorna\+T\+HD}!calculos\+\_\+eletricos.\+c@{calculos\+\_\+eletricos.\+c}}
+\paragraph{\texorpdfstring{retorna\+T\+H\+D()}{retornaTHD()}}
+{\footnotesize\ttfamily float32\+\_\+t retorna\+T\+HD (\begin{DoxyParamCaption}\item[{float32\+\_\+t $\ast$}]{array\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+Retorna o T\+HD a partir de um vetor de harmônicas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+\_\+in} & ponteiro para vetor de harmônicas. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em thd} & Distorção Harmônica Total calculadas. \\
+\hline
+\end{DoxyRetVals}

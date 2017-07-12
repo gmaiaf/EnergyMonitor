@@ -1,0 +1,51 @@
+\hypertarget{struct_medicao}{}\subsection{Medicao Struct Reference}
+\label{struct_medicao}\index{Medicao@{Medicao}}
+
+
+Estrutura armazenada na memória com histórico de medições e equipamentos.  
+
+
+
+
+{\ttfamily \#include $<$equipamentos.\+h$>$}
+
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{struct_medicao_ab20b0c7772544cf5d318507f34231fbe}{timestamp}
+\item 
+uint16\+\_\+t \hyperlink{struct_medicao_a98ae007405142605026a286a04dd6d51}{equipamentos} \mbox{[}\hyperlink{defines_8h_ae4b347db921cb574228cda0f65b38c1e}{E\+Q\+U\+I\+P\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+M\+AX}\mbox{]}
+\item 
+\hyperlink{struct_parametros}{Parametros} \hyperlink{struct_medicao_aa2e947ae4fcdfb65d9b7e1763b95fe4d}{med}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Estrutura armazenada na memória com histórico de medições e equipamentos. 
+
+Essa estrutura usa uma entrada da estrutura \hyperlink{struct_parametros}{Parametros} para armazenar os dados elétricos lidos em associação a um timestamp e um vetor de equipamentos elétricos ligados na rede. 
+
+\subsubsection{Field Documentation}
+\mbox{\Hypertarget{struct_medicao_a98ae007405142605026a286a04dd6d51}\label{struct_medicao_a98ae007405142605026a286a04dd6d51}} 
+\index{Medicao@{Medicao}!equipamentos@{equipamentos}}
+\index{equipamentos@{equipamentos}!Medicao@{Medicao}}
+\paragraph{\texorpdfstring{equipamentos}{equipamentos}}
+{\footnotesize\ttfamily uint16\+\_\+t equipamentos\mbox{[}\hyperlink{defines_8h_ae4b347db921cb574228cda0f65b38c1e}{E\+Q\+U\+I\+P\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+M\+AX}\mbox{]}}
+
+Vetor que indica os equipamentos ligados na rede. O índice do vetor indica uma ID de equipamento e o conteúdo indica quantos equipamentos deste tipo estão ligados na rede no momento. \mbox{\Hypertarget{struct_medicao_aa2e947ae4fcdfb65d9b7e1763b95fe4d}\label{struct_medicao_aa2e947ae4fcdfb65d9b7e1763b95fe4d}} 
+\index{Medicao@{Medicao}!med@{med}}
+\index{med@{med}!Medicao@{Medicao}}
+\paragraph{\texorpdfstring{med}{med}}
+{\footnotesize\ttfamily \hyperlink{struct_parametros}{Parametros} med}
+
+Entrada para estrutura \hyperlink{struct_parametros}{Parametros} que armazena parâmetros elétricos de interesse. \mbox{\Hypertarget{struct_medicao_ab20b0c7772544cf5d318507f34231fbe}\label{struct_medicao_ab20b0c7772544cf5d318507f34231fbe}} 
+\index{Medicao@{Medicao}!timestamp@{timestamp}}
+\index{timestamp@{timestamp}!Medicao@{Medicao}}
+\paragraph{\texorpdfstring{timestamp}{timestamp}}
+{\footnotesize\ttfamily uint32\+\_\+t timestamp}
+
+Marcação de tempo (timestamp) associado a uma medição da rede. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Inc/\hyperlink{equipamentos_8h}{equipamentos.\+h}\end{DoxyCompactItemize}
