@@ -1,4 +1,4 @@
-/**
+/*
   ******************************************************************************
   * File Name          : gpio.c
   * Description        : This file provides code for the configuration
@@ -31,7 +31,12 @@
   *
   ******************************************************************************
   */
-
+   /**
+  *	@file gpio.c
+  * @author ST
+  * @brief Implementação das funções de configuração do GPIO.
+  *
+  */
 /* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
 /* USER CODE BEGIN 0 */
@@ -45,8 +50,10 @@
 
 /* USER CODE END 1 */
 
-/** Pinout Configuration
-*/
+/**
+  * @brief  Inicialização do GPIO.
+  * @retval None
+  */
 void MX_GPIO_Init(void)
 {
 

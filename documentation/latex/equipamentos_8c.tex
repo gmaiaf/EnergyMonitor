@@ -1,0 +1,170 @@
+\hypertarget{equipamentos_8c}{}\subsection{Src/equipamentos.c File Reference}
+\label{equipamentos_8c}\index{Src/equipamentos.\+c@{Src/equipamentos.\+c}}
+
+
+Implementação das funções que manipulam as estruturas do projeto.  
+
+
+{\ttfamily \#include \char`\"{}equipamentos.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{equipamentos_8c_aa5c3947cac742d7381f604abe24a48e9}{Cadastro\+De\+Equipamento} (\hyperlink{struct_equipamento}{Equipamento} $\ast$equip, uint16\+\_\+t \hyperlink{main_8c_a2aab568cd1f02e7cd9fd6c7f87e361d1a001479a58fb44c39a29b20d565081a68}{ID}, char nome\mbox{[}40\mbox{]}, float32\+\_\+t pot\+\_\+at, float32\+\_\+t pot\+\_\+re, float32\+\_\+t thd, float32\+\_\+t pf, float32\+\_\+t $\ast$harmonicos)
+\begin{DoxyCompactList}\small\item\em Cria estrutura com informações de um novo equipamento. \end{DoxyCompactList}\item 
+void \hyperlink{equipamentos_8c_ae4c64b3a842987d259d400cf35f125d2}{Delta\+Param} (\hyperlink{struct_parametros}{Parametros} $\ast$medida\+\_\+nova, \hyperlink{struct_parametros}{Parametros} $\ast$medida\+\_\+velha, \hyperlink{struct_parametros}{Parametros} $\ast$delta, char $\ast$new)
+\begin{DoxyCompactList}\small\item\em Calcula delta entre duas estruturas \hyperlink{struct_parametros}{Parametros} . \end{DoxyCompactList}\item 
+float \hyperlink{equipamentos_8c_aa909d7199f7878a0ed83e1c22514d83f}{Comparacao\+De\+Equipamentos} (\hyperlink{struct_equipamento}{Equipamento} $\ast$equip1, \hyperlink{struct_parametros}{Parametros} $\ast$medida)
+\begin{DoxyCompactList}\small\item\em D\+E\+P\+R\+E\+C\+A\+T\+ED Calcula delta entre duas estruturas \hyperlink{struct_parametros}{Parametros} . \end{DoxyCompactList}\item 
+void \hyperlink{equipamentos_8c_a2068131492ad8799083d57577ec5d5a1}{Init\+Medicao} (\hyperlink{struct_medicao}{Medicao} $\ast$medicao)
+\begin{DoxyCompactList}\small\item\em Inicializa uma estrutura \hyperlink{struct_medicao}{Medicao} . \end{DoxyCompactList}\item 
+void \hyperlink{equipamentos_8c_a5eb563b7a78f71539668c679549c8563}{Init\+Base\+De\+Dados} (\hyperlink{struct_equipamento}{Equipamento} $\ast$\hyperlink{main_8c_a14822268639036ebb7b3297a2838c827}{Base\+Dados})
+\begin{DoxyCompactList}\small\item\em Inicializa uma vetor (base de dados) de estruturas \hyperlink{struct_equipamento}{Equipamento} . \end{DoxyCompactList}\item 
+int \hyperlink{equipamentos_8c_aa0a9c2265bb865de9d831f9442590bd4}{Identificar\+Equipamento} (\hyperlink{struct_equipamento}{Equipamento} $\ast$\hyperlink{main_8c_a14822268639036ebb7b3297a2838c827}{Base\+Dados}, \hyperlink{struct_parametros}{Parametros} $\ast$\hyperlink{struct_medicao}{Medicao})
+\begin{DoxyCompactList}\small\item\em Função com implementação básica de um algoritmo de identificação de equipamento na rede. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Implementação das funções que manipulam as estruturas do projeto. 
+
+\begin{DoxyAuthor}{Author}
+Bruno e Gustavo 
+\end{DoxyAuthor}
+
+
+\subsubsection{Function Documentation}
+\mbox{\Hypertarget{equipamentos_8c_aa5c3947cac742d7381f604abe24a48e9}\label{equipamentos_8c_aa5c3947cac742d7381f604abe24a48e9}} 
+\index{equipamentos.\+c@{equipamentos.\+c}!Cadastro\+De\+Equipamento@{Cadastro\+De\+Equipamento}}
+\index{Cadastro\+De\+Equipamento@{Cadastro\+De\+Equipamento}!equipamentos.\+c@{equipamentos.\+c}}
+\paragraph{\texorpdfstring{Cadastro\+De\+Equipamento()}{CadastroDeEquipamento()}}
+{\footnotesize\ttfamily void Cadastro\+De\+Equipamento (\begin{DoxyParamCaption}\item[{\hyperlink{struct_equipamento}{Equipamento} $\ast$}]{equip,  }\item[{uint16\+\_\+t}]{ID,  }\item[{char}]{nome\mbox{[}40\mbox{]},  }\item[{float32\+\_\+t}]{pot\+\_\+at,  }\item[{float32\+\_\+t}]{pot\+\_\+re,  }\item[{float32\+\_\+t}]{thd,  }\item[{float32\+\_\+t}]{pf,  }\item[{float32\+\_\+t $\ast$}]{harmonicos }\end{DoxyParamCaption})}
+
+
+
+Cria estrutura com informações de um novo equipamento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em equip} & ponteiro para estrutura \hyperlink{struct_equipamento}{Equipamento} . \\
+\hline
+{\em nome} & char$\ast$ com nome do equipamento. \\
+\hline
+{\em pot\+\_\+at} & potencia ativa. \\
+\hline
+{\em pot\+\_\+re} & potencia reativa. \\
+\hline
+{\em thd} & taxa de distorção harmonica. \\
+\hline
+{\em pf} & fator de potencia. \\
+\hline
+{\em harmonicos} & vetor de harmonicas. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{equipamentos_8c_aa909d7199f7878a0ed83e1c22514d83f}\label{equipamentos_8c_aa909d7199f7878a0ed83e1c22514d83f}} 
+\index{equipamentos.\+c@{equipamentos.\+c}!Comparacao\+De\+Equipamentos@{Comparacao\+De\+Equipamentos}}
+\index{Comparacao\+De\+Equipamentos@{Comparacao\+De\+Equipamentos}!equipamentos.\+c@{equipamentos.\+c}}
+\paragraph{\texorpdfstring{Comparacao\+De\+Equipamentos()}{ComparacaoDeEquipamentos()}}
+{\footnotesize\ttfamily float Comparacao\+De\+Equipamentos (\begin{DoxyParamCaption}\item[{\hyperlink{struct_equipamento}{Equipamento} $\ast$}]{equip1,  }\item[{\hyperlink{struct_parametros}{Parametros} $\ast$}]{medida }\end{DoxyParamCaption})}
+
+
+
+D\+E\+P\+R\+E\+C\+A\+T\+ED Calcula delta entre duas estruturas \hyperlink{struct_parametros}{Parametros} . 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{equipamentos_8c_ae4c64b3a842987d259d400cf35f125d2}\label{equipamentos_8c_ae4c64b3a842987d259d400cf35f125d2}} 
+\index{equipamentos.\+c@{equipamentos.\+c}!Delta\+Param@{Delta\+Param}}
+\index{Delta\+Param@{Delta\+Param}!equipamentos.\+c@{equipamentos.\+c}}
+\paragraph{\texorpdfstring{Delta\+Param()}{DeltaParam()}}
+{\footnotesize\ttfamily void Delta\+Param (\begin{DoxyParamCaption}\item[{\hyperlink{struct_parametros}{Parametros} $\ast$}]{medida\+\_\+nova,  }\item[{\hyperlink{struct_parametros}{Parametros} $\ast$}]{medida\+\_\+velha,  }\item[{\hyperlink{struct_parametros}{Parametros} $\ast$}]{delta,  }\item[{char $\ast$}]{new }\end{DoxyParamCaption})}
+
+
+
+Calcula delta entre duas estruturas \hyperlink{struct_parametros}{Parametros} . 
+
+
+\begin{DoxyParams}{Parameters}
+{\em medida\+\_\+nova} & ponteiro para uma estrutura \hyperlink{struct_parametros}{Parametros} que contém os parâmetros da medição mais recente. \\
+\hline
+{\em medida\+\_\+velha} & ponteiro para uma estrutura \hyperlink{struct_parametros}{Parametros} que contém os parâmetros da medição anterior. \\
+\hline
+{\em delta} & ponteiro para uma estrutura \hyperlink{struct_parametros}{Parametros} que armazana o delta entre as duas entradas. \\
+\hline
+{\em new} & ponteiro para um char que indicará se um equipamento foi adicionado ou retirado da rede. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{equipamentos_8c_aa0a9c2265bb865de9d831f9442590bd4}\label{equipamentos_8c_aa0a9c2265bb865de9d831f9442590bd4}} 
+\index{equipamentos.\+c@{equipamentos.\+c}!Identificar\+Equipamento@{Identificar\+Equipamento}}
+\index{Identificar\+Equipamento@{Identificar\+Equipamento}!equipamentos.\+c@{equipamentos.\+c}}
+\paragraph{\texorpdfstring{Identificar\+Equipamento()}{IdentificarEquipamento()}}
+{\footnotesize\ttfamily int Identificar\+Equipamento (\begin{DoxyParamCaption}\item[{\hyperlink{struct_equipamento}{Equipamento} $\ast$}]{Base\+Dados,  }\item[{\hyperlink{struct_parametros}{Parametros} $\ast$}]{Medicao }\end{DoxyParamCaption})}
+
+
+
+Função com implementação básica de um algoritmo de identificação de equipamento na rede. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Base\+Dados} & ponteiro para um vetor de \hyperlink{struct_equipamento}{Equipamento} sobre o qual é feita a busca da \hyperlink{struct_medicao}{Medicao}. \\
+\hline
+{\em \hyperlink{struct_medicao}{Medicao}} & ponteiro para \hyperlink{struct_parametros}{Parametros} que contém a medição do delta na rede. Representa um equipamento acrescido ou retirado da rede. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em min} & Índice da base de dados que contém o equipamento identificado. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{equipamentos_8c_a5eb563b7a78f71539668c679549c8563}\label{equipamentos_8c_a5eb563b7a78f71539668c679549c8563}} 
+\index{equipamentos.\+c@{equipamentos.\+c}!Init\+Base\+De\+Dados@{Init\+Base\+De\+Dados}}
+\index{Init\+Base\+De\+Dados@{Init\+Base\+De\+Dados}!equipamentos.\+c@{equipamentos.\+c}}
+\paragraph{\texorpdfstring{Init\+Base\+De\+Dados()}{InitBaseDeDados()}}
+{\footnotesize\ttfamily void Init\+Base\+De\+Dados (\begin{DoxyParamCaption}\item[{\hyperlink{struct_equipamento}{Equipamento} $\ast$}]{Base\+Dados }\end{DoxyParamCaption})}
+
+
+
+Inicializa uma vetor (base de dados) de estruturas \hyperlink{struct_equipamento}{Equipamento} . 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Base\+Dados} & ponteiro para um vetor de \hyperlink{struct_equipamento}{Equipamento} que será inicializada com zeros. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{equipamentos_8c_a2068131492ad8799083d57577ec5d5a1}\label{equipamentos_8c_a2068131492ad8799083d57577ec5d5a1}} 
+\index{equipamentos.\+c@{equipamentos.\+c}!Init\+Medicao@{Init\+Medicao}}
+\index{Init\+Medicao@{Init\+Medicao}!equipamentos.\+c@{equipamentos.\+c}}
+\paragraph{\texorpdfstring{Init\+Medicao()}{InitMedicao()}}
+{\footnotesize\ttfamily void Init\+Medicao (\begin{DoxyParamCaption}\item[{\hyperlink{struct_medicao}{Medicao} $\ast$}]{medicao }\end{DoxyParamCaption})}
+
+
+
+Inicializa uma estrutura \hyperlink{struct_medicao}{Medicao} . 
+
+
+\begin{DoxyParams}{Parameters}
+{\em medicao} & ponteiro para uma estrutura \hyperlink{struct_medicao}{Medicao} que será inicializada com zeros. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}

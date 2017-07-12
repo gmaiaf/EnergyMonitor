@@ -1,4 +1,5 @@
-/**
+ 
+/*
   ******************************************************************************
   * File Name          : ADC.h
   * Description        : This file provides code for the configuration
@@ -31,6 +32,15 @@
   *
   ******************************************************************************
   */
+ 
+ /**
+  *	@file adc.h
+  * @author ST
+  * @brief Header com funções de configuração dos ADCs.
+  *
+  */
+
+
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __adc_H
 #define __adc_H
@@ -45,8 +55,13 @@
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
-
+/**
+  * @brief  Handler para estrutura do ADC 1.
+  */
 extern ADC_HandleTypeDef hadc1;
+/**
+  * @brief  Handler para estrutura do ADC 2.
+  */
 extern ADC_HandleTypeDef hadc2;
 
 /* USER CODE BEGIN Private defines */
@@ -55,7 +70,16 @@ extern ADC_HandleTypeDef hadc2;
 
 extern void Error_Handler(void);
 
+/**
+  * @brief  Inicialização do ADC 1.
+  * @retval None
+  */
 void MX_ADC1_Init(void);
+
+/**
+  * @brief  Inicialização do ADC 2.
+  * @retval None
+  */
 void MX_ADC2_Init(void);
 
 /* USER CODE BEGIN Prototypes */

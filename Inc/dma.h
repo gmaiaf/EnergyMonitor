@@ -1,4 +1,4 @@
-/**
+/*
   ******************************************************************************
   * File Name          : dma.h
   * Description        : This file contains all the function prototypes for
@@ -31,6 +31,14 @@
   *
   ******************************************************************************
   */
+  
+   /**
+  *	@file dma.h
+  * @author ST
+  * @brief Header das funções de configuração das DMAs.
+  *
+  */
+  
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __dma_H
 #define __dma_H
@@ -44,7 +52,13 @@
 #include "main.h"
 
 /* DMA memory to memory transfer handles -------------------------------------*/
+/**
+  * @brief  Handler para estrutura do stream 1 do DMA 2 para transferência MemToMem.
+  */
 extern DMA_HandleTypeDef hdma_memtomem_dma2_stream1;
+/**
+  * @brief  Handler para estrutura do stream 3 do DMA 2 para transferência MemToMem.
+  */
 extern DMA_HandleTypeDef hdma_memtomem_dma2_stream3;
 extern void Error_Handler(void);
 
@@ -55,7 +69,10 @@ extern void Error_Handler(void);
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
-
+/**
+  * @brief  Inicialização dos canais do DMA 2.
+  * @retval None
+  */
 void MX_DMA_Init(void);
 
 /* USER CODE BEGIN Prototypes */

@@ -1,4 +1,4 @@
-/**
+/*
   ******************************************************************************
   * File Name          : ADC.c
   * Description        : This file provides code for the configuration
@@ -31,6 +31,14 @@
   *
   ******************************************************************************
   */
+  
+   
+ /**
+  *	@file adc.c
+  * @author ST
+  * @brief Implementação das funções de configuração dos ADCs.
+  *
+  */
 
 /* Includes ------------------------------------------------------------------*/
 #include "adc.h"
@@ -41,12 +49,27 @@
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
-
+/**
+  * @brief  Handler para estrutura do ADC 1.
+  */
 ADC_HandleTypeDef hadc1;
+/**
+  * @brief  Handler para estrutura do ADC 2.
+  */
 ADC_HandleTypeDef hadc2;
+/**
+  * @brief  Handler para estrutura do DMA do ADC 1.
+  */
 DMA_HandleTypeDef hdma_adc1;
+/**
+  * @brief  Handler para estrutura do DMA do ADC 2.
+  */
 DMA_HandleTypeDef hdma_adc2;
 
+/**
+  * @brief  Inicialização do ADC 1.
+  * @retval None
+  */
 /* ADC1 init function */
 void MX_ADC1_Init(void)
 {
@@ -93,6 +116,11 @@ void MX_ADC1_Init(void)
   }
 
 }
+
+/**
+  * @brief  Inicialização do ADC 2.
+  * @retval None
+  */
 /* ADC2 init function */
 void MX_ADC2_Init(void)
 {
@@ -127,6 +155,11 @@ void MX_ADC2_Init(void)
 
 }
 
+/**
+  * @brief  Inicialização da DMA de um ADC.
+  * @param adcHandle: Handle do ADC a ter sua DMA configurada.
+  * @retval None
+  */
 void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
 {
 
@@ -223,6 +256,12 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
   }
 }
 
+
+/**
+  * @brief  Desativaçãos da DMA de um ADC.
+  * @param adcHandle: Handle do ADC a ter sua DMA desativada.
+  * @retval None
+  */
 void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 {
 

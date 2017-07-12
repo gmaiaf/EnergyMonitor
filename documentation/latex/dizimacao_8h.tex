@@ -1,0 +1,87 @@
+\hypertarget{dizimacao_8h}{}\subsection{Inc/dizimacao.h File Reference}
+\label{dizimacao_8h}\index{Inc/dizimacao.\+h@{Inc/dizimacao.\+h}}
+
+
+Código para dizimação\+: Filtro F\+IR e downsampling usando biblioteca C\+M\+S\+IS.  
+
+
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}arm\+\_\+math.\+h\char`\"{}}\newline
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{dizimacao_8h_a24e05ddb76de8c3f0325ebf78dfc4898}{initialize\+F\+IR} (arm\+\_\+fir\+\_\+decimate\+\_\+instance\+\_\+f32 $\ast$\hyperlink{main_8c_adc1b35dd773d0e28c215c580f5a004ab}{S})
+\begin{DoxyCompactList}\small\item\em Inicializa estrutura da biblioteca C\+M\+S\+IS usada para dizimação. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static float \hyperlink{dizimacao_8h_a17d4dcbb6f5cea6491693b93a115146d}{p\+Coeffs} \mbox{[}\hyperlink{defines_8h_a3cee321a8d655472781910f72d621012}{F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Coeficientes do filtro F\+IR. \end{DoxyCompactList}\item 
+float32\+\_\+t \hyperlink{dizimacao_8h_a22c1455e5e062bc9dc61dd8023b9bdb3}{p\+State} \mbox{[}\hyperlink{defines_8h_a3cee321a8d655472781910f72d621012}{F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}+\hyperlink{defines_8h_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}-\/1\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer auxiliar para estrutura da biblioteca C\+M\+S\+IS. \end{DoxyCompactList}\item 
+arm\+\_\+fir\+\_\+decimate\+\_\+instance\+\_\+f32 \hyperlink{dizimacao_8h_adc1b35dd773d0e28c215c580f5a004ab}{S} = \{\hyperlink{defines_8h_a0d09a32f715412054b834b816a442a9d}{D\+I\+Z\+I\+M\+A\+C\+AO}, \hyperlink{defines_8h_a3cee321a8d655472781910f72d621012}{F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}, \hyperlink{dizimacao_8h_a17d4dcbb6f5cea6491693b93a115146d}{p\+Coeffs}, \hyperlink{dizimacao_8h_a22c1455e5e062bc9dc61dd8023b9bdb3}{p\+State}\}
+\begin{DoxyCompactList}\small\item\em Estrutura da biblioteca C\+M\+S\+IS usada para dizimação. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Código para dizimação\+: Filtro F\+IR e downsampling usando biblioteca C\+M\+S\+IS. 
+
+\begin{DoxyAuthor}{Author}
+Bruno e Gustavo 
+\end{DoxyAuthor}
+
+
+\subsubsection{Function Documentation}
+\mbox{\Hypertarget{dizimacao_8h_a24e05ddb76de8c3f0325ebf78dfc4898}\label{dizimacao_8h_a24e05ddb76de8c3f0325ebf78dfc4898}} 
+\index{dizimacao.\+h@{dizimacao.\+h}!initialize\+F\+IR@{initialize\+F\+IR}}
+\index{initialize\+F\+IR@{initialize\+F\+IR}!dizimacao.\+h@{dizimacao.\+h}}
+\paragraph{\texorpdfstring{initialize\+F\+I\+R()}{initializeFIR()}}
+{\footnotesize\ttfamily void initialize\+F\+IR (\begin{DoxyParamCaption}\item[{arm\+\_\+fir\+\_\+decimate\+\_\+instance\+\_\+f32 $\ast$}]{S }\end{DoxyParamCaption})}
+
+
+
+Inicializa estrutura da biblioteca C\+M\+S\+IS usada para dizimação. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em S} & estrutura da biblioteca C\+M\+S\+IS usada para dizimação. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+\subsubsection{Variable Documentation}
+\mbox{\Hypertarget{dizimacao_8h_a17d4dcbb6f5cea6491693b93a115146d}\label{dizimacao_8h_a17d4dcbb6f5cea6491693b93a115146d}} 
+\index{dizimacao.\+h@{dizimacao.\+h}!p\+Coeffs@{p\+Coeffs}}
+\index{p\+Coeffs@{p\+Coeffs}!dizimacao.\+h@{dizimacao.\+h}}
+\paragraph{\texorpdfstring{p\+Coeffs}{pCoeffs}}
+{\footnotesize\ttfamily float p\+Coeffs\mbox{[}\hyperlink{defines_8h_a3cee321a8d655472781910f72d621012}{F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Coeficientes do filtro F\+IR. 
+
+\mbox{\Hypertarget{dizimacao_8h_a22c1455e5e062bc9dc61dd8023b9bdb3}\label{dizimacao_8h_a22c1455e5e062bc9dc61dd8023b9bdb3}} 
+\index{dizimacao.\+h@{dizimacao.\+h}!p\+State@{p\+State}}
+\index{p\+State@{p\+State}!dizimacao.\+h@{dizimacao.\+h}}
+\paragraph{\texorpdfstring{p\+State}{pState}}
+{\footnotesize\ttfamily float32\+\_\+t p\+State\mbox{[}\hyperlink{defines_8h_a3cee321a8d655472781910f72d621012}{F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}+\hyperlink{defines_8h_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}-\/1\mbox{]}}
+
+
+
+Buffer auxiliar para estrutura da biblioteca C\+M\+S\+IS. 
+
+\mbox{\Hypertarget{dizimacao_8h_adc1b35dd773d0e28c215c580f5a004ab}\label{dizimacao_8h_adc1b35dd773d0e28c215c580f5a004ab}} 
+\index{dizimacao.\+h@{dizimacao.\+h}!S@{S}}
+\index{S@{S}!dizimacao.\+h@{dizimacao.\+h}}
+\paragraph{\texorpdfstring{S}{S}}
+{\footnotesize\ttfamily arm\+\_\+fir\+\_\+decimate\+\_\+instance\+\_\+f32 S = \{\hyperlink{defines_8h_a0d09a32f715412054b834b816a442a9d}{D\+I\+Z\+I\+M\+A\+C\+AO}, \hyperlink{defines_8h_a3cee321a8d655472781910f72d621012}{F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}, \hyperlink{dizimacao_8h_a17d4dcbb6f5cea6491693b93a115146d}{p\+Coeffs}, \hyperlink{dizimacao_8h_a22c1455e5e062bc9dc61dd8023b9bdb3}{p\+State}\}}
+
+
+
+Estrutura da biblioteca C\+M\+S\+IS usada para dizimação. 
+

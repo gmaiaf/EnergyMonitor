@@ -1,0 +1,50 @@
+\hypertarget{adc__util_8c}{}\subsection{Src/adc\+\_\+util.c File Reference}
+\label{adc__util_8c}\index{Src/adc\+\_\+util.\+c@{Src/adc\+\_\+util.\+c}}
+
+
+Implementação das funções de auxílio no uso dos A\+D\+Cs.  
+
+
+{\ttfamily \#include \char`\"{}adc\+\_\+util.\+h\char`\"{}}\newline
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{adc__util_8c_ade4793085eb6e1b1783cdb495cd24508}{A\+D\+C\+Convert\+Buffer} (uint32\+\_\+t $\ast$entrada, float32\+\_\+t $\ast$saida, uint32\+\_\+t n, float32\+\_\+t a, float32\+\_\+t b)
+\begin{DoxyCompactList}\small\item\em Converte um buffer de entrada uint32\+\_\+t em float32\+\_\+t usando a transformação linear y = a$\ast$x + b. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Implementação das funções de auxílio no uso dos A\+D\+Cs. 
+
+\begin{DoxyAuthor}{Author}
+Gustavo 
+\end{DoxyAuthor}
+
+
+\subsubsection{Function Documentation}
+\mbox{\Hypertarget{adc__util_8c_ade4793085eb6e1b1783cdb495cd24508}\label{adc__util_8c_ade4793085eb6e1b1783cdb495cd24508}} 
+\index{adc\+\_\+util.\+c@{adc\+\_\+util.\+c}!A\+D\+C\+Convert\+Buffer@{A\+D\+C\+Convert\+Buffer}}
+\index{A\+D\+C\+Convert\+Buffer@{A\+D\+C\+Convert\+Buffer}!adc\+\_\+util.\+c@{adc\+\_\+util.\+c}}
+\paragraph{\texorpdfstring{A\+D\+C\+Convert\+Buffer()}{ADCConvertBuffer()}}
+{\footnotesize\ttfamily void A\+D\+C\+Convert\+Buffer (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{entrada,  }\item[{float32\+\_\+t $\ast$}]{saida,  }\item[{uint32\+\_\+t}]{n,  }\item[{float32\+\_\+t}]{a,  }\item[{float32\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+
+
+Converte um buffer de entrada uint32\+\_\+t em float32\+\_\+t usando a transformação linear y = a$\ast$x + b. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entrada} & buffer de inteiros com valores entre 0 e 4095 (leitura do A\+DC) \\
+\hline
+{\em saida} & buffer de saída float \\
+\hline
+{\em a} & termo linear da equação y = ax + b \\
+\hline
+{\em b} & termo constante da equação y = ax + b \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}

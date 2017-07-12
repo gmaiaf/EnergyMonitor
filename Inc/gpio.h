@@ -1,4 +1,4 @@
-/**
+/*
   ******************************************************************************
   * File Name          : gpio.h
   * Description        : This file contains all the functions prototypes for 
@@ -31,7 +31,12 @@
   *
   ******************************************************************************
   */
-
+   /**
+  *	@file gpio.h
+  * @author ST
+  * @brief Header das funções de configuração do GPIO.
+  *
+  */
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __gpio_H
 #define __gpio_H
@@ -50,7 +55,10 @@
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
-
+/**
+  * @brief  Inicialização do GPIO.
+  * @retval None
+  */
 void MX_GPIO_Init(void);
 
 /* USER CODE BEGIN Prototypes */

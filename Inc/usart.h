@@ -1,4 +1,4 @@
-/**
+/*
   ******************************************************************************
   * File Name          : USART.h
   * Description        : This file provides code for the configuration
@@ -31,6 +31,12 @@
   *
   ******************************************************************************
   */
+  /**
+  *	@file usart.h
+  * @author ST
+  * @brief Header das funções de configuração da uart.
+  *
+  */
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __usart_H
 #define __usart_H
@@ -45,7 +51,9 @@
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
-
+/**
+  * @brief  Handler para estrutura do UART 2.
+  */
 extern UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN Private defines */
@@ -53,7 +61,10 @@ extern UART_HandleTypeDef huart2;
 /* USER CODE END Private defines */
 
 extern void Error_Handler(void);
-
+/**
+  * @brief  Inicialização dos canais da UART 2.
+  * @retval None
+  */
 void MX_USART2_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */

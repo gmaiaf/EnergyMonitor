@@ -1,27 +1,19 @@
-/*
- * usart_util.c
- *
- *  Created on: May 10, 2017
- *      Author: Gustavo
- *      Board: Nucleo STM32F446RE
- *
- *  Biblioteca com funções úteis para utilizar com a UART/USART
- *
- *  Pinos:
- *  	TX_UART2: PA2
- *  	RX_UART2: PA3
- */
+  /**
+  *	@file usart_util.c
+  * @author Gustavo
+  * @brief Biblioteca com funções úteis para utilizar com a USART2
+  *
+  */
 
 #include "usart.h"
 #include "usart_util.h"
 #include "string.h"
 #include <stdarg.h>
 
-/*
- * Funcao: void USART2_Transmit_Char (char )
- * Entrada: char
- * Saida: void
- * Descricao: envia char send usando UART2.
+/**
+ * @brief Transmite caractere ASCII pela USART 2
+ * @param send: caracter a ser transferido pela USART 2
+ * @retval None
  */
 void USART2_Transmit_Char (char send)
 {
@@ -51,12 +43,10 @@ void USART2_Transmit_Char (char send)
 	}
 }
 
-
-/*
- * Funcao: void USART2_Transmit_String (char *)
- * Entrada: char *
- * Saida: void
- * Descricao: envia string send usando UART2.
+/**
+ * @brief Transmite string pela USART 2
+ * @param send: string a ser transferida pela USART 2
+ * @retval None
  */
 void USART2_Transmit_String (char * send)
 {
@@ -87,11 +77,10 @@ void USART2_Transmit_String (char * send)
 	}
 }
 
-/*
- * Funcao: void USART2_Transmit_UInt (uint32_t )
- * Entrada: uint32_t
- * Saida: void
- * Descricao: envia inteiro positivo send usando UART2.
+/**
+ * @brief Transmite inteiro unsigned pela USART 2
+ * @param send: inteiro a ser transferido pela USART 2
+ * @retval None
  */
 void USART2_Transmit_UInt (uint32_t send)
 {
@@ -137,11 +126,10 @@ void USART2_Transmit_UInt (uint32_t send)
 	}
 }
 
-/*
- * Funcao: void USART2_Transmit_Int (int )
- * Entrada: int
- * Saida: void
- * Descricao: envia inteiro send usando UART2.
+/**
+ * @brief Transmite inteiro signed pela USART 2
+ * @param send: inteiro a ser transferido pela USART 2
+ * @retval None
  */
 void USART2_Transmit_Int (int send)
 {
@@ -161,7 +149,11 @@ void USART2_Transmit_Int (int send)
 }
 
 
-
+/**
+ * @brief Função semelhante à printf usando USART 2. Funciona apenas para %d e %c.
+ * @param send: string formatada a ser transferida pela USART 2
+ * @retval None
+ */
 /*
  * Funcao: void printf( const char* , ...)
  * Entrada: char *
@@ -258,6 +250,11 @@ void print( const char* send, ...)
 	va_end( argp);
 }
 
+/**
+ * @brief Recebe caracter de comando pela USART2.
+ * @param timeout: Timeout em ms.
+ * @retval None
+ */
 /*
  * Funcao: void USART2_Receive_Command (void)
  * Entrada: int timeout
@@ -297,6 +294,10 @@ char USART2_Receive_Command (int timeout)
 	return (char)command;
 }
 
+/**
+ * @brief Habilita interrupção.
+ * @retval None
+ */
 /*
  * Funcao: void USAR2_Receive_Interrupt_Enable (void)
  * Entrada: void

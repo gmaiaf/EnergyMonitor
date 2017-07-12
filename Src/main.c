@@ -1,4 +1,4 @@
-/**
+/*
   ******************************************************************************
   * File Name          : main.c
   * Description        : Main program body
@@ -30,6 +30,12 @@
   *
   ******************************************************************************
   */
+  /**
+  *	@file main.c
+  * @author André, Bruno, Gustado e Leonador
+  * @brief Aplicação: Sistema de Monitoramento de Consumo de Energia.
+  *
+  */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f4xx_hal.h"
@@ -55,48 +61,117 @@
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 /* Variavel de estado da FSM */
+/**
+  * @brief  Estados da máquina de estados da aplicação.
+  */
 enum FSM {START, AQUISICAO, PROCESSAMENTO, RMS_CORRENTE, CALCULOS, DELTA, ID, ENVIAR}
 estado = START;
 /* Historico de medicoes e indexador*/
+/**
+  * @brief  Vetor de #Medicao . Contém histórico de medições.
+  */
 Medicao memoria[MEM_SIZE];
+/**
+  * @brief  Índice do histórico de medições.
+  */
 uint32_t memoria_index = 0;
 /* Base de dados de equipamentos */
+/**
+  * @brief  Base de dados de #Equipamento .
+  */
 Equipamento BaseDados[EQUIP_ARRAY_MAX];
 /* Buffers usados ao longo do processamento */
+/**
+  * @brief  Buffer circular de leitura de tensão. Interrupções ocorrem quando está na metade ou cheio.
+  */
 uint32_t buffer_tensao_DMA[2*BUFFER_SIZE];
+/**
+  * @brief  Buffer circular de leitura de corrente. Interrupções ocorrem quando está na metade ou cheio.
+  */
 uint32_t buffer_corrente_DMA[2*BUFFER_SIZE];
+/**
+  * @brief  Buffer auxiliar de leitura de tensão.
+  */
 uint32_t buffer_tensao_leitura[BUFFER_SIZE];
+/**
+  * @brief  Buffer auxiliar de leitura de corrente.
+  */
 uint32_t buffer_corrente_leitura[BUFFER_SIZE];
+/**
+  * @brief  Buffer auxiliar de leitura de tensão em ponto flutuante.
+  */
 float32_t buffer_corrente_float[BUFFER_SIZE];
+/**
+  * @brief  Buffer auxiliar de leitura de corrente em ponto flutuante.
+  */
 float32_t buffer_tensao_float[BUFFER_SIZE];
-float32_t buffer_corrente_FIR[BUFFER_SIZE];
+/**
+  * @brief  Buffer auxiliar de leitura de tensão em ponto flutuante dizimado.
+  */
 float32_t buffer_tensao_diz[BUFFER_DIZ];
+/**
+  * @brief  Buffer auxiliar de leitura de corrente em ponto flutuante dizimado.
+  */
 float32_t buffer_corrente_diz[BUFFER_DIZ];
 /* Flags de controle */
+/**
+  * @brief  Variável de testes.
+  */
 uint32_t count = 0;
+/**
+  * @brief  Variável de testes.
+  */
 uint32_t tic, toc;
+/**
+  * @brief  Flag de controle. Ativada quando ocorre interrupção de buffer cheio.
+  */
 uint8_t flag_buffercheio = 0;
+/**
+  * @brief  Flag de controle. Ativada quando ocorre interrupção de buffer na metade.
+  */
 uint8_t flag_buffermetade = 0;
+/**
+  * @brief  Flag de testes.
+  */
 uint8_t flag_aquisicao = 0;
 /* Filtro FIR + dizimacao */
+/**
+  * @brief  Estrutura da biblioteca CMSIS para realização da dizimação.
+  */
 arm_fir_decimate_instance_f32 S;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
+/**
+  * @brief  Configuração de clock.
+  */
 void SystemClock_Config(void);
 void Error_Handler(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 /* Callbacks das interrupcoes do ADC-DMA */
+/**
+  * @brief  Callback da interrupção de transferência completa da DMA.
+  * @param	hadc: Handler para ADC.
+  */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *);
+/**
+  * @brief  Callback da interrupção de transferência na metade da DMA.
+  * @param	hadc: Handler para ADC.
+  */
 void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
-
+/**
+  * @brief  Main da aplicação.
+  *
+  *	Implementa a máquina de estados descrita no relatório 3.
+  *
+  */
 int main(void)
 {
 
@@ -106,8 +181,11 @@ int main(void)
 	float32_t corrente_RMS_anterior = 0;
 	uint32_t i = 0;
 	uint32_t timestamp = 0;
+	uint32_t timestamp_anterior = 0;
+	float32_t energia = 0;
 	Parametros param_aux, param_delta;
 	int32_t float_inteiro;
+	int32_t float_fracao;
 	char new_equip;
 	int add_new_equip;
   /* USER CODE END 1 */
@@ -190,6 +268,7 @@ int main(void)
 
 		  if (flag_buffercheio == 1){
 			  /* Timestamp da medicao */
+			  timestamp_anterior = timestamp;
 			  timestamp = HAL_GetTick();
 
 			  /* Transferir dados do buffer da DMA para buffer de leitura e esperar transferencia*/
@@ -201,6 +280,7 @@ int main(void)
 
 		  if (flag_buffermetade == 1){
 			  /* Timestamp da medicao */
+			  timestamp_anterior = timestamp;
 			  timestamp = HAL_GetTick();
 
 			  /* Transferir dados do buffer da DMA para buffer de leitura e esperar transferencia*/
@@ -223,6 +303,7 @@ int main(void)
 		  /* Converter valor do ADC 0-4095 para float32_t */
 		  ADCConvertBuffer(buffer_corrente_leitura, buffer_corrente_float, BUFFER_SIZE, CORRENTE_A, CORRENTE_B);
 		  /* Filtro FIR  e Dizimacao da corrente*/
+		  initializeFIR(&S);
 		  arm_fir_decimate_f32(&S, buffer_corrente_float, buffer_corrente_diz, BUFFER_SIZE);
 
 		  HAL_DMA_PollForTransfer(&hdma_memtomem_dma2_stream1, HAL_DMA_FULL_TRANSFER, HAL_MAX_DELAY);
@@ -230,6 +311,7 @@ int main(void)
 		  /* Converter valor do ADC 0-4095 para float32_t */
 		  ADCConvertBuffer(buffer_tensao_leitura, buffer_tensao_float, BUFFER_SIZE, TENSAO_A, TENSAO_B);
 		  /* Filtro FIR e Dizimacao da tensao */
+		  initializeFIR(&S);
 		  arm_fir_decimate_f32(&S, buffer_tensao_float, buffer_tensao_diz, BUFFER_SIZE);
 
 		  estado = RMS_CORRENTE;
@@ -244,7 +326,7 @@ int main(void)
 			  USART2_Transmit_String("\n\r");*/
 
 			  // print valor real antes de dizimacao (mA e V)
-			  /*float_inteiro = (int32_t) (1000*buffer_corrente_float[i]);
+			  float_inteiro = (int32_t) (1000*buffer_corrente_float[i]);
 			  USART2_Transmit_Int(float_inteiro);
 			  //float_fracao = abs((int32_t)(buffer_corrente_float[i]*1000)%1000);
 			  //USART2_Transmit_Char('.');
@@ -255,17 +337,17 @@ int main(void)
 			  float_fracao = abs((int32_t)(buffer_tensao_float[i]*1000)%1000);
 			  USART2_Transmit_Char('.');
 			  USART2_Transmit_UInt(float_fracao);
-			  USART2_Transmit_String("\n\r");*/
+			  USART2_Transmit_String("\n\r");
 		  }
 
 		  for(i=0; i<BUFFER_DIZ; i++)
 		  {
 
-			  /*// print valor real depois da dizimacao (mA e V)
-			  float_inteiro = (int32_t) (1000*buffer_corrente_diz[i]);
+			  // print valor real depois da dizimacao (mA e V)
+			  /*float_inteiro = (int32_t) (1000*buffer_corrente_diz[i]);
 			  USART2_Transmit_Int(float_inteiro);
 			  //float_fracao = abs((int32_t)(buffer_corrente_diz[i]*1000)%1000);
-			  //USART2_Transmit_Char('.');
+			  //USART2_Trans 	mit_Char('.');
 			  //USART2_Transmit_Int(float_fracao);
 			  USART2_Transmit_Char(',');
 			  float_inteiro = (int32_t) (buffer_tensao_diz[i]);
@@ -275,7 +357,7 @@ int main(void)
 			  USART2_Transmit_UInt(float_fracao);
 			  USART2_Transmit_String("\n\r");*/
 		  }
-		  //HAL_Delay(100);
+		  HAL_Delay(100);
 		  break;
 
 	  case RMS_CORRENTE:
@@ -298,7 +380,9 @@ int main(void)
 		  /* Ler ultimo valor de RMS do historico*/
 		  corrente_RMS_anterior = memoria[memoria_index%MEM_SIZE].med.i_rms;
 
-		  // print valor RMS lido
+		  energia = energia + memoria[memoria_index%MEM_SIZE].med.v_rms*corrente_RMS*memoria[memoria_index%MEM_SIZE].med.pf*((float32_t)(timestamp-timestamp_anterior))*MS2H;
+
+		  //print valor RMS lido
 		  //float_inteiro = (int32_t) (1000*corrente_RMS_anterior);
 		  //print("RMS Anterior: %d\n\r", float_inteiro);
 
@@ -308,7 +392,7 @@ int main(void)
 			  // print valor RMS lido
 			  //float_inteiro = (int32_t) (1000*corrente_RMS);
 			  //print("RMS Lido: %d\n\r", float_inteiro);
-			  print("Proximo estado: CALCULOS\n\r");
+			  //print("Proximo estado: CALCULOS\n\r");
 		  }
 		  else {
 			  estado = AQUISICAO;
@@ -324,6 +408,7 @@ int main(void)
 		   * Transicao: Calculos completos
 		   */
 		  /* Calcular parametros eletricos obtidos*/
+
 		  param_aux.i_rms = corrente_RMS;
 		  float_inteiro = (int32_t) (1000*param_aux.i_rms);
 		  //print("I RMS: %d\n\r", float_inteiro);
@@ -351,6 +436,8 @@ int main(void)
 		  param_aux.thd = retornaTHD(param_aux.harmonicos_RMS);
 		  float_inteiro = (int32_t) (1000*param_aux.thd);
 		  //print("THD: %d\n\r", float_inteiro);
+		  float_inteiro = (int32_t) (1000000*energia);
+		  //print("Energia Total: %d\n\r\r", float_inteiro);
 
 		  estado = DELTA;
 		  break;
@@ -441,27 +528,27 @@ int main(void)
 		   * Transicao: Envio completo
 		   */
 		  /* Enviar nova medicao pela UART*/
-		  print("Timestamp: %d\n\r", memoria[memoria_index%MEM_SIZE].timestamp);
+		  //print("Timestamp: %d\n\r", memoria[memoria_index%MEM_SIZE].timestamp);
 		  float_inteiro = (int32_t) (1000*memoria[memoria_index%MEM_SIZE].med.i_rms);
-		  print("I RMS: %d\n\r", float_inteiro);
+		  //print("I RMS: %d\n\r", float_inteiro);
 		  float_inteiro = (int32_t) (memoria[memoria_index%MEM_SIZE].med.v_rms);
-		  print("V RMS: %d\n\r", float_inteiro);
+		  //print("V RMS: %d\n\r", float_inteiro);
 		  float_inteiro = (int32_t) (memoria[memoria_index%MEM_SIZE].med.pot_at);
-		  print("Potencia Ativa: %d\n\r", float_inteiro);
+		  //print("Potencia Ativa: %d\n\r", float_inteiro);
 		  float_inteiro = (int32_t) (memoria[memoria_index%MEM_SIZE].med.pot_ap);
-		  print("Potencia Aparente: %d\n\r", float_inteiro);
+		  //print("Potencia Aparente: %d\n\r", float_inteiro);
 		  float_inteiro = (int32_t) (memoria[memoria_index%MEM_SIZE].med.pot_re);
-		  print("Potencia Reativa: %d\n\r", float_inteiro);
+		  //print("Potencia Reativa: %d\n\r", float_inteiro);
 		  float_inteiro = (int32_t) (1000*memoria[memoria_index%MEM_SIZE].med.pf);
-		  print("Fator de Potencia: %d\n\r", float_inteiro);
+		  //print("Fator de Potencia: %d\n\r", float_inteiro);
 		  for(i=0; i<MAX_HARMONICA; i++)
 		  {
-			  print("Harmonica %d: %d\n\r",i,(int32_t)(1000*memoria[memoria_index%MEM_SIZE].med.harmonicos_RMS[i]));
+			  //print("Harmonica %d: %d\n\r",i,(int32_t)(1000*memoria[memoria_index%MEM_SIZE].med.harmonicos_RMS[i]));
 		  }
 		  float_inteiro = (int32_t) (1000*memoria[memoria_index%MEM_SIZE].med.thd);
-		  print("THD: %d\n\r", float_inteiro);
+		  //print("THD: %d\n\r", float_inteiro);
 		  for(i=0; i<EQUIP_ARRAY_MAX; i++) {
-			  print("Equipamento %d: %d\n\r", i, memoria[memoria_index%MEM_SIZE].equipamentos[i]);
+			  //print("Equipamento %d: %d\n\r", i, memoria[memoria_index%MEM_SIZE].equipamentos[i]);
 		  }
 
 		  // chamar funcao de envio usando {memoria_index%MEM_SIZE}
@@ -546,6 +633,10 @@ void SystemClock_Config(void)
  * @retval void
  * @brief Callback de transferencia completa da DMA-ADC
  */
+ /**
+  * @brief  Callback da interrupção de transferência completa da DMA.
+  * @param	hadc: Handler para ADC.
+  */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
 	/* Verificar ADC1 (mestre) e ativar flag */
@@ -569,6 +660,10 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
  * @retval void
  * @brief Callback de transferencia pela meta da DMA-ADC
  */
+ /**
+  * @brief  Callback da interrupção de transferência na metade da DMA.
+  * @param	hadc: Handler para ADC.
+  */
 void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
 {
 	/* Verificar ADC1 (mestre) e ativar flag */

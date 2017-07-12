@@ -1,4 +1,4 @@
-/**
+/*
   ******************************************************************************
   * File Name          : TIM.h
   * Description        : This file provides code for the configuration
@@ -31,6 +31,13 @@
   *
   ******************************************************************************
   */
+   /**
+  *	@file tim.h
+  * @author ST
+  * @brief Header das funções de configuração do temporizador.
+  *
+  */
+  
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __tim_H
 #define __tim_H
@@ -45,7 +52,9 @@
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
-
+/**
+  * @brief  Handler para estrutura do Timer 8.
+  */
 extern TIM_HandleTypeDef htim8;
 
 /* USER CODE BEGIN Private defines */
@@ -53,7 +62,10 @@ extern TIM_HandleTypeDef htim8;
 /* USER CODE END Private defines */
 
 extern void Error_Handler(void);
-
+/**
+  * @brief  Inicialização dos canais do Timer 8.
+  * @retval None
+  */
 void MX_TIM8_Init(void);
 
 /* USER CODE BEGIN Prototypes */

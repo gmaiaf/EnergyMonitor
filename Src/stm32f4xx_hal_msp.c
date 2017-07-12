@@ -1,4 +1,4 @@
-/**
+/*
   ******************************************************************************
   * File Name          : stm32f4xx_hal_msp.c
   * Description        : This file provides code for the MSP Initialization 
@@ -30,6 +30,12 @@
   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
   ******************************************************************************
+  */
+ /**
+  *	@file stm32f4xx_hal_msp.c
+  * @author ST
+  * @brief Inicializa NVIC.
+  *
   */
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"

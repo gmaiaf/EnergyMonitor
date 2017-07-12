@@ -1,9 +1,9 @@
-/*
- * adc_util.h
- *
- *  Created on: Jun 26, 2017
- *      Author: Gustavo
- */
+ /**
+  *	@file adc_util.h
+  * @author Gustavo
+  * @brief Implementação das funções de auxílio no uso dos ADCs.
+  *
+  */
 
 #ifndef ADC_UTIL_H_
 #define ADC_UTIL_H_
@@ -16,12 +16,11 @@
 #include "arm_math.h"
 
 /**
-  * @brief  Converte um buffer de entrada uint32_t em float32_t usando a transformacao linear y = a*x + b
+  * @brief  Converte um buffer de entrada uint32_t em float32_t usando a transformação linear y = a*x + b
   * @param  entrada: buffer de inteiros com valores entre 0 e 4095  (leitura do ADC)
-  * @param 	saida: buffer de saida float
-  * @param	n: numero de elementos no buffer de entrada e de saida
-  * @param	a: termo linear da equacao y = ax + b
-  * @param	b: termo constante da equacao y = ax + b
+  * @param 	saida: buffer de saída float
+  * @param	a: termo linear da equação y = ax + b
+  * @param	b: termo constante da equação y = ax + b
   * @retval None
   */
 void ADCConvertBuffer(uint32_t * entrada, float32_t * saida, uint32_t n, float32_t a, float32_t b);

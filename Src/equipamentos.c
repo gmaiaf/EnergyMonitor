@@ -1,21 +1,21 @@
-/*
- * equipamentos.c
- *
- *  Created on: Jul 3, 2017
- *      Author: Gustavo
- */
+ /**
+  *	@file equipamentos.c
+  * @author Bruno e Gustavo
+  * @brief Implementação das funções que manipulam as estruturas do projeto.
+  *
+  */
 
 #include "equipamentos.h"
 #include "string.h"
 /**
-  * @brief  Cria estrutura com informacoes de um novo equipamento
-  * @param  equip: ponteiro para estrutura Equipamento
-  * @param 	nome: char* com nome do equipamento
-  * @param	pot_at: potencia ativa
-  * @param	pot_re: potencia reativa
-  * @param	thd: taxa de distorção harmonica
-  * @param	pf: fator de potencia
-  * @param	harmonicos: vetor de harmonicas
+  * @brief  Cria estrutura com informações de um novo equipamento.
+  * @param  equip: ponteiro para estrutura #Equipamento .
+  * @param 	nome: char* com nome do equipamento.
+  * @param	pot_at: potencia ativa.
+  * @param	pot_re: potencia reativa.
+  * @param	thd: taxa de distorção harmonica.
+  * @param	pf: fator de potencia.
+  * @param	harmonicos: vetor de harmonicas.
   * @retval None
   */
 void CadastroDeEquipamento(Equipamento *equip, uint16_t ID, char nome[40], float32_t pot_at, float32_t pot_re, float32_t thd, float32_t pf, float32_t *harmonicos){
@@ -54,7 +54,14 @@ void CadastroDeEquipamento(Equipamento *equip, uint16_t ID, char nome[40], float
     }*/
 }
 
-
+/**
+  * @brief  Calcula delta entre duas estruturas #Parametros .
+  * @param  medida_nova: ponteiro para uma estrutura #Parametros que contém os parâmetros da medição mais recente.
+  * @param 	medida_velha: ponteiro para uma estrutura #Parametros que contém os parâmetros da medição anterior.
+  * @param	delta: ponteiro para uma estrutura #Parametros que armazana o delta entre as duas entradas.
+  * @param	new: ponteiro para um char que indicará se um equipamento foi adicionado ou retirado da rede.
+  * @retval None
+  */
 void DeltaParam(Parametros *medida_nova, Parametros *medida_velha, Parametros *delta, char* new)
 {
 	/* new = 1 -> equipamento adicionado, new = 0 -> equipamento removido */
@@ -99,6 +106,10 @@ void DeltaParam(Parametros *medida_nova, Parametros *medida_velha, Parametros *d
 	delta->thd = retornaTHD(delta->harmonicos_RMS);
 }
 
+/**
+  * @brief  DEPRECATED Calcula delta entre duas estruturas #Parametros .
+  * @retval None
+  */
 float ComparacaoDeEquipamentos(Equipamento *equip1, Parametros *medida){
     float dif_rel[4];
     dif_rel[0] = (equip1->med.pot_at - medida->pot_at)/equip1->med.pot_at;
@@ -128,6 +139,11 @@ float ComparacaoDeEquipamentos(Equipamento *equip1, Parametros *medida){
     return dif;
 }
 
+/**
+  * @brief  Inicializa uma estrutura #Medicao .
+  * @param  medicao: ponteiro para uma estrutura #Medicao que será inicializada com zeros.
+  * @retval None
+  */
 void InitMedicao(Medicao *medicao)
 {
 	medicao->med.pot_ap = 0;
@@ -142,6 +158,11 @@ void InitMedicao(Medicao *medicao)
     for(int i=0; i<EQUIP_ARRAY_MAX; i++) {medicao->equipamentos[i] = 0;}
 }
 
+/**
+  * @brief  Inicializa uma vetor (base de dados) de estruturas #Equipamento .
+  * @param  BaseDados: ponteiro para um vetor de #Equipamento que será inicializada com zeros.
+  * @retval None
+  */
 void InitBaseDeDados(Equipamento * BaseDados)
 {
 	int32_t i = 0;
@@ -171,7 +192,12 @@ void InitBaseDeDados(Equipamento * BaseDados)
 
 }
 
-
+/**
+  * @brief  Função com implementação básica de um algoritmo de identificação de equipamento na rede.
+  * @param  BaseDados: ponteiro para um vetor de #Equipamento sobre o qual é feita a busca da #Medicao.
+  * @param	Medicao: ponteiro para #Parametros que contém a medição do delta na rede. Representa um equipamento acrescido ou retirado da rede.
+  * @retval min: Índice da base de dados que contém o equipamento identificado.
+  */
 int IdentificarEquipamento(Equipamento *BaseDados, Parametros *Medicao)
 {
 	float32_t min_dist, aux_dist, relative_dist;

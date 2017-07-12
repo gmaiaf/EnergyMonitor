@@ -1,0 +1,880 @@
+\begin{theindex}
+
+  \item {A\+D\+C\+\_\+\+I\+R\+Q\+Handler}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{78}
+    \subitem {stm32f4xx\+\_\+it.\+h}, \hyperpage{47}
+  \item {A\+D\+C\+Convert\+Buffer}
+    \subitem {adc\+\_\+util.\+c}, \hyperpage{58}
+    \subitem {adc\+\_\+util.\+h}, \hyperpage{19}
+  \item {A\+H\+B\+Presc\+Table}
+    \subitem {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Variables}, 
+		\hyperpage{9}
+  \item {A\+P\+B\+Presc\+Table}
+    \subitem {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Variables}, 
+		\hyperpage{9}
+  \item {adc.\+c}
+    \subitem {H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+De\+Init}, 
+		\hyperpage{55}
+    \subitem {H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+Init}, \hyperpage{56}
+    \subitem {hadc1}, \hyperpage{57}
+    \subitem {hadc2}, \hyperpage{57}
+    \subitem {hdma\+\_\+adc1}, \hyperpage{57}
+    \subitem {hdma\+\_\+adc2}, \hyperpage{57}
+    \subitem {M\+X\+\_\+\+A\+D\+C1\+\_\+\+Init}, \hyperpage{56}
+    \subitem {M\+X\+\_\+\+A\+D\+C2\+\_\+\+Init}, \hyperpage{57}
+  \item {adc.\+h}
+    \subitem {Error\+\_\+\+Handler}, \hyperpage{17}
+    \subitem {hadc1}, \hyperpage{18}
+    \subitem {hadc2}, \hyperpage{18}
+    \subitem {M\+X\+\_\+\+A\+D\+C1\+\_\+\+Init}, \hyperpage{17}
+    \subitem {M\+X\+\_\+\+A\+D\+C2\+\_\+\+Init}, \hyperpage{18}
+  \item {adc\+\_\+util.\+c}
+    \subitem {A\+D\+C\+Convert\+Buffer}, \hyperpage{58}
+  \item {adc\+\_\+util.\+h}
+    \subitem {A\+D\+C\+Convert\+Buffer}, \hyperpage{19}
+  \item {assert\+\_\+param}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{39}
+
+  \indexspace
+
+  \item {B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}
+    \subitem {defines.\+h}, \hyperpage{25}
+  \item {B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}
+    \subitem {defines.\+h}, \hyperpage{26}
+  \item {Base\+Dados}
+    \subitem {main.\+c}, \hyperpage{73}
+  \item {buffer\+\_\+corrente\+\_\+\+D\+MA}
+    \subitem {main.\+c}, \hyperpage{73}
+  \item {buffer\+\_\+corrente\+\_\+diz}
+    \subitem {main.\+c}, \hyperpage{73}
+  \item {buffer\+\_\+corrente\+\_\+float}
+    \subitem {main.\+c}, \hyperpage{74}
+  \item {buffer\+\_\+corrente\+\_\+leitura}
+    \subitem {main.\+c}, \hyperpage{74}
+  \item {buffer\+\_\+tensao\+\_\+\+D\+MA}
+    \subitem {main.\+c}, \hyperpage{74}
+  \item {buffer\+\_\+tensao\+\_\+diz}
+    \subitem {main.\+c}, \hyperpage{74}
+  \item {buffer\+\_\+tensao\+\_\+float}
+    \subitem {main.\+c}, \hyperpage{74}
+  \item {buffer\+\_\+tensao\+\_\+leitura}
+    \subitem {main.\+c}, \hyperpage{74}
+
+  \indexspace
+
+  \item {C\+M\+S\+IS}, \hyperpage{3}
+  \item {C\+O\+R\+R\+E\+N\+T\+E\+\_\+A}
+    \subitem {defines.\+h}, \hyperpage{26}
+  \item {C\+O\+R\+R\+E\+N\+T\+E\+\_\+B}
+    \subitem {defines.\+h}, \hyperpage{26}
+  \item {Cadastro\+De\+Equipamento}
+    \subitem {equipamentos.\+c}, \hyperpage{66}
+    \subitem {equipamentos.\+h}, \hyperpage{33}
+  \item {calculos\+\_\+eletricos.\+c}
+    \subitem {P\+I\+\_\+\+V\+A\+L\+UE}, \hyperpage{59}
+    \subitem {retorna\+FP}, \hyperpage{60}
+    \subitem {retorna\+M\+E\+D\+I\+A\+C\+I\+C\+L\+OS}, \hyperpage{60}
+    \subitem {retorna\+P\+O\+T\+A\+P\+A\+R\+E\+N\+TE}, \hyperpage{61}
+    \subitem {retorna\+P\+O\+T\+A\+T\+I\+VA}, \hyperpage{61}
+    \subitem {retorna\+P\+O\+T\+R\+E\+A\+T\+I\+VA}, \hyperpage{62}
+    \subitem {retorna\+R\+M\+S\+H\+A\+R\+M\+O\+N\+I\+C\+OS}, 
+		\hyperpage{62}
+    \subitem {retorna\+R\+MS}, \hyperpage{62}
+    \subitem {retorna\+S\+IN}, \hyperpage{63}
+    \subitem {retorna\+T\+HD}, \hyperpage{64}
+    \subitem {S\+Q\+R\+T2}, \hyperpage{60}
+  \item {calculos\+\_\+eletricos.\+h}
+    \subitem {retorna\+FP}, \hyperpage{20}
+    \subitem {retorna\+M\+E\+D\+I\+A\+C\+I\+C\+L\+OS}, \hyperpage{20}
+    \subitem {retorna\+P\+O\+T\+A\+P\+A\+R\+E\+N\+TE}, \hyperpage{21}
+    \subitem {retorna\+P\+O\+T\+A\+T\+I\+VA}, \hyperpage{21}
+    \subitem {retorna\+P\+O\+T\+R\+E\+A\+T\+I\+VA}, \hyperpage{22}
+    \subitem {retorna\+R\+M\+S\+H\+A\+R\+M\+O\+N\+I\+C\+OS}, 
+		\hyperpage{23}
+    \subitem {retorna\+R\+MS}, \hyperpage{22}
+    \subitem {retorna\+S\+IN}, \hyperpage{23}
+    \subitem {retorna\+T\+HD}, \hyperpage{24}
+  \item {Comparacao\+De\+Equipamentos}
+    \subitem {equipamentos.\+c}, \hyperpage{66}
+    \subitem {equipamentos.\+h}, \hyperpage{34}
+  \item {count}
+    \subitem {main.\+c}, \hyperpage{74}
+
+  \indexspace
+
+  \item {D\+A\+T\+A\+\_\+\+C\+A\+C\+H\+E\+\_\+\+E\+N\+A\+B\+LE}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{39}
+  \item {D\+I\+Z\+I\+M\+A\+C\+AO}
+    \subitem {defines.\+h}, \hyperpage{26}
+  \item {D\+M\+A2\+\_\+\+Stream0\+\_\+\+I\+R\+Q\+Handler}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{79}
+    \subitem {stm32f4xx\+\_\+it.\+h}, \hyperpage{48}
+  \item {D\+M\+A2\+\_\+\+Stream1\+\_\+\+I\+R\+Q\+Handler}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{79}
+    \subitem {stm32f4xx\+\_\+it.\+h}, \hyperpage{48}
+  \item {D\+M\+A2\+\_\+\+Stream2\+\_\+\+I\+R\+Q\+Handler}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{79}
+    \subitem {stm32f4xx\+\_\+it.\+h}, \hyperpage{48}
+  \item {D\+M\+A2\+\_\+\+Stream3\+\_\+\+I\+R\+Q\+Handler}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{79}
+    \subitem {stm32f4xx\+\_\+it.\+h}, \hyperpage{48}
+  \item {D\+P83848\+\_\+\+P\+H\+Y\+\_\+\+A\+D\+D\+R\+E\+SS}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{39}
+  \item {defines.\+h}
+    \subitem {B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}, \hyperpage{25}
+    \subitem {B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}, \hyperpage{26}
+    \subitem {C\+O\+R\+R\+E\+N\+T\+E\+\_\+A}, \hyperpage{26}
+    \subitem {C\+O\+R\+R\+E\+N\+T\+E\+\_\+B}, \hyperpage{26}
+    \subitem {D\+I\+Z\+I\+M\+A\+C\+AO}, \hyperpage{26}
+    \subitem {E\+Q\+U\+I\+P\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+M\+AX}, 
+		\hyperpage{26}
+    \subitem {F\+\_\+\+S\+A\+M\+P\+\_\+\+D\+IZ}, \hyperpage{26}
+    \subitem {F\+\_\+\+S\+A\+MP}, \hyperpage{26}
+    \subitem {F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}, 
+		\hyperpage{27}
+    \subitem {GI}, \hyperpage{27}
+    \subitem {GV}, \hyperpage{27}
+    \subitem {M\+A\+X\+\_\+\+H\+A\+R\+M\+O\+N\+I\+CA}, \hyperpage{27}
+    \subitem {M\+E\+M\+\_\+\+S\+I\+ZE}, \hyperpage{27}
+    \subitem {M\+S2H}, \hyperpage{27}
+    \subitem {N\+\_\+\+P\+E\+R\+I\+O\+D\+OS}, \hyperpage{27}
+    \subitem {N\+\_\+\+S\+T\+A\+RT}, \hyperpage{28}
+    \subitem {P\+PP}, \hyperpage{28}
+    \subitem {R\+M\+S\+\_\+\+L\+O\+W\+E\+R\+B\+O\+U\+ND}, 
+		\hyperpage{28}
+    \subitem {R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA}, 
+		\hyperpage{28}
+    \subitem {R\+M\+S\+\_\+\+U\+P\+P\+E\+R\+B\+O\+U\+ND}, 
+		\hyperpage{28}
+    \subitem {T\+E\+N\+S\+A\+O\+\_\+A}, \hyperpage{28}
+    \subitem {T\+E\+N\+S\+A\+O\+\_\+B}, \hyperpage{28}
+  \item {Delta\+Param}
+    \subitem {equipamentos.\+c}, \hyperpage{67}
+    \subitem {equipamentos.\+h}, \hyperpage{34}
+  \item {dizimacao.\+h}
+    \subitem {initialize\+F\+IR}, \hyperpage{29}
+    \subitem {p\+Coeffs}, \hyperpage{30}
+    \subitem {p\+State}, \hyperpage{30}
+    \subitem {S}, \hyperpage{30}
+  \item {dma.\+c}
+    \subitem {hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1}, 
+		\hyperpage{65}
+    \subitem {hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3}, 
+		\hyperpage{65}
+    \subitem {M\+X\+\_\+\+D\+M\+A\+\_\+\+Init}, \hyperpage{64}
+  \item {dma.\+h}
+    \subitem {Error\+\_\+\+Handler}, \hyperpage{31}
+    \subitem {hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1}, 
+		\hyperpage{32}
+    \subitem {hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3}, 
+		\hyperpage{32}
+    \subitem {M\+X\+\_\+\+D\+M\+A\+\_\+\+Init}, \hyperpage{31}
+
+  \indexspace
+
+  \item {E\+Q\+U\+I\+P\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+M\+AX}
+    \subitem {defines.\+h}, \hyperpage{26}
+  \item {E\+T\+H\+\_\+\+R\+X\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{40}
+  \item {E\+T\+H\+\_\+\+R\+X\+B\+U\+F\+NB}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{40}
+  \item {E\+T\+H\+\_\+\+T\+X\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{40}
+  \item {E\+T\+H\+\_\+\+T\+X\+B\+U\+F\+NB}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{40}
+  \item {E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+C\+L\+O\+C\+K\+\_\+\+V\+A\+L\+UE}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{40}
+  \item {Equipamento}, \hyperpage{13}
+    \subitem {ID}, \hyperpage{13}
+    \subitem {med}, \hyperpage{13}
+    \subitem {name}, \hyperpage{13}
+  \item {equipamentos}
+    \subitem {Medicao}, \hyperpage{14}
+  \item {equipamentos.\+c}
+    \subitem {Cadastro\+De\+Equipamento}, \hyperpage{66}
+    \subitem {Comparacao\+De\+Equipamentos}, \hyperpage{66}
+    \subitem {Delta\+Param}, \hyperpage{67}
+    \subitem {Identificar\+Equipamento}, \hyperpage{67}
+    \subitem {Init\+Base\+De\+Dados}, \hyperpage{67}
+    \subitem {Init\+Medicao}, \hyperpage{68}
+  \item {equipamentos.\+h}
+    \subitem {Cadastro\+De\+Equipamento}, \hyperpage{33}
+    \subitem {Comparacao\+De\+Equipamentos}, \hyperpage{34}
+    \subitem {Delta\+Param}, \hyperpage{34}
+    \subitem {Identificar\+Equipamento}, \hyperpage{35}
+    \subitem {Init\+Base\+De\+Dados}, \hyperpage{35}
+    \subitem {Init\+Medicao}, \hyperpage{35}
+    \subitem {Medicao}, \hyperpage{33}
+    \subitem {Parametros}, \hyperpage{33}
+  \item {Error\+\_\+\+Handler}
+    \subitem {adc.\+h}, \hyperpage{17}
+    \subitem {dma.\+h}, \hyperpage{31}
+    \subitem {main.\+c}, \hyperpage{71}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+msp.\+c}, \hyperpage{76}
+    \subitem {tim.\+h}, \hyperpage{49}
+    \subitem {usart.\+h}, \hyperpage{51}
+  \item {estado}
+    \subitem {main.\+c}, \hyperpage{75}
+
+  \indexspace
+
+  \item {F\+\_\+\+S\+A\+M\+P\+\_\+\+D\+IZ}
+    \subitem {defines.\+h}, \hyperpage{26}
+  \item {F\+\_\+\+S\+A\+MP}
+    \subitem {defines.\+h}, \hyperpage{26}
+  \item {F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}
+    \subitem {defines.\+h}, \hyperpage{27}
+  \item {F\+SM}
+    \subitem {main.\+c}, \hyperpage{70}
+  \item {flag\+\_\+aquisicao}
+    \subitem {main.\+c}, \hyperpage{75}
+  \item {flag\+\_\+buffercheio}
+    \subitem {main.\+c}, \hyperpage{75}
+  \item {flag\+\_\+buffermetade}
+    \subitem {main.\+c}, \hyperpage{75}
+
+  \indexspace
+
+  \item {GI}
+    \subitem {defines.\+h}, \hyperpage{27}
+  \item {gpio.\+c}
+    \subitem {M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}, \hyperpage{69}
+  \item {gpio.\+h}
+    \subitem {M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}, \hyperpage{36}
+  \item {GV}
+    \subitem {defines.\+h}, \hyperpage{27}
+
+  \indexspace
+
+  \item {H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Conv\+Cplt\+Callback}
+    \subitem {main.\+c}, \hyperpage{71}
+  \item {H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Conv\+Half\+Cplt\+Callback}
+    \subitem {main.\+c}, \hyperpage{71}
+  \item {H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{40}
+  \item {H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+De\+Init}
+    \subitem {adc.\+c}, \hyperpage{55}
+  \item {H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Msp\+Init}
+    \subitem {adc.\+c}, \hyperpage{56}
+  \item {H\+A\+L\+\_\+\+C\+O\+R\+T\+E\+X\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{40}
+  \item {H\+A\+L\+\_\+\+D\+M\+A\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{40}
+  \item {H\+A\+L\+\_\+\+F\+L\+A\+S\+H\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{41}
+  \item {H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{41}
+  \item {H\+A\+L\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{41}
+  \item {H\+A\+L\+\_\+\+Msp\+Init}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+msp.\+c}, \hyperpage{77}
+  \item {H\+A\+L\+\_\+\+P\+W\+R\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{41}
+  \item {H\+A\+L\+\_\+\+R\+C\+C\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{41}
+  \item {H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Base\+\_\+\+Msp\+De\+Init}
+    \subitem {tim.\+c}, \hyperpage{83}
+  \item {H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Base\+\_\+\+Msp\+Init}
+    \subitem {tim.\+c}, \hyperpage{83}
+  \item {H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{41}
+  \item {H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{41}
+  \item {H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Msp\+De\+Init}
+    \subitem {usart.\+c}, \hyperpage{84}
+  \item {H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Msp\+Init}
+    \subitem {usart.\+c}, \hyperpage{85}
+  \item {H\+S\+E\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+T\+I\+M\+E\+O\+UT}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{41}
+  \item {H\+S\+E\+\_\+\+V\+A\+L\+UE}
+    \subitem {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Includes}, 
+		\hyperpage{5}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{42}
+  \item {H\+S\+I\+\_\+\+V\+A\+L\+UE}
+    \subitem {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Includes}, 
+		\hyperpage{5}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{42}
+  \item {hadc1}
+    \subitem {adc.\+c}, \hyperpage{57}
+    \subitem {adc.\+h}, \hyperpage{18}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{80}
+  \item {hadc2}
+    \subitem {adc.\+c}, \hyperpage{57}
+    \subitem {adc.\+h}, \hyperpage{18}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{80}
+  \item {harmonicos\+\_\+\+R\+MS}
+    \subitem {Parametros}, \hyperpage{15}
+  \item {hdma\+\_\+adc1}
+    \subitem {adc.\+c}, \hyperpage{57}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{80}
+  \item {hdma\+\_\+adc2}
+    \subitem {adc.\+c}, \hyperpage{57}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{80}
+  \item {hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1}
+    \subitem {dma.\+c}, \hyperpage{65}
+    \subitem {dma.\+h}, \hyperpage{32}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{81}
+  \item {hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3}
+    \subitem {dma.\+c}, \hyperpage{65}
+    \subitem {dma.\+h}, \hyperpage{32}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{81}
+  \item {htim8}
+    \subitem {tim.\+c}, \hyperpage{84}
+    \subitem {tim.\+h}, \hyperpage{50}
+  \item {huart2}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{81}
+    \subitem {usart.\+c}, \hyperpage{85}
+    \subitem {usart.\+h}, \hyperpage{51}
+
+  \indexspace
+
+  \item {i\+\_\+rms}
+    \subitem {Parametros}, \hyperpage{15}
+  \item {I\+N\+S\+T\+R\+U\+C\+T\+I\+O\+N\+\_\+\+C\+A\+C\+H\+E\+\_\+\+E\+N\+A\+B\+LE}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{42}
+  \item {ID}
+    \subitem {Equipamento}, \hyperpage{13}
+  \item {Identificar\+Equipamento}
+    \subitem {equipamentos.\+c}, \hyperpage{67}
+    \subitem {equipamentos.\+h}, \hyperpage{35}
+  \item {Inc/adc.\+h}, \hyperpage{16}
+  \item {Inc/adc\+\_\+util.\+h}, \hyperpage{18}
+  \item {Inc/calculos\+\_\+eletricos.\+h}, \hyperpage{19}
+  \item {Inc/defines.\+h}, \hyperpage{24}
+  \item {Inc/dizimacao.\+h}, \hyperpage{29}
+  \item {Inc/dma.\+h}, \hyperpage{30}
+  \item {Inc/equipamentos.\+h}, \hyperpage{32}
+  \item {Inc/gpio.\+h}, \hyperpage{36}
+  \item {Inc/main.\+h}, \hyperpage{37}
+  \item {Inc/stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{37}
+  \item {Inc/stm32f4xx\+\_\+it.\+h}, \hyperpage{46}
+  \item {Inc/tim.\+h}, \hyperpage{49}
+  \item {Inc/usart.\+h}, \hyperpage{50}
+  \item {Inc/usart\+\_\+util.\+h}, \hyperpage{52}
+  \item {Init\+Base\+De\+Dados}
+    \subitem {equipamentos.\+c}, \hyperpage{67}
+    \subitem {equipamentos.\+h}, \hyperpage{35}
+  \item {Init\+Medicao}
+    \subitem {equipamentos.\+c}, \hyperpage{68}
+    \subitem {equipamentos.\+h}, \hyperpage{35}
+  \item {initialize\+F\+IR}
+    \subitem {dizimacao.\+h}, \hyperpage{29}
+
+  \indexspace
+
+  \item {L\+S\+E\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+T\+I\+M\+E\+O\+UT}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{42}
+  \item {L\+S\+E\+\_\+\+V\+A\+L\+UE}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{42}
+  \item {L\+S\+I\+\_\+\+V\+A\+L\+UE}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{42}
+
+  \indexspace
+
+  \item {M\+A\+C\+\_\+\+A\+D\+D\+R0}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{42}
+  \item {M\+A\+C\+\_\+\+A\+D\+D\+R1}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{43}
+  \item {M\+A\+C\+\_\+\+A\+D\+D\+R2}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{43}
+  \item {M\+A\+C\+\_\+\+A\+D\+D\+R3}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{43}
+  \item {M\+A\+C\+\_\+\+A\+D\+D\+R4}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{43}
+  \item {M\+A\+C\+\_\+\+A\+D\+D\+R5}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{43}
+  \item {M\+A\+X\+\_\+\+H\+A\+R\+M\+O\+N\+I\+CA}
+    \subitem {defines.\+h}, \hyperpage{27}
+  \item {M\+E\+M\+\_\+\+S\+I\+ZE}
+    \subitem {defines.\+h}, \hyperpage{27}
+  \item {M\+S2H}
+    \subitem {defines.\+h}, \hyperpage{27}
+  \item {M\+X\+\_\+\+A\+D\+C1\+\_\+\+Init}
+    \subitem {adc.\+c}, \hyperpage{56}
+    \subitem {adc.\+h}, \hyperpage{17}
+  \item {M\+X\+\_\+\+A\+D\+C2\+\_\+\+Init}
+    \subitem {adc.\+c}, \hyperpage{57}
+    \subitem {adc.\+h}, \hyperpage{18}
+  \item {M\+X\+\_\+\+D\+M\+A\+\_\+\+Init}
+    \subitem {dma.\+c}, \hyperpage{64}
+    \subitem {dma.\+h}, \hyperpage{31}
+  \item {M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}
+    \subitem {gpio.\+c}, \hyperpage{69}
+    \subitem {gpio.\+h}, \hyperpage{36}
+  \item {M\+X\+\_\+\+T\+I\+M8\+\_\+\+Init}
+    \subitem {tim.\+c}, \hyperpage{83}
+    \subitem {tim.\+h}, \hyperpage{50}
+  \item {M\+X\+\_\+\+U\+S\+A\+R\+T2\+\_\+\+U\+A\+R\+T\+\_\+\+Init}
+    \subitem {usart.\+c}, \hyperpage{85}
+    \subitem {usart.\+h}, \hyperpage{51}
+  \item {main}
+    \subitem {main.\+c}, \hyperpage{73}
+  \item {main.\+c}
+    \subitem {Base\+Dados}, \hyperpage{73}
+    \subitem {buffer\+\_\+corrente\+\_\+\+D\+MA}, \hyperpage{73}
+    \subitem {buffer\+\_\+corrente\+\_\+diz}, \hyperpage{73}
+    \subitem {buffer\+\_\+corrente\+\_\+float}, \hyperpage{74}
+    \subitem {buffer\+\_\+corrente\+\_\+leitura}, \hyperpage{74}
+    \subitem {buffer\+\_\+tensao\+\_\+\+D\+MA}, \hyperpage{74}
+    \subitem {buffer\+\_\+tensao\+\_\+diz}, \hyperpage{74}
+    \subitem {buffer\+\_\+tensao\+\_\+float}, \hyperpage{74}
+    \subitem {buffer\+\_\+tensao\+\_\+leitura}, \hyperpage{74}
+    \subitem {count}, \hyperpage{74}
+    \subitem {Error\+\_\+\+Handler}, \hyperpage{71}
+    \subitem {estado}, \hyperpage{75}
+    \subitem {F\+SM}, \hyperpage{70}
+    \subitem {flag\+\_\+aquisicao}, \hyperpage{75}
+    \subitem {flag\+\_\+buffercheio}, \hyperpage{75}
+    \subitem {flag\+\_\+buffermetade}, \hyperpage{75}
+    \subitem {H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Conv\+Cplt\+Callback}, 
+		\hyperpage{71}
+    \subitem {H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+Conv\+Half\+Cplt\+Callback}, 
+		\hyperpage{71}
+    \subitem {main}, \hyperpage{73}
+    \subitem {memoria}, \hyperpage{75}
+    \subitem {memoria\+\_\+index}, \hyperpage{75}
+    \subitem {S}, \hyperpage{75}
+    \subitem {System\+Clock\+\_\+\+Config}, \hyperpage{73}
+    \subitem {tic}, \hyperpage{76}
+    \subitem {toc}, \hyperpage{76}
+  \item {med}
+    \subitem {Equipamento}, \hyperpage{13}
+    \subitem {Medicao}, \hyperpage{14}
+  \item {Medicao}, \hyperpage{14}
+    \subitem {equipamentos}, \hyperpage{14}
+    \subitem {equipamentos.\+h}, \hyperpage{33}
+    \subitem {med}, \hyperpage{14}
+    \subitem {timestamp}, \hyperpage{14}
+  \item {memoria}
+    \subitem {main.\+c}, \hyperpage{75}
+  \item {memoria\+\_\+index}
+    \subitem {main.\+c}, \hyperpage{75}
+
+  \indexspace
+
+  \item {N\+\_\+\+P\+E\+R\+I\+O\+D\+OS}
+    \subitem {defines.\+h}, \hyperpage{27}
+  \item {N\+\_\+\+S\+T\+A\+RT}
+    \subitem {defines.\+h}, \hyperpage{28}
+  \item {name}
+    \subitem {Equipamento}, \hyperpage{13}
+
+  \indexspace
+
+  \item {p\+Coeffs}
+    \subitem {dizimacao.\+h}, \hyperpage{30}
+  \item {P\+H\+Y\+\_\+\+A\+U\+T\+O\+N\+E\+G\+O\+\_\+\+C\+O\+M\+P\+L\+E\+TE}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{43}
+  \item {P\+H\+Y\+\_\+\+A\+U\+T\+O\+N\+E\+G\+O\+T\+I\+A\+T\+I\+ON}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{43}
+  \item {P\+H\+Y\+\_\+\+B\+CR}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{43}
+  \item {P\+H\+Y\+\_\+\+B\+SR}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{44}
+  \item {P\+H\+Y\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+L\+AY}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{44}
+  \item {P\+H\+Y\+\_\+\+D\+U\+P\+L\+E\+X\+\_\+\+S\+T\+A\+T\+US}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{44}
+  \item {P\+H\+Y\+\_\+\+F\+U\+L\+L\+D\+U\+P\+L\+E\+X\+\_\+100M}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{44}
+  \item {P\+H\+Y\+\_\+\+F\+U\+L\+L\+D\+U\+P\+L\+E\+X\+\_\+10M}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{44}
+  \item {P\+H\+Y\+\_\+\+H\+A\+L\+F\+D\+U\+P\+L\+E\+X\+\_\+100M}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{44}
+  \item {P\+H\+Y\+\_\+\+H\+A\+L\+F\+D\+U\+P\+L\+E\+X\+\_\+10M}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{44}
+  \item {P\+H\+Y\+\_\+\+I\+S\+O\+L\+A\+TE}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{44}
+  \item {P\+H\+Y\+\_\+\+J\+A\+B\+B\+E\+R\+\_\+\+D\+E\+T\+E\+C\+T\+I\+ON}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{44}
+  \item {P\+H\+Y\+\_\+\+L\+I\+N\+K\+E\+D\+\_\+\+S\+T\+A\+T\+US}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{45}
+  \item {P\+H\+Y\+\_\+\+L\+O\+O\+P\+B\+A\+CK}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{45}
+  \item {P\+H\+Y\+\_\+\+P\+O\+W\+E\+R\+D\+O\+WN}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{45}
+  \item {P\+H\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+TO}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{45}
+  \item {P\+H\+Y\+\_\+\+R\+E\+S\+E\+T\+\_\+\+D\+E\+L\+AY}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{45}
+  \item {P\+H\+Y\+\_\+\+R\+E\+S\+ET}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{45}
+  \item {P\+H\+Y\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+A\+U\+T\+O\+N\+E\+G\+O\+T\+I\+A\+T\+I\+ON}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{45}
+  \item {P\+H\+Y\+\_\+\+S\+P\+E\+E\+D\+\_\+\+S\+T\+A\+T\+US}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{45}
+  \item {P\+H\+Y\+\_\+\+SR}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{45}
+  \item {P\+H\+Y\+\_\+\+W\+R\+I\+T\+E\+\_\+\+TO}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{46}
+  \item {P\+I\+\_\+\+V\+A\+L\+UE}
+    \subitem {calculos\+\_\+eletricos.\+c}, \hyperpage{59}
+  \item {P\+PP}
+    \subitem {defines.\+h}, \hyperpage{28}
+  \item {P\+R\+E\+F\+E\+T\+C\+H\+\_\+\+E\+N\+A\+B\+LE}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{46}
+  \item {p\+State}
+    \subitem {dizimacao.\+h}, \hyperpage{30}
+  \item {Parametros}, \hyperpage{15}
+    \subitem {equipamentos.\+h}, \hyperpage{33}
+    \subitem {harmonicos\+\_\+\+R\+MS}, \hyperpage{15}
+    \subitem {i\+\_\+rms}, \hyperpage{15}
+    \subitem {pf}, \hyperpage{15}
+    \subitem {pot\+\_\+ap}, \hyperpage{15}
+    \subitem {pot\+\_\+at}, \hyperpage{15}
+    \subitem {pot\+\_\+re}, \hyperpage{16}
+    \subitem {thd}, \hyperpage{16}
+    \subitem {v\+\_\+rms}, \hyperpage{16}
+  \item {Pend\+S\+V\+\_\+\+Handler}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{79}
+    \subitem {stm32f4xx\+\_\+it.\+h}, \hyperpage{48}
+  \item {pf}
+    \subitem {Parametros}, \hyperpage{15}
+  \item {pot\+\_\+ap}
+    \subitem {Parametros}, \hyperpage{15}
+  \item {pot\+\_\+at}
+    \subitem {Parametros}, \hyperpage{15}
+  \item {pot\+\_\+re}
+    \subitem {Parametros}, \hyperpage{16}
+  \item {print}
+    \subitem {usart\+\_\+util.\+c}, \hyperpage{86}
+    \subitem {usart\+\_\+util.\+h}, \hyperpage{52}
+
+  \indexspace
+
+  \item {R\+M\+S\+\_\+\+L\+O\+W\+E\+R\+B\+O\+U\+ND}
+    \subitem {defines.\+h}, \hyperpage{28}
+  \item {R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA}
+    \subitem {defines.\+h}, \hyperpage{28}
+  \item {R\+M\+S\+\_\+\+U\+P\+P\+E\+R\+B\+O\+U\+ND}
+    \subitem {defines.\+h}, \hyperpage{28}
+  \item {retorna\+FP}
+    \subitem {calculos\+\_\+eletricos.\+c}, \hyperpage{60}
+    \subitem {calculos\+\_\+eletricos.\+h}, \hyperpage{20}
+  \item {retorna\+M\+E\+D\+I\+A\+C\+I\+C\+L\+OS}
+    \subitem {calculos\+\_\+eletricos.\+c}, \hyperpage{60}
+    \subitem {calculos\+\_\+eletricos.\+h}, \hyperpage{20}
+  \item {retorna\+P\+O\+T\+A\+P\+A\+R\+E\+N\+TE}
+    \subitem {calculos\+\_\+eletricos.\+c}, \hyperpage{61}
+    \subitem {calculos\+\_\+eletricos.\+h}, \hyperpage{21}
+  \item {retorna\+P\+O\+T\+A\+T\+I\+VA}
+    \subitem {calculos\+\_\+eletricos.\+c}, \hyperpage{61}
+    \subitem {calculos\+\_\+eletricos.\+h}, \hyperpage{21}
+  \item {retorna\+P\+O\+T\+R\+E\+A\+T\+I\+VA}
+    \subitem {calculos\+\_\+eletricos.\+c}, \hyperpage{62}
+    \subitem {calculos\+\_\+eletricos.\+h}, \hyperpage{22}
+  \item {retorna\+R\+M\+S\+H\+A\+R\+M\+O\+N\+I\+C\+OS}
+    \subitem {calculos\+\_\+eletricos.\+c}, \hyperpage{62}
+    \subitem {calculos\+\_\+eletricos.\+h}, \hyperpage{23}
+  \item {retorna\+R\+MS}
+    \subitem {calculos\+\_\+eletricos.\+c}, \hyperpage{62}
+    \subitem {calculos\+\_\+eletricos.\+h}, \hyperpage{22}
+  \item {retorna\+S\+IN}
+    \subitem {calculos\+\_\+eletricos.\+c}, \hyperpage{63}
+    \subitem {calculos\+\_\+eletricos.\+h}, \hyperpage{23}
+  \item {retorna\+T\+HD}
+    \subitem {calculos\+\_\+eletricos.\+c}, \hyperpage{64}
+    \subitem {calculos\+\_\+eletricos.\+h}, \hyperpage{24}
+
+  \indexspace
+
+  \item {S}
+    \subitem {dizimacao.\+h}, \hyperpage{30}
+    \subitem {main.\+c}, \hyperpage{75}
+  \item {S\+Q\+R\+T2}
+    \subitem {calculos\+\_\+eletricos.\+c}, \hyperpage{60}
+  \item {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Defines}, 
+		\hyperpage{7}
+    \subitem {V\+E\+C\+T\+\_\+\+T\+A\+B\+\_\+\+O\+F\+F\+S\+ET}, 
+		\hyperpage{7}
+  \item {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Function\+Prototypes}, 
+		\hyperpage{10}
+  \item {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Functions}, 
+		\hyperpage{11}
+    \subitem {System\+Core\+Clock\+Update}, \hyperpage{11}
+    \subitem {System\+Init}, \hyperpage{12}
+  \item {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Includes}, 
+		\hyperpage{5}
+    \subitem {H\+S\+E\+\_\+\+V\+A\+L\+UE}, \hyperpage{5}
+    \subitem {H\+S\+I\+\_\+\+V\+A\+L\+UE}, \hyperpage{5}
+  \item {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Macros}, 
+		\hyperpage{8}
+  \item {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Types\+Definitions}, 
+		\hyperpage{6}
+  \item {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Variables}, 
+		\hyperpage{9}
+    \subitem {A\+H\+B\+Presc\+Table}, \hyperpage{9}
+    \subitem {A\+P\+B\+Presc\+Table}, \hyperpage{9}
+    \subitem {System\+Core\+Clock}, \hyperpage{9}
+  \item {S\+V\+C\+\_\+\+Handler}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{79}
+    \subitem {stm32f4xx\+\_\+it.\+h}, \hyperpage{48}
+  \item {Src/adc.\+c}, \hyperpage{55}
+  \item {Src/adc\+\_\+util.\+c}, \hyperpage{58}
+  \item {Src/calculos\+\_\+eletricos.\+c}, \hyperpage{59}
+  \item {Src/dma.\+c}, \hyperpage{64}
+  \item {Src/equipamentos.\+c}, \hyperpage{65}
+  \item {Src/gpio.\+c}, \hyperpage{68}
+  \item {Src/main.\+c}, \hyperpage{69}
+  \item {Src/stm32f4xx\+\_\+hal\+\_\+msp.\+c}, \hyperpage{76}
+  \item {Src/stm32f4xx\+\_\+it.\+c}, \hyperpage{77}
+  \item {Src/system\+\_\+stm32f4xx.\+c}, \hyperpage{81}
+  \item {Src/tim.\+c}, \hyperpage{83}
+  \item {Src/usart.\+c}, \hyperpage{84}
+  \item {Src/usart\+\_\+util.\+c}, \hyperpage{85}
+  \item {stm32f4xx\+\_\+hal\+\_\+conf.\+h}
+    \subitem {assert\+\_\+param}, \hyperpage{39}
+    \subitem {D\+A\+T\+A\+\_\+\+C\+A\+C\+H\+E\+\_\+\+E\+N\+A\+B\+LE}, 
+		\hyperpage{39}
+    \subitem {D\+P83848\+\_\+\+P\+H\+Y\+\_\+\+A\+D\+D\+R\+E\+SS}, 
+		\hyperpage{39}
+    \subitem {E\+T\+H\+\_\+\+R\+X\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}, 
+		\hyperpage{40}
+    \subitem {E\+T\+H\+\_\+\+R\+X\+B\+U\+F\+NB}, \hyperpage{40}
+    \subitem {E\+T\+H\+\_\+\+T\+X\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}, 
+		\hyperpage{40}
+    \subitem {E\+T\+H\+\_\+\+T\+X\+B\+U\+F\+NB}, \hyperpage{40}
+    \subitem {E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+C\+L\+O\+C\+K\+\_\+\+V\+A\+L\+UE}, 
+		\hyperpage{40}
+    \subitem {H\+A\+L\+\_\+\+A\+D\+C\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}, 
+		\hyperpage{40}
+    \subitem {H\+A\+L\+\_\+\+C\+O\+R\+T\+E\+X\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}, 
+		\hyperpage{40}
+    \subitem {H\+A\+L\+\_\+\+D\+M\+A\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}, 
+		\hyperpage{40}
+    \subitem {H\+A\+L\+\_\+\+F\+L\+A\+S\+H\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}, 
+		\hyperpage{41}
+    \subitem {H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}, 
+		\hyperpage{41}
+    \subitem {H\+A\+L\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}, 
+		\hyperpage{41}
+    \subitem {H\+A\+L\+\_\+\+P\+W\+R\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}, 
+		\hyperpage{41}
+    \subitem {H\+A\+L\+\_\+\+R\+C\+C\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}, 
+		\hyperpage{41}
+    \subitem {H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}, 
+		\hyperpage{41}
+    \subitem {H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+E\+N\+A\+B\+L\+ED}, 
+		\hyperpage{41}
+    \subitem {H\+S\+E\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+T\+I\+M\+E\+O\+UT}, 
+		\hyperpage{41}
+    \subitem {H\+S\+E\+\_\+\+V\+A\+L\+UE}, \hyperpage{42}
+    \subitem {H\+S\+I\+\_\+\+V\+A\+L\+UE}, \hyperpage{42}
+    \subitem {I\+N\+S\+T\+R\+U\+C\+T\+I\+O\+N\+\_\+\+C\+A\+C\+H\+E\+\_\+\+E\+N\+A\+B\+LE}, 
+		\hyperpage{42}
+    \subitem {L\+S\+E\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+T\+I\+M\+E\+O\+UT}, 
+		\hyperpage{42}
+    \subitem {L\+S\+E\+\_\+\+V\+A\+L\+UE}, \hyperpage{42}
+    \subitem {L\+S\+I\+\_\+\+V\+A\+L\+UE}, \hyperpage{42}
+    \subitem {M\+A\+C\+\_\+\+A\+D\+D\+R0}, \hyperpage{42}
+    \subitem {M\+A\+C\+\_\+\+A\+D\+D\+R1}, \hyperpage{43}
+    \subitem {M\+A\+C\+\_\+\+A\+D\+D\+R2}, \hyperpage{43}
+    \subitem {M\+A\+C\+\_\+\+A\+D\+D\+R3}, \hyperpage{43}
+    \subitem {M\+A\+C\+\_\+\+A\+D\+D\+R4}, \hyperpage{43}
+    \subitem {M\+A\+C\+\_\+\+A\+D\+D\+R5}, \hyperpage{43}
+    \subitem {P\+H\+Y\+\_\+\+A\+U\+T\+O\+N\+E\+G\+O\+\_\+\+C\+O\+M\+P\+L\+E\+TE}, 
+		\hyperpage{43}
+    \subitem {P\+H\+Y\+\_\+\+A\+U\+T\+O\+N\+E\+G\+O\+T\+I\+A\+T\+I\+ON}, 
+		\hyperpage{43}
+    \subitem {P\+H\+Y\+\_\+\+B\+CR}, \hyperpage{43}
+    \subitem {P\+H\+Y\+\_\+\+B\+SR}, \hyperpage{44}
+    \subitem {P\+H\+Y\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+L\+AY}, 
+		\hyperpage{44}
+    \subitem {P\+H\+Y\+\_\+\+D\+U\+P\+L\+E\+X\+\_\+\+S\+T\+A\+T\+US}, 
+		\hyperpage{44}
+    \subitem {P\+H\+Y\+\_\+\+F\+U\+L\+L\+D\+U\+P\+L\+E\+X\+\_\+100M}, 
+		\hyperpage{44}
+    \subitem {P\+H\+Y\+\_\+\+F\+U\+L\+L\+D\+U\+P\+L\+E\+X\+\_\+10M}, 
+		\hyperpage{44}
+    \subitem {P\+H\+Y\+\_\+\+H\+A\+L\+F\+D\+U\+P\+L\+E\+X\+\_\+100M}, 
+		\hyperpage{44}
+    \subitem {P\+H\+Y\+\_\+\+H\+A\+L\+F\+D\+U\+P\+L\+E\+X\+\_\+10M}, 
+		\hyperpage{44}
+    \subitem {P\+H\+Y\+\_\+\+I\+S\+O\+L\+A\+TE}, \hyperpage{44}
+    \subitem {P\+H\+Y\+\_\+\+J\+A\+B\+B\+E\+R\+\_\+\+D\+E\+T\+E\+C\+T\+I\+ON}, 
+		\hyperpage{44}
+    \subitem {P\+H\+Y\+\_\+\+L\+I\+N\+K\+E\+D\+\_\+\+S\+T\+A\+T\+US}, 
+		\hyperpage{45}
+    \subitem {P\+H\+Y\+\_\+\+L\+O\+O\+P\+B\+A\+CK}, \hyperpage{45}
+    \subitem {P\+H\+Y\+\_\+\+P\+O\+W\+E\+R\+D\+O\+WN}, \hyperpage{45}
+    \subitem {P\+H\+Y\+\_\+\+R\+E\+A\+D\+\_\+\+TO}, \hyperpage{45}
+    \subitem {P\+H\+Y\+\_\+\+R\+E\+S\+E\+T\+\_\+\+D\+E\+L\+AY}, 
+		\hyperpage{45}
+    \subitem {P\+H\+Y\+\_\+\+R\+E\+S\+ET}, \hyperpage{45}
+    \subitem {P\+H\+Y\+\_\+\+R\+E\+S\+T\+A\+R\+T\+\_\+\+A\+U\+T\+O\+N\+E\+G\+O\+T\+I\+A\+T\+I\+ON}, 
+		\hyperpage{45}
+    \subitem {P\+H\+Y\+\_\+\+S\+P\+E\+E\+D\+\_\+\+S\+T\+A\+T\+US}, 
+		\hyperpage{45}
+    \subitem {P\+H\+Y\+\_\+\+SR}, \hyperpage{45}
+    \subitem {P\+H\+Y\+\_\+\+W\+R\+I\+T\+E\+\_\+\+TO}, \hyperpage{46}
+    \subitem {P\+R\+E\+F\+E\+T\+C\+H\+\_\+\+E\+N\+A\+B\+LE}, 
+		\hyperpage{46}
+    \subitem {T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}, 
+		\hyperpage{46}
+    \subitem {U\+S\+E\+\_\+\+R\+T\+OS}, \hyperpage{46}
+    \subitem {U\+S\+E\+\_\+\+S\+P\+I\+\_\+\+C\+RC}, \hyperpage{46}
+    \subitem {V\+D\+D\+\_\+\+V\+A\+L\+UE}, \hyperpage{46}
+  \item {stm32f4xx\+\_\+hal\+\_\+msp.\+c}
+    \subitem {Error\+\_\+\+Handler}, \hyperpage{76}
+    \subitem {H\+A\+L\+\_\+\+Msp\+Init}, \hyperpage{77}
+  \item {stm32f4xx\+\_\+it.\+c}
+    \subitem {A\+D\+C\+\_\+\+I\+R\+Q\+Handler}, \hyperpage{78}
+    \subitem {D\+M\+A2\+\_\+\+Stream0\+\_\+\+I\+R\+Q\+Handler}, 
+		\hyperpage{79}
+    \subitem {D\+M\+A2\+\_\+\+Stream1\+\_\+\+I\+R\+Q\+Handler}, 
+		\hyperpage{79}
+    \subitem {D\+M\+A2\+\_\+\+Stream2\+\_\+\+I\+R\+Q\+Handler}, 
+		\hyperpage{79}
+    \subitem {D\+M\+A2\+\_\+\+Stream3\+\_\+\+I\+R\+Q\+Handler}, 
+		\hyperpage{79}
+    \subitem {hadc1}, \hyperpage{80}
+    \subitem {hadc2}, \hyperpage{80}
+    \subitem {hdma\+\_\+adc1}, \hyperpage{80}
+    \subitem {hdma\+\_\+adc2}, \hyperpage{80}
+    \subitem {hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream1}, 
+		\hyperpage{81}
+    \subitem {hdma\+\_\+memtomem\+\_\+dma2\+\_\+stream3}, 
+		\hyperpage{81}
+    \subitem {huart2}, \hyperpage{81}
+    \subitem {Pend\+S\+V\+\_\+\+Handler}, \hyperpage{79}
+    \subitem {S\+V\+C\+\_\+\+Handler}, \hyperpage{79}
+    \subitem {Sys\+Tick\+\_\+\+Handler}, \hyperpage{80}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+I\+R\+Q\+Handler}, \hyperpage{80}
+  \item {stm32f4xx\+\_\+it.\+h}
+    \subitem {A\+D\+C\+\_\+\+I\+R\+Q\+Handler}, \hyperpage{47}
+    \subitem {D\+M\+A2\+\_\+\+Stream0\+\_\+\+I\+R\+Q\+Handler}, 
+		\hyperpage{48}
+    \subitem {D\+M\+A2\+\_\+\+Stream1\+\_\+\+I\+R\+Q\+Handler}, 
+		\hyperpage{48}
+    \subitem {D\+M\+A2\+\_\+\+Stream2\+\_\+\+I\+R\+Q\+Handler}, 
+		\hyperpage{48}
+    \subitem {D\+M\+A2\+\_\+\+Stream3\+\_\+\+I\+R\+Q\+Handler}, 
+		\hyperpage{48}
+    \subitem {Pend\+S\+V\+\_\+\+Handler}, \hyperpage{48}
+    \subitem {S\+V\+C\+\_\+\+Handler}, \hyperpage{48}
+    \subitem {Sys\+Tick\+\_\+\+Handler}, \hyperpage{49}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+I\+R\+Q\+Handler}, \hyperpage{49}
+  \item {Stm32f4xx\+\_\+system}, \hyperpage{4}
+  \item {Sys\+Tick\+\_\+\+Handler}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{80}
+    \subitem {stm32f4xx\+\_\+it.\+h}, \hyperpage{49}
+  \item {System\+Clock\+\_\+\+Config}
+    \subitem {main.\+c}, \hyperpage{73}
+  \item {System\+Core\+Clock}
+    \subitem {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Variables}, 
+		\hyperpage{9}
+  \item {System\+Core\+Clock\+Update}
+    \subitem {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Functions}, 
+		\hyperpage{11}
+  \item {System\+Init}
+    \subitem {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Functions}, 
+		\hyperpage{12}
+
+  \indexspace
+
+  \item {T\+E\+N\+S\+A\+O\+\_\+A}
+    \subitem {defines.\+h}, \hyperpage{28}
+  \item {T\+E\+N\+S\+A\+O\+\_\+B}
+    \subitem {defines.\+h}, \hyperpage{28}
+  \item {T\+I\+C\+K\+\_\+\+I\+N\+T\+\_\+\+P\+R\+I\+O\+R\+I\+TY}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{46}
+  \item {thd}
+    \subitem {Parametros}, \hyperpage{16}
+  \item {tic}
+    \subitem {main.\+c}, \hyperpage{76}
+  \item {tim.\+c}
+    \subitem {H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Base\+\_\+\+Msp\+De\+Init}, 
+		\hyperpage{83}
+    \subitem {H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Base\+\_\+\+Msp\+Init}, 
+		\hyperpage{83}
+    \subitem {htim8}, \hyperpage{84}
+    \subitem {M\+X\+\_\+\+T\+I\+M8\+\_\+\+Init}, \hyperpage{83}
+  \item {tim.\+h}
+    \subitem {Error\+\_\+\+Handler}, \hyperpage{49}
+    \subitem {htim8}, \hyperpage{50}
+    \subitem {M\+X\+\_\+\+T\+I\+M8\+\_\+\+Init}, \hyperpage{50}
+  \item {timestamp}
+    \subitem {Medicao}, \hyperpage{14}
+  \item {toc}
+    \subitem {main.\+c}, \hyperpage{76}
+
+  \indexspace
+
+  \item {U\+S\+A\+R2\+\_\+\+Receive\+\_\+\+Interrupt\+\_\+\+Enable}
+    \subitem {usart\+\_\+util.\+c}, \hyperpage{86}
+    \subitem {usart\+\_\+util.\+h}, \hyperpage{53}
+  \item {U\+S\+A\+R\+T2\+\_\+\+I\+R\+Q\+Handler}
+    \subitem {stm32f4xx\+\_\+it.\+c}, \hyperpage{80}
+    \subitem {stm32f4xx\+\_\+it.\+h}, \hyperpage{49}
+  \item {U\+S\+A\+R\+T2\+\_\+\+Receive\+\_\+\+Command}
+    \subitem {usart\+\_\+util.\+c}, \hyperpage{87}
+    \subitem {usart\+\_\+util.\+h}, \hyperpage{53}
+  \item {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Char}
+    \subitem {usart\+\_\+util.\+c}, \hyperpage{87}
+    \subitem {usart\+\_\+util.\+h}, \hyperpage{53}
+  \item {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Int}
+    \subitem {usart\+\_\+util.\+c}, \hyperpage{87}
+    \subitem {usart\+\_\+util.\+h}, \hyperpage{54}
+  \item {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+String}
+    \subitem {usart\+\_\+util.\+c}, \hyperpage{88}
+    \subitem {usart\+\_\+util.\+h}, \hyperpage{54}
+  \item {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+U\+Int}
+    \subitem {usart\+\_\+util.\+c}, \hyperpage{88}
+    \subitem {usart\+\_\+util.\+h}, \hyperpage{54}
+  \item {U\+S\+E\+\_\+\+R\+T\+OS}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{46}
+  \item {U\+S\+E\+\_\+\+S\+P\+I\+\_\+\+C\+RC}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{46}
+  \item {usart.\+c}
+    \subitem {H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Msp\+De\+Init}, 
+		\hyperpage{84}
+    \subitem {H\+A\+L\+\_\+\+U\+A\+R\+T\+\_\+\+Msp\+Init}, 
+		\hyperpage{85}
+    \subitem {huart2}, \hyperpage{85}
+    \subitem {M\+X\+\_\+\+U\+S\+A\+R\+T2\+\_\+\+U\+A\+R\+T\+\_\+\+Init}, 
+		\hyperpage{85}
+  \item {usart.\+h}
+    \subitem {Error\+\_\+\+Handler}, \hyperpage{51}
+    \subitem {huart2}, \hyperpage{51}
+    \subitem {M\+X\+\_\+\+U\+S\+A\+R\+T2\+\_\+\+U\+A\+R\+T\+\_\+\+Init}, 
+		\hyperpage{51}
+  \item {usart\+\_\+util.\+c}
+    \subitem {print}, \hyperpage{86}
+    \subitem {U\+S\+A\+R2\+\_\+\+Receive\+\_\+\+Interrupt\+\_\+\+Enable}, 
+		\hyperpage{86}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+Receive\+\_\+\+Command}, 
+		\hyperpage{87}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Char}, 
+		\hyperpage{87}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Int}, 
+		\hyperpage{87}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+String}, 
+		\hyperpage{88}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+U\+Int}, 
+		\hyperpage{88}
+  \item {usart\+\_\+util.\+h}
+    \subitem {print}, \hyperpage{52}
+    \subitem {U\+S\+A\+R2\+\_\+\+Receive\+\_\+\+Interrupt\+\_\+\+Enable}, 
+		\hyperpage{53}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+Receive\+\_\+\+Command}, 
+		\hyperpage{53}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Char}, 
+		\hyperpage{53}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+Int}, 
+		\hyperpage{54}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+String}, 
+		\hyperpage{54}
+    \subitem {U\+S\+A\+R\+T2\+\_\+\+Transmit\+\_\+\+U\+Int}, 
+		\hyperpage{54}
+
+  \indexspace
+
+  \item {v\+\_\+rms}
+    \subitem {Parametros}, \hyperpage{16}
+  \item {V\+D\+D\+\_\+\+V\+A\+L\+UE}
+    \subitem {stm32f4xx\+\_\+hal\+\_\+conf.\+h}, \hyperpage{46}
+  \item {V\+E\+C\+T\+\_\+\+T\+A\+B\+\_\+\+O\+F\+F\+S\+ET}
+    \subitem {S\+T\+M32\+F4xx\+\_\+\+System\+\_\+\+Private\+\_\+\+Defines}, 
+		\hyperpage{7}
+
+\end{theindex}

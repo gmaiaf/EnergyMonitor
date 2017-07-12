@@ -1,4 +1,4 @@
-/**
+/*
   ******************************************************************************
   * File Name          : main.h
   * Description        : This file contains the common defines of the application
@@ -29,6 +29,12 @@
   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
   ******************************************************************************
+  */
+ /**
+  *	@file main.h
+  * @author ST
+  * @brief Header do main. Não utilizado.
+  *
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __MAIN_H

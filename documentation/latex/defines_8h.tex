@@ -1,0 +1,285 @@
+\hypertarget{defines_8h}{}\subsection{Inc/defines.h File Reference}
+\label{defines_8h}\index{Inc/defines.\+h@{Inc/defines.\+h}}
+
+
+Definições dos parâmetros do projeto.  
+
+
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{defines_8h_a2dcf8c45f945dd0c4301a94700f2112c}{M\+E\+M\+\_\+\+S\+I\+ZE}~(uint32\+\_\+t) 4
+\begin{DoxyCompactList}\small\item\em Tamanho da memória de histórico de medições. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}~(uint32\+\_\+t) 2048
+\begin{DoxyCompactList}\small\item\em Tamanho do buffer de aquisição do A\+DC. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a0d09a32f715412054b834b816a442a9d}{D\+I\+Z\+I\+M\+A\+C\+AO}~(uint32\+\_\+t) 4
+\begin{DoxyCompactList}\small\item\em Fator de dizimação. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a3cee321a8d655472781910f72d621012}{F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}~(uint32\+\_\+t) 29
+\begin{DoxyCompactList}\small\item\em Número de taps do filtro F\+IR. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a2b573f009cb2ef893aa1c52f267a9f92}{B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}~(uint32\+\_\+t) (\hyperlink{defines_8h_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}/\hyperlink{defines_8h_a0d09a32f715412054b834b816a442a9d}{D\+I\+Z\+I\+M\+A\+C\+AO})
+\begin{DoxyCompactList}\small\item\em Tamanho do buffer dizimado. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a7dba2955aa9ebabf06da89c5a25cad00}{M\+S2H}~(float32\+\_\+t) 1/3600000
+\begin{DoxyCompactList}\small\item\em Fator de conversão de milisegundo para hora. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_aaab78bc2b2f2fe59d9280d10c641ead3}{F\+\_\+\+S\+A\+MP}~(uint32\+\_\+t) 12000
+\begin{DoxyCompactList}\small\item\em Frequência de amostragem do sistema. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a0bcbf3408f7e22c34bd0c37f0c18000e}{F\+\_\+\+S\+A\+M\+P\+\_\+\+D\+IZ}~(uint32\+\_\+t) (\hyperlink{defines_8h_aaab78bc2b2f2fe59d9280d10c641ead3}{F\+\_\+\+S\+A\+MP}/\hyperlink{defines_8h_a0d09a32f715412054b834b816a442a9d}{D\+I\+Z\+I\+M\+A\+C\+AO})
+\begin{DoxyCompactList}\small\item\em Frequência de amostragem após dizimação. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a8aa42c7da1665258471a17d446d1ea98}{P\+PP}~(uint32\+\_\+t) (\hyperlink{defines_8h_a0bcbf3408f7e22c34bd0c37f0c18000e}{F\+\_\+\+S\+A\+M\+P\+\_\+\+D\+IZ} / 60)
+\begin{DoxyCompactList}\small\item\em Pontos por período. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a6a55213275c5b5823671f9fb4908cac2}{N\+\_\+\+S\+T\+A\+RT}~(uint32\+\_\+t) (\hyperlink{defines_8h_a2b573f009cb2ef893aa1c52f267a9f92}{B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}-\/(\hyperlink{defines_8h_a2b573f009cb2ef893aa1c52f267a9f92}{B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}/\hyperlink{defines_8h_a8aa42c7da1665258471a17d446d1ea98}{P\+PP})$\ast$\hyperlink{defines_8h_a8aa42c7da1665258471a17d446d1ea98}{P\+PP})
+\begin{DoxyCompactList}\small\item\em Número de pontos no buffer dizimado que não preenchem um período de 60 Hz. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a11db7ed8c9e12a0fa7d17ad62d2af801}{N\+\_\+\+P\+E\+R\+I\+O\+D\+OS}~(uint32\+\_\+t) ((\hyperlink{defines_8h_a2b573f009cb2ef893aa1c52f267a9f92}{B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}-\/\hyperlink{defines_8h_a6a55213275c5b5823671f9fb4908cac2}{N\+\_\+\+S\+T\+A\+RT})/\hyperlink{defines_8h_a8aa42c7da1665258471a17d446d1ea98}{P\+PP})
+\begin{DoxyCompactList}\small\item\em Número inteiro de períodos de 60 Hz no buffer dizimado. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a7f802d5c0cfcc41c9bb44f8816899f36}{T\+E\+N\+S\+A\+O\+\_\+A}~(float32\+\_\+t) -\/0.\+0992
+\begin{DoxyCompactList}\small\item\em Fator de conversão A da calibração de tensão. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_aa83e4bfa054a9b3ce574b3edf1060971}{T\+E\+N\+S\+A\+O\+\_\+B}~(float32\+\_\+t) 200.\+8922
+\begin{DoxyCompactList}\small\item\em Fator de conversão B da calibração de tensão. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_ab22a317ed769ee0d9c03928d4fd3af55}{C\+O\+R\+R\+E\+N\+T\+E\+\_\+A}~(float32\+\_\+t) 3.\+3/4095$\ast$10
+\begin{DoxyCompactList}\small\item\em Fator de conversão A da calibração de corrente. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a6305ded57c7de4ac84cd52a7111594cd}{C\+O\+R\+R\+E\+N\+T\+E\+\_\+B}~(float32\+\_\+t) -\/2048$\ast$\hyperlink{defines_8h_ab22a317ed769ee0d9c03928d4fd3af55}{C\+O\+R\+R\+E\+N\+T\+E\+\_\+A}
+\begin{DoxyCompactList}\small\item\em Fator de conversão B da calibração de corrente. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a8dab50cd90070e26b76c438bcde529a5}{R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA}~(float32\+\_\+t) 7
+\begin{DoxyCompactList}\small\item\em Tolerância do evento de corrente, em \%. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_aa8a0463d37272a0a45ab428fb46e2229}{R\+M\+S\+\_\+\+U\+P\+P\+E\+R\+B\+O\+U\+ND}~(float32\+\_\+t) (100+\hyperlink{defines_8h_a8dab50cd90070e26b76c438bcde529a5}{R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA})/100
+\begin{DoxyCompactList}\small\item\em Limite superior da tolerância do evento de corrente. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a148da5145eeb4645af74a11d6000f9ea}{R\+M\+S\+\_\+\+L\+O\+W\+E\+R\+B\+O\+U\+ND}~(float32\+\_\+t) (100-\/\hyperlink{defines_8h_a8dab50cd90070e26b76c438bcde529a5}{R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA})/100
+\begin{DoxyCompactList}\small\item\em Limite inferior da tolerância do evento de corrente. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_ad5afb0df8a8a9e97197b4a9de8ce95cf}{GV}~1
+\begin{DoxyCompactList}\small\item\em D\+E\+P\+R\+E\+C\+A\+T\+ED Ganho de corrente para ajuste. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a39327b674fddede7be7afcf65fc8d4d0}{GI}~1
+\begin{DoxyCompactList}\small\item\em D\+E\+P\+R\+E\+C\+A\+T\+ED Ganho de tensão para ajuste. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_a21e24b95b94f5365ae4b50fc716a838d}{M\+A\+X\+\_\+\+H\+A\+R\+M\+O\+N\+I\+CA}~10
+\begin{DoxyCompactList}\small\item\em Número de harmônicas consideradas. \end{DoxyCompactList}\item 
+\#define \hyperlink{defines_8h_ae4b347db921cb574228cda0f65b38c1e}{E\+Q\+U\+I\+P\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+M\+AX}~16
+\begin{DoxyCompactList}\small\item\em Número máximo de equipamentos na base de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Definições dos parâmetros do projeto. 
+
+\begin{DoxyAuthor}{Author}
+Gustavo 
+\end{DoxyAuthor}
+
+
+\subsubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{defines_8h_a2b573f009cb2ef893aa1c52f267a9f92}\label{defines_8h_a2b573f009cb2ef893aa1c52f267a9f92}} 
+\index{defines.\+h@{defines.\+h}!B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ@{B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}}
+\index{B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ@{B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}{BUFFER\_DIZ}}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ~(uint32\+\_\+t) (\hyperlink{defines_8h_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}/\hyperlink{defines_8h_a0d09a32f715412054b834b816a442a9d}{D\+I\+Z\+I\+M\+A\+C\+AO})}
+
+
+
+Tamanho do buffer dizimado. 
+
+\mbox{\Hypertarget{defines_8h_a6b20d41d6252e9871430c242cb1a56e7}\label{defines_8h_a6b20d41d6252e9871430c242cb1a56e7}} 
+\index{defines.\+h@{defines.\+h}!B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE~(uint32\+\_\+t) 2048}
+
+
+
+Tamanho do buffer de aquisição do A\+DC. 
+
+\mbox{\Hypertarget{defines_8h_ab22a317ed769ee0d9c03928d4fd3af55}\label{defines_8h_ab22a317ed769ee0d9c03928d4fd3af55}} 
+\index{defines.\+h@{defines.\+h}!C\+O\+R\+R\+E\+N\+T\+E\+\_\+A@{C\+O\+R\+R\+E\+N\+T\+E\+\_\+A}}
+\index{C\+O\+R\+R\+E\+N\+T\+E\+\_\+A@{C\+O\+R\+R\+E\+N\+T\+E\+\_\+A}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{C\+O\+R\+R\+E\+N\+T\+E\+\_\+A}{CORRENTE\_A}}
+{\footnotesize\ttfamily \#define C\+O\+R\+R\+E\+N\+T\+E\+\_\+A~(float32\+\_\+t) 3.\+3/4095$\ast$10}
+
+
+
+Fator de conversão A da calibração de corrente. 
+
+\mbox{\Hypertarget{defines_8h_a6305ded57c7de4ac84cd52a7111594cd}\label{defines_8h_a6305ded57c7de4ac84cd52a7111594cd}} 
+\index{defines.\+h@{defines.\+h}!C\+O\+R\+R\+E\+N\+T\+E\+\_\+B@{C\+O\+R\+R\+E\+N\+T\+E\+\_\+B}}
+\index{C\+O\+R\+R\+E\+N\+T\+E\+\_\+B@{C\+O\+R\+R\+E\+N\+T\+E\+\_\+B}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{C\+O\+R\+R\+E\+N\+T\+E\+\_\+B}{CORRENTE\_B}}
+{\footnotesize\ttfamily \#define C\+O\+R\+R\+E\+N\+T\+E\+\_\+B~(float32\+\_\+t) -\/2048$\ast$\hyperlink{defines_8h_ab22a317ed769ee0d9c03928d4fd3af55}{C\+O\+R\+R\+E\+N\+T\+E\+\_\+A}}
+
+
+
+Fator de conversão B da calibração de corrente. 
+
+\mbox{\Hypertarget{defines_8h_a0d09a32f715412054b834b816a442a9d}\label{defines_8h_a0d09a32f715412054b834b816a442a9d}} 
+\index{defines.\+h@{defines.\+h}!D\+I\+Z\+I\+M\+A\+C\+AO@{D\+I\+Z\+I\+M\+A\+C\+AO}}
+\index{D\+I\+Z\+I\+M\+A\+C\+AO@{D\+I\+Z\+I\+M\+A\+C\+AO}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{D\+I\+Z\+I\+M\+A\+C\+AO}{DIZIMACAO}}
+{\footnotesize\ttfamily \#define D\+I\+Z\+I\+M\+A\+C\+AO~(uint32\+\_\+t) 4}
+
+
+
+Fator de dizimação. 
+
+\mbox{\Hypertarget{defines_8h_ae4b347db921cb574228cda0f65b38c1e}\label{defines_8h_ae4b347db921cb574228cda0f65b38c1e}} 
+\index{defines.\+h@{defines.\+h}!E\+Q\+U\+I\+P\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+M\+AX@{E\+Q\+U\+I\+P\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+M\+AX}}
+\index{E\+Q\+U\+I\+P\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+M\+AX@{E\+Q\+U\+I\+P\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+M\+AX}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{E\+Q\+U\+I\+P\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+M\+AX}{EQUIP\_ARRAY\_MAX}}
+{\footnotesize\ttfamily \#define E\+Q\+U\+I\+P\+\_\+\+A\+R\+R\+A\+Y\+\_\+\+M\+AX~16}
+
+
+
+Número máximo de equipamentos na base de dados. 
+
+\mbox{\Hypertarget{defines_8h_aaab78bc2b2f2fe59d9280d10c641ead3}\label{defines_8h_aaab78bc2b2f2fe59d9280d10c641ead3}} 
+\index{defines.\+h@{defines.\+h}!F\+\_\+\+S\+A\+MP@{F\+\_\+\+S\+A\+MP}}
+\index{F\+\_\+\+S\+A\+MP@{F\+\_\+\+S\+A\+MP}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{F\+\_\+\+S\+A\+MP}{F\_SAMP}}
+{\footnotesize\ttfamily \#define F\+\_\+\+S\+A\+MP~(uint32\+\_\+t) 12000}
+
+
+
+Frequência de amostragem do sistema. 
+
+\mbox{\Hypertarget{defines_8h_a0bcbf3408f7e22c34bd0c37f0c18000e}\label{defines_8h_a0bcbf3408f7e22c34bd0c37f0c18000e}} 
+\index{defines.\+h@{defines.\+h}!F\+\_\+\+S\+A\+M\+P\+\_\+\+D\+IZ@{F\+\_\+\+S\+A\+M\+P\+\_\+\+D\+IZ}}
+\index{F\+\_\+\+S\+A\+M\+P\+\_\+\+D\+IZ@{F\+\_\+\+S\+A\+M\+P\+\_\+\+D\+IZ}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{F\+\_\+\+S\+A\+M\+P\+\_\+\+D\+IZ}{F\_SAMP\_DIZ}}
+{\footnotesize\ttfamily \#define F\+\_\+\+S\+A\+M\+P\+\_\+\+D\+IZ~(uint32\+\_\+t) (\hyperlink{defines_8h_aaab78bc2b2f2fe59d9280d10c641ead3}{F\+\_\+\+S\+A\+MP}/\hyperlink{defines_8h_a0d09a32f715412054b834b816a442a9d}{D\+I\+Z\+I\+M\+A\+C\+AO})}
+
+
+
+Frequência de amostragem após dizimação. 
+
+\mbox{\Hypertarget{defines_8h_a3cee321a8d655472781910f72d621012}\label{defines_8h_a3cee321a8d655472781910f72d621012}} 
+\index{defines.\+h@{defines.\+h}!F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM@{F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}}
+\index{F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM@{F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM}{FILTER\_TAP\_NUM}}
+{\footnotesize\ttfamily \#define F\+I\+L\+T\+E\+R\+\_\+\+T\+A\+P\+\_\+\+N\+UM~(uint32\+\_\+t) 29}
+
+
+
+Número de taps do filtro F\+IR. 
+
+\mbox{\Hypertarget{defines_8h_a39327b674fddede7be7afcf65fc8d4d0}\label{defines_8h_a39327b674fddede7be7afcf65fc8d4d0}} 
+\index{defines.\+h@{defines.\+h}!GI@{GI}}
+\index{GI@{GI}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{GI}{GI}}
+{\footnotesize\ttfamily \#define GI~1}
+
+
+
+D\+E\+P\+R\+E\+C\+A\+T\+ED Ganho de tensão para ajuste. 
+
+\mbox{\Hypertarget{defines_8h_ad5afb0df8a8a9e97197b4a9de8ce95cf}\label{defines_8h_ad5afb0df8a8a9e97197b4a9de8ce95cf}} 
+\index{defines.\+h@{defines.\+h}!GV@{GV}}
+\index{GV@{GV}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{GV}{GV}}
+{\footnotesize\ttfamily \#define GV~1}
+
+
+
+D\+E\+P\+R\+E\+C\+A\+T\+ED Ganho de corrente para ajuste. 
+
+\mbox{\Hypertarget{defines_8h_a21e24b95b94f5365ae4b50fc716a838d}\label{defines_8h_a21e24b95b94f5365ae4b50fc716a838d}} 
+\index{defines.\+h@{defines.\+h}!M\+A\+X\+\_\+\+H\+A\+R\+M\+O\+N\+I\+CA@{M\+A\+X\+\_\+\+H\+A\+R\+M\+O\+N\+I\+CA}}
+\index{M\+A\+X\+\_\+\+H\+A\+R\+M\+O\+N\+I\+CA@{M\+A\+X\+\_\+\+H\+A\+R\+M\+O\+N\+I\+CA}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{M\+A\+X\+\_\+\+H\+A\+R\+M\+O\+N\+I\+CA}{MAX\_HARMONICA}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+H\+A\+R\+M\+O\+N\+I\+CA~10}
+
+
+
+Número de harmônicas consideradas. 
+
+\mbox{\Hypertarget{defines_8h_a2dcf8c45f945dd0c4301a94700f2112c}\label{defines_8h_a2dcf8c45f945dd0c4301a94700f2112c}} 
+\index{defines.\+h@{defines.\+h}!M\+E\+M\+\_\+\+S\+I\+ZE@{M\+E\+M\+\_\+\+S\+I\+ZE}}
+\index{M\+E\+M\+\_\+\+S\+I\+ZE@{M\+E\+M\+\_\+\+S\+I\+ZE}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{M\+E\+M\+\_\+\+S\+I\+ZE}{MEM\_SIZE}}
+{\footnotesize\ttfamily \#define M\+E\+M\+\_\+\+S\+I\+ZE~(uint32\+\_\+t) 4}
+
+
+
+Tamanho da memória de histórico de medições. 
+
+\mbox{\Hypertarget{defines_8h_a7dba2955aa9ebabf06da89c5a25cad00}\label{defines_8h_a7dba2955aa9ebabf06da89c5a25cad00}} 
+\index{defines.\+h@{defines.\+h}!M\+S2H@{M\+S2H}}
+\index{M\+S2H@{M\+S2H}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{M\+S2H}{MS2H}}
+{\footnotesize\ttfamily \#define M\+S2H~(float32\+\_\+t) 1/3600000}
+
+
+
+Fator de conversão de milisegundo para hora. 
+
+\mbox{\Hypertarget{defines_8h_a11db7ed8c9e12a0fa7d17ad62d2af801}\label{defines_8h_a11db7ed8c9e12a0fa7d17ad62d2af801}} 
+\index{defines.\+h@{defines.\+h}!N\+\_\+\+P\+E\+R\+I\+O\+D\+OS@{N\+\_\+\+P\+E\+R\+I\+O\+D\+OS}}
+\index{N\+\_\+\+P\+E\+R\+I\+O\+D\+OS@{N\+\_\+\+P\+E\+R\+I\+O\+D\+OS}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{N\+\_\+\+P\+E\+R\+I\+O\+D\+OS}{N\_PERIODOS}}
+{\footnotesize\ttfamily \#define N\+\_\+\+P\+E\+R\+I\+O\+D\+OS~(uint32\+\_\+t) ((\hyperlink{defines_8h_a2b573f009cb2ef893aa1c52f267a9f92}{B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}-\/\hyperlink{defines_8h_a6a55213275c5b5823671f9fb4908cac2}{N\+\_\+\+S\+T\+A\+RT})/\hyperlink{defines_8h_a8aa42c7da1665258471a17d446d1ea98}{P\+PP})}
+
+
+
+Número inteiro de períodos de 60 Hz no buffer dizimado. 
+
+\mbox{\Hypertarget{defines_8h_a6a55213275c5b5823671f9fb4908cac2}\label{defines_8h_a6a55213275c5b5823671f9fb4908cac2}} 
+\index{defines.\+h@{defines.\+h}!N\+\_\+\+S\+T\+A\+RT@{N\+\_\+\+S\+T\+A\+RT}}
+\index{N\+\_\+\+S\+T\+A\+RT@{N\+\_\+\+S\+T\+A\+RT}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{N\+\_\+\+S\+T\+A\+RT}{N\_START}}
+{\footnotesize\ttfamily \#define N\+\_\+\+S\+T\+A\+RT~(uint32\+\_\+t) (\hyperlink{defines_8h_a2b573f009cb2ef893aa1c52f267a9f92}{B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}-\/(\hyperlink{defines_8h_a2b573f009cb2ef893aa1c52f267a9f92}{B\+U\+F\+F\+E\+R\+\_\+\+D\+IZ}/\hyperlink{defines_8h_a8aa42c7da1665258471a17d446d1ea98}{P\+PP})$\ast$\hyperlink{defines_8h_a8aa42c7da1665258471a17d446d1ea98}{P\+PP})}
+
+
+
+Número de pontos no buffer dizimado que não preenchem um período de 60 Hz. 
+
+\mbox{\Hypertarget{defines_8h_a8aa42c7da1665258471a17d446d1ea98}\label{defines_8h_a8aa42c7da1665258471a17d446d1ea98}} 
+\index{defines.\+h@{defines.\+h}!P\+PP@{P\+PP}}
+\index{P\+PP@{P\+PP}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{P\+PP}{PPP}}
+{\footnotesize\ttfamily \#define P\+PP~(uint32\+\_\+t) (\hyperlink{defines_8h_a0bcbf3408f7e22c34bd0c37f0c18000e}{F\+\_\+\+S\+A\+M\+P\+\_\+\+D\+IZ} / 60)}
+
+
+
+Pontos por período. 
+
+\mbox{\Hypertarget{defines_8h_a148da5145eeb4645af74a11d6000f9ea}\label{defines_8h_a148da5145eeb4645af74a11d6000f9ea}} 
+\index{defines.\+h@{defines.\+h}!R\+M\+S\+\_\+\+L\+O\+W\+E\+R\+B\+O\+U\+ND@{R\+M\+S\+\_\+\+L\+O\+W\+E\+R\+B\+O\+U\+ND}}
+\index{R\+M\+S\+\_\+\+L\+O\+W\+E\+R\+B\+O\+U\+ND@{R\+M\+S\+\_\+\+L\+O\+W\+E\+R\+B\+O\+U\+ND}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{R\+M\+S\+\_\+\+L\+O\+W\+E\+R\+B\+O\+U\+ND}{RMS\_LOWERBOUND}}
+{\footnotesize\ttfamily \#define R\+M\+S\+\_\+\+L\+O\+W\+E\+R\+B\+O\+U\+ND~(float32\+\_\+t) (100-\/\hyperlink{defines_8h_a8dab50cd90070e26b76c438bcde529a5}{R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA})/100}
+
+
+
+Limite inferior da tolerância do evento de corrente. 
+
+\mbox{\Hypertarget{defines_8h_a8dab50cd90070e26b76c438bcde529a5}\label{defines_8h_a8dab50cd90070e26b76c438bcde529a5}} 
+\index{defines.\+h@{defines.\+h}!R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA@{R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA}}
+\index{R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA@{R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA}{RMS\_TOLERANCIA}}
+{\footnotesize\ttfamily \#define R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA~(float32\+\_\+t) 7}
+
+
+
+Tolerância do evento de corrente, em \%. 
+
+\mbox{\Hypertarget{defines_8h_aa8a0463d37272a0a45ab428fb46e2229}\label{defines_8h_aa8a0463d37272a0a45ab428fb46e2229}} 
+\index{defines.\+h@{defines.\+h}!R\+M\+S\+\_\+\+U\+P\+P\+E\+R\+B\+O\+U\+ND@{R\+M\+S\+\_\+\+U\+P\+P\+E\+R\+B\+O\+U\+ND}}
+\index{R\+M\+S\+\_\+\+U\+P\+P\+E\+R\+B\+O\+U\+ND@{R\+M\+S\+\_\+\+U\+P\+P\+E\+R\+B\+O\+U\+ND}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{R\+M\+S\+\_\+\+U\+P\+P\+E\+R\+B\+O\+U\+ND}{RMS\_UPPERBOUND}}
+{\footnotesize\ttfamily \#define R\+M\+S\+\_\+\+U\+P\+P\+E\+R\+B\+O\+U\+ND~(float32\+\_\+t) (100+\hyperlink{defines_8h_a8dab50cd90070e26b76c438bcde529a5}{R\+M\+S\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+IA})/100}
+
+
+
+Limite superior da tolerância do evento de corrente. 
+
+\mbox{\Hypertarget{defines_8h_a7f802d5c0cfcc41c9bb44f8816899f36}\label{defines_8h_a7f802d5c0cfcc41c9bb44f8816899f36}} 
+\index{defines.\+h@{defines.\+h}!T\+E\+N\+S\+A\+O\+\_\+A@{T\+E\+N\+S\+A\+O\+\_\+A}}
+\index{T\+E\+N\+S\+A\+O\+\_\+A@{T\+E\+N\+S\+A\+O\+\_\+A}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{T\+E\+N\+S\+A\+O\+\_\+A}{TENSAO\_A}}
+{\footnotesize\ttfamily \#define T\+E\+N\+S\+A\+O\+\_\+A~(float32\+\_\+t) -\/0.\+0992}
+
+
+
+Fator de conversão A da calibração de tensão. 
+
+\mbox{\Hypertarget{defines_8h_aa83e4bfa054a9b3ce574b3edf1060971}\label{defines_8h_aa83e4bfa054a9b3ce574b3edf1060971}} 
+\index{defines.\+h@{defines.\+h}!T\+E\+N\+S\+A\+O\+\_\+B@{T\+E\+N\+S\+A\+O\+\_\+B}}
+\index{T\+E\+N\+S\+A\+O\+\_\+B@{T\+E\+N\+S\+A\+O\+\_\+B}!defines.\+h@{defines.\+h}}
+\paragraph{\texorpdfstring{T\+E\+N\+S\+A\+O\+\_\+B}{TENSAO\_B}}
+{\footnotesize\ttfamily \#define T\+E\+N\+S\+A\+O\+\_\+B~(float32\+\_\+t) 200.\+8922}
+
+
+
+Fator de conversão B da calibração de tensão. 
+

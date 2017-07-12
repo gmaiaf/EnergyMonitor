@@ -1,4 +1,4 @@
-/**
+/*
   ******************************************************************************
   * File Name          : dma.c
   * Description        : This file provides code for the configuration
@@ -31,6 +31,14 @@
   *
   ******************************************************************************
   */
+  
+   /**
+  *	@file dma.c
+  * @author ST
+  * @brief Header das funções de configuração das DMAs.
+  *
+  */
+  
 /* Includes ------------------------------------------------------------------*/
 #include "dma.h"
 
@@ -45,14 +53,24 @@
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
+/**
+  * @brief  Handler para estrutura do stream 1 do DMA 2 para transferência MemToMem.
+  */
 DMA_HandleTypeDef hdma_memtomem_dma2_stream1;
+/**
+  * @brief  Handler para estrutura do stream 3 do DMA 2 para transferência MemToMem.
+  */
 DMA_HandleTypeDef hdma_memtomem_dma2_stream3;
 
-/** 
+/**
+  * @brief  Inicialização do canais do DMA 2.
+  *
   * Enable DMA controller clock
   * Configure DMA for memory to memory transfers
   *   hdma_memtomem_dma2_stream1
   *   hdma_memtomem_dma2_stream3
+  *
+  * @retval None
   */
 void MX_DMA_Init(void) 
 {

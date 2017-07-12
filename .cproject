@@ -4,7 +4,7 @@
 		<cconfiguration id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.617920035">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="fr.ac6.managedbuild.config.gnu.cross.exe.debug.617920035" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<macros>
-					<stringMacro name="CMSIS_LOC" type="VALUE_PATH_DIR" value="C:\Users\Gustavo\Documents\STM_workbench\CMSIS"/>
+					<stringMacro name="CMSIS_LOC" type="VALUE_PATH_DIR" value="C:\Users\BRUNO CABRAL\Desktop\UFMG\Mestrado\Disciplinas\Sistemas Embarcados\Projeto\CMSIS_5-develop\CMSIS"/>
 				</macros>
 				<externalSettings/>
 				<extensions>

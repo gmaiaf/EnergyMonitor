@@ -1,4 +1,4 @@
-/**
+/*
   ******************************************************************************
   * File Name          : USART.c
   * Description        : This file provides code for the configuration
@@ -31,7 +31,12 @@
   *
   ******************************************************************************
   */
-
+  /**
+  *	@file usart.c
+  * @author ST
+  * @brief Implementação das funções de configuração da uart.
+  *
+  */
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
 
@@ -40,11 +45,16 @@
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
-
+/**
+  * @brief  Handler para estrutura do UART 2.
+  */
 UART_HandleTypeDef huart2;
 
 /* USART2 init function */
-
+/**
+  * @brief  Inicialização dos canais da UART 2.
+  * @retval None
+  */
 void MX_USART2_UART_Init(void)
 {
 
